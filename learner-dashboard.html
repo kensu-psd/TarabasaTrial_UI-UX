@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — TaraBasa AI Learner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-learner.css">
+  <link rel="stylesheet" href="/css/tarabasa-learner.css">
+</head>
+<body>
+
+  <!-- Screen Switcher Toolbar for Reviewers -->
+  <header class="tb-review-nav" aria-label="Learner Redesign Screen Switcher">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <span style="background:var(--teal); color:#ffffff; font-weight:700; padding:0.125rem 0.5rem; border-radius:4px; font-size:0.75rem;">Learner Role</span>
+      <span style="font-weight:600; color:#e2e8f0;">Screen 2 of 10: Learner Dashboard</span>
+    </div>
+    <nav style="display:flex; align-items:center; gap:0.375rem; flex-wrap:wrap;">
+      <a href="/learner-login.html">1. Login</a>
+      <a href="/learner-dashboard.html" class="tb-review-nav--active">2. Dashboard</a>
+      <a href="/learner-activity-picker.html">3. Picker</a>
+      <a href="/learner-reading.html">4. Reading</a>
+      <a href="/learner-diagnostic-intro.html">5. Diag Intro</a>
+      <a href="/learner-diagnostic-passage.html">6. Diag Passage</a>
+      <a href="/learner-diagnostic-encourage.html">7. Encourage</a>
+      <a href="/learner-diagnostic-results.html">8. Diag Result</a>
+      <a href="/learner-reading-results.html">9. Read Result</a>
+      <a href="/learner-reading-unclear.html">10. Unclear</a>
+      <a href="/learner-recording-widget.html">Widget (6 States)</a>
+    </nav>
+  </header>
+
+  <main class="tb-stage" id="mainContent">
+    <!-- Claymorphism Ambient Blobs -->
+    <div class="tb-blob-wrap" aria-hidden="true">
+      <div class="tb-blob tb-blob--yellow"></div>
+      <div class="tb-blob tb-blob--blue"></div>
+      <div class="tb-blob tb-blob--teal"></div>
+    </div>
+
+    <!-- Centered Card Shell -->
+    <section class="tb-card" aria-labelledby="dashboardGreeting">
+      
+      <!-- Large Circular Avatar (Child photo / preset glyph) -->
+      <div class="tb-avatar-learner" role="img" aria-label="Mateo's profile avatar">
+        <span>🦁</span>
+      </div>
+
+      <!-- H1 "Hi, {First Name}!" -->
+      <h1 id="dashboardGreeting" class="tb-h1">Hi, Mateo!</h1>
+      
+      <!-- Grade Level Line Underneath -->
+      <div class="tb-grade-badge">
+        Grade 2 &bull; Bayanihan Section
+      </div>
+
+      <!-- 3 Stat Tiles in a Row: Level / Points / Streak -->
+      <div class="tb-learner-stat-grid" aria-label="Reading stats summary">
+        <!-- 1. Level (Mastery level or "New") -->
+        <div class="tb-learner-stat-card">
+          <span class="tb-learner-stat-card__val" style="color:var(--teal); font-size:1.1875rem;">Growing Reader</span>
+          <span class="tb-learner-stat-card__label">Level</span>
+        </div>
+
+        <!-- 2. Points (Number) -->
+        <div class="tb-learner-stat-card">
+          <span class="tb-learner-stat-card__val" style="color:var(--blue-600);">⭐ 120</span>
+          <span class="tb-learner-stat-card__label">Points</span>
+        </div>
+
+        <!-- 3. Streak (🔥 + number) -->
+        <div class="tb-learner-stat-card">
+          <span class="tb-learner-stat-card__val" style="color:var(--owl-orange-500);">🔥 4</span>
+          <span class="tb-learner-stat-card__label">Day Streak</span>
+        </div>
+      </div>
+
+      <!-- Primary Button: "Start Reading Activity" (Unmissable dominant action) -->
+      <a href="/learner-activity-picker.html" class="tb-btn-big tb-btn-big--teal" id="startActivityBtn">
+        <span>📖 Start Reading Activity</span>
+      </a>
+
+      <!-- Secondary, quiet text-button below: "Not you? Switch learner" -->
+      <form method="POST" action="/logout" style="margin-top:0.75rem; width:100%; display:flex; justify-content:center;">
+        <input type="hidden" name="_token" value="csrf-token-placeholder">
+        <button type="submit" class="tb-btn-quiet" id="switchLearnerBtn">
+          Not you? Switch learner
+        </button>
+      </form>
+
+    </section>
+  </main>
+
+</body>
+</html>

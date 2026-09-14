@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Repository — TaraBasa AI Teacher Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-teacher.css">
+  <link rel="stylesheet" href="/css/tarabasa-teacher.css">
+</head>
+<body>
+  <!-- Mobile Topbar (< 768px) -->
+  <header class="tb-mobile-topbar" id="mobileTopbar">
+    <a href="/dashboard.html" class="tb-brand" style="padding:0;">
+      <div class="tb-brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </div>
+      <div class="tb-brand__text">
+        <span class="tb-brand__title">TaraBasa AI</span>
+        <span class="tb-brand__role-tag">Teacher</span>
+      </div>
+    </a>
+    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <div class="tb-sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <div class="tb-shell">
+    <!-- PERSISTENT LEFT SIDEBAR SHELL -->
+    <aside class="tb-sidebar" id="sidebarNav" aria-label="Teacher Portal Navigation">
+      <a href="/dashboard.html" class="tb-brand">
+        <div class="tb-brand__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <div class="tb-brand__text">
+          <span class="tb-brand__title">TaraBasa AI</span>
+          <span class="tb-brand__role-tag">Teacher</span>
+        </div>
+      </a>
+
+      <nav class="tb-nav" aria-label="Main Navigation">
+        <li class="tb-nav__item"><a href="/dashboard.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Dashboard</span></a></li>
+        <li class="tb-nav__item"><a href="/classes.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span>Classes</span></a></li>
+        <li class="tb-nav__item"><a href="/generate-activity.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path></svg><span>Generate Activity</span></a></li>
+        <li class="tb-nav__item"><a href="/my-activities.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>My Activities</span></a></li>
+        <li class="tb-nav__item"><a href="/analytics.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Analytics</span></a></li>
+        <li class="tb-nav__item"><a href="/promotions.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span>Promotions</span><span class="tb-nav__badge tb-nav__badge--amber">3</span></a></li>
+        <li class="tb-nav__item"><a href="/notifications.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span>Notifications</span><span class="tb-nav__badge tb-nav__badge--blue">5</span></a></li>
+      </nav>
+
+      <div class="tb-sidebar__footer">
+        <div class="tb-divider"></div>
+        <a href="/dashboard.html" class="tb-profile-row" id="profileRow">
+          <div class="tb-avatar">MS</div>
+          <div class="tb-profile-info">
+            <span class="tb-profile-name">Maria Santos</span>
+            <div class="tb-profile-status">
+              <span class="tb-pill tb-pill--active" id="sidebarStatusPill">Active</span>
+            </div>
+          </div>
+        </a>
+
+        <form method="POST" action="/logout" class="tb-logout-form">
+          <input type="hidden" name="_token" value="csrf-token-demo">
+          <button type="submit" class="tb-logout-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Log out</span>
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- MAIN REPOSITORY CONTENT -->
+    <main class="tb-main" id="mainContent">
+      <div class="tb-content">
+
+        <!-- Banner: "Earn +2 AI generation credits when you share an approved activity." -->
+        <div class="tb-banner tb-banner--teal">
+          <svg class="tb-banner__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <div class="tb-banner__content">
+            <span class="tb-banner__title">Earn +2 AI generation credits for every shared activity</span>
+            <span class="tb-banner__text">
+              Share your approved reading activities with fellow teachers across the Philippines. You earn free generation credits immediately when publishing to the community repository.
+            </span>
+            <a href="/my-activities.html#section-approved" class="tb-banner__link" style="color:var(--teal);">
+              Share from My Activities &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="tb-page-header">
+          <div class="tb-page-title-group">
+            <h1 class="tb-page-title">Community Activity Repository</h1>
+            <p class="tb-page-subtitle">Discover, preview, and adopt peer-reviewed reading materials created by Filipino teachers</p>
+          </div>
+          <div class="tb-page-actions">
+            <a href="/my-activities.html" class="tb-btn tb-btn--outline">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+              <span>My Shared Activities</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- FILTER BAR (GET form, preserve query params) -->
+        <div class="tb-card" style="margin-bottom:2rem; padding:1.25rem;">
+          <form method="GET" action="/repository.html" id="repoFilterForm" onsubmit="event.preventDefault(); applyRepoFilters();">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(11rem, 1fr)); gap:1rem; align-items:flex-end;">
+              <!-- Field: grade_level (select: All / 1 / 2 / 3) -->
+              <div class="tb-form-group" style="margin-bottom:0;">
+                <label class="tb-label" for="filter_grade_level">Grade Level</label>
+                <select name="grade_level" id="filter_grade_level" class="tb-select" onchange="applyRepoFilters()">
+                  <option value="all">All Grades</option>
+                  <option value="1">Grade 1</option>
+                  <option value="2">Grade 2</option>
+                  <option value="3">Grade 3</option>
+                </select>
+              </div>
+
+              <!-- Field: competency (select: All + 4 competencies) -->
+              <div class="tb-form-group" style="margin-bottom:0;">
+                <label class="tb-label" for="filter_competency">Competency</label>
+                <select name="competency" id="filter_competency" class="tb-select" onchange="applyRepoFilters()">
+                  <option value="all">All Competencies</option>
+                  <option value="phonics">Phonics &amp; Word Recognition</option>
+                  <option value="phonological">Phonological Awareness</option>
+                  <option value="fluency">Fluency</option>
+                  <option value="comprehension">Reading Comprehension</option>
+                </select>
+              </div>
+
+              <!-- Field: pricing_type (select: All / Free / Paid) -->
+              <div class="tb-form-group" style="margin-bottom:0;">
+                <label class="tb-label" for="filter_pricing_type">Pricing Type</label>
+                <select name="pricing_type" id="filter_pricing_type" class="tb-select" onchange="applyRepoFilters()">
+                  <option value="all">All (Free &amp; Paid)</option>
+                  <option value="free">Free Community</option>
+                  <option value="paid">Paid Materials</option>
+                </select>
+              </div>
+
+              <!-- Field: search (text input) -->
+              <div class="tb-form-group" style="margin-bottom:0;">
+                <label class="tb-label" for="filter_search">Search Keywords</label>
+                <input type="text" name="search" id="filter_search" class="tb-input" placeholder="Title, topic, sound..." oninput="applyRepoFilters()">
+              </div>
+
+              <!-- Buttons: Apply Filters & Clear link -->
+              <div style="display:flex; align-items:center; gap:0.75rem; padding-bottom:0.125rem;">
+                <button type="submit" class="tb-btn tb-btn--primary" style="flex-grow:1;">
+                  Apply
+                </button>
+                <button type="button" class="tb-btn tb-btn--ghost" onclick="clearRepoFilters()">
+                  Clear
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- REPOSITORY ACTIVITIES GRID (3-col desktop, 1-col mobile) -->
+        <div id="repoGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(20rem, 1fr)); gap:1.25rem; margin-bottom:2rem;">
+
+          <!-- REPO CARD 1 (Free, Grade 1 Phonics) -->
+          <article class="tb-card repo-card" data-grade="1" data-competency="phonics" data-pricing="free" data-search="ang masayang mag-anak mang ben iska marungko" style="display:flex; flex-direction:column; justify-content:space-between; padding:1.25rem;">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <!-- Pricing pill (Free = teal) -->
+                <span class="tb-tag tb-tag--approved" style="font-weight:700;">Free</span>
+                <div style="display:flex; gap:0.375rem;">
+                  <!-- Grade tag, competency tag -->
+                  <span class="tb-tag tb-tag--grade">Grade 1</span>
+                  <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Phonics</span>
+                </div>
+              </div>
+
+              <!-- Title -->
+              <h3 style="font-size:1.0625rem; margin-bottom:0.625rem; line-height:1.35; color:var(--navy-900);">
+                Ang Masayang Mag-anak (Marungko Aralin 2)
+              </h3>
+
+              <!-- Creator info: Teacher avatar initial, Teacher name, school -->
+              <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.875rem; padding-bottom:0.75rem; border-bottom:1px solid var(--line);">
+                <div class="tb-avatar" style="width:1.75rem; height:1.75rem; font-size:0.6875rem;">EG</div>
+                <div style="font-size:0.75rem; color:var(--slate-600); line-height:1.2;">
+                  <strong style="color:var(--navy-900);">Teacher Elena G.</strong><br>
+                  <span>Rizal Elementary School</span>
+                </div>
+              </div>
+
+              <!-- Passage text preview (3-line clamp) -->
+              <p class="tb-clamp-3" style="font-size:0.8125rem; color:var(--slate-600); margin-bottom:1rem; line-height:1.5;">
+                Sama-samang kumakain ang mag-anak ni Mang Ben. Masarap ang nilutong sabaw ni Aling Iska. Nagpapasalamat sila sa Poong Maykapal bago kumain.
+              </p>
+            </div>
+
+            <!-- Actions: Add to My Activities + Preview Passage -->
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem; padding-top:0.75rem; border-top:1px solid var(--line);">
+              <button type="button" class="tb-btn tb-btn--ghost tb-btn--sm" onclick="openPreviewModal('Ang Masayang Mag-anak (Marungko Aralin 2)', 'Teacher Elena G. (Rizal Elem)', 'Grade 1 • Phonics', 'Sama-samang kumakain ang mag-anak ni Mang Ben. Masarap ang nilutong sabaw ni Aling Iska. Nagpapasalamat sila sa Poong Maykapal bago kumain. May saging at papaya rin sa lamesa na pinagsaluhan ng pamilya.')">
+                Preview Passage
+              </button>
+              <!-- "Add to My Activities" action button (form action="/teacher/repository/{id}/copy" method="POST") -->
+              <form method="POST" action="/teacher/repository/301/copy" style="margin:0;">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm">
+                  + Add to Activities
+                </button>
+              </form>
+            </div>
+          </article>
+
+          <!-- REPO CARD 2 (Paid ₱25, Grade 2 Fluency) -->
+          <article class="tb-card repo-card" data-grade="2" data-competency="fluency" data-pricing="paid" data-search="ang masipag na bangkero pasig river ilog" style="display:flex; flex-direction:column; justify-content:space-between; padding:1.25rem;">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <!-- Pricing pill (Paid = amber with price "₱25.00") -->
+                <span class="tb-tag tb-tag--price" style="background:var(--amber-bg); color:var(--amber); font-weight:700;">₱25.00</span>
+                <div style="display:flex; gap:0.375rem;">
+                  <span class="tb-tag tb-tag--grade">Grade 2</span>
+                  <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Fluency</span>
+                </div>
+              </div>
+
+              <h3 style="font-size:1.0625rem; margin-bottom:0.625rem; line-height:1.35; color:var(--navy-900);">
+                Ang Masipag na Bangkero sa Ilog Pasig
+              </h3>
+
+              <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.875rem; padding-bottom:0.75rem; border-bottom:1px solid var(--line);">
+                <div class="tb-avatar" style="width:1.75rem; height:1.75rem; font-size:0.6875rem;">RD</div>
+                <div style="font-size:0.75rem; color:var(--slate-600); line-height:1.2;">
+                  <strong style="color:var(--navy-900);">Teacher Roberto D.</strong><br>
+                  <span>Mabini Central School</span>
+                </div>
+              </div>
+
+              <p class="tb-clamp-3" style="font-size:0.8125rem; color:var(--slate-600); margin-bottom:1rem; line-height:1.5;">
+                Sumasagwan si Mang Carding habang maingat na inihahatid ang mga mag-aaral patawid sa ilog. Laging nakasuot ng salbabida ang bawat pasahero upang maging ligtas ang kanilang biyahe patungo sa eskwelahan.
+              </p>
+            </div>
+
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem; padding-top:0.75rem; border-top:1px solid var(--line);">
+              <button type="button" class="tb-btn tb-btn--ghost tb-btn--sm" onclick="openPreviewModal('Ang Masipag na Bangkero sa Ilog Pasig', 'Teacher Roberto D. (Mabini Central)', 'Grade 2 • Fluency', 'Sumasagwan si Mang Carding habang maingat na inihahatid ang mga mag-aaral patawid sa ilog. Laging nakasuot ng salbabida ang bawat pasahero upang maging ligtas ang kanilang biyahe patungo sa eskwelahan. Sa pagdating sa kabilang pampang, masayang nagpaalam ang mga bata na may ngiti sa labi.')">
+                Preview Passage
+              </button>
+              <form method="POST" action="/teacher/repository/302/copy" style="margin:0;">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <button type="submit" class="tb-btn tb-btn--primary tb-btn--sm">
+                  Acquire (₱25)
+                </button>
+              </form>
+            </div>
+          </article>
+
+          <!-- REPO CARD 3 (Free, Grade 3 Comprehension) -->
+          <article class="tb-card repo-card" data-grade="3" data-competency="comprehension" data-pricing="free" data-search="ang lihim ng luntiang bundok makiling kalikasan" style="display:flex; flex-direction:column; justify-content:space-between; padding:1.25rem;">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <span class="tb-tag tb-tag--approved" style="font-weight:700;">Free</span>
+                <div style="display:flex; gap:0.375rem;">
+                  <span class="tb-tag tb-tag--grade">Grade 3</span>
+                  <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Comprehension</span>
+                </div>
+              </div>
+
+              <h3 style="font-size:1.0625rem; margin-bottom:0.625rem; line-height:1.35; color:var(--navy-900);">
+                Ang Lihim ng Luntiang Bundok Makiling
+              </h3>
+
+              <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.875rem; padding-bottom:0.75rem; border-bottom:1px solid var(--line);">
+                <div class="tb-avatar" style="width:1.75rem; height:1.75rem; font-size:0.6875rem;">CP</div>
+                <div style="font-size:0.75rem; color:var(--slate-600); line-height:1.2;">
+                  <strong style="color:var(--navy-900);">Teacher Carla P.</strong><br>
+                  <span>Laguna Science Elementary</span>
+                </div>
+              </div>
+
+              <p class="tb-clamp-3" style="font-size:0.8125rem; color:var(--slate-600); margin-bottom:1rem; line-height:1.5;">
+                Sinasabing may tagapangalaga ang kagubatan na nag-aalaga sa mga ligaw na usa at ibong tikling. Nang matutong magtanim ng punongkahoy ang mga taganayon, lalong sumagana ang batis sa paanan ng bundok.
+              </p>
+            </div>
+
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem; padding-top:0.75rem; border-top:1px solid var(--line);">
+              <button type="button" class="tb-btn tb-btn--ghost tb-btn--sm" onclick="openPreviewModal('Ang Lihim ng Luntiang Bundok Makiling', 'Teacher Carla P. (Laguna Science)', 'Grade 3 • Comprehension', 'Sinasabing may tagapangalaga ang kagubatan na nag-aalaga sa mga ligaw na usa at ibong tikling. Nang matutong magtanim ng punongkahoy ang mga taganayon, lalong sumagana ang batis sa paanan ng bundok. Naging aral sa kabataan ang kahalagahan ng pagrespeto sa kalikasan.')">
+                Preview Passage
+              </button>
+              <form method="POST" action="/teacher/repository/303/copy" style="margin:0;">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm">
+                  + Add to Activities
+                </button>
+              </form>
+            </div>
+          </article>
+
+          <!-- REPO CARD 4 (Free, Grade 1 Phonological) -->
+          <article class="tb-card repo-card" data-grade="1" data-competency="phonological" data-pricing="free" data-search="tugmang pambata tunog aw aw meow hayop" style="display:flex; flex-direction:column; justify-content:space-between; padding:1.25rem;">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <span class="tb-tag tb-tag--approved" style="font-weight:700;">Free</span>
+                <div style="display:flex; gap:0.375rem;">
+                  <span class="tb-tag tb-tag--grade">Grade 1</span>
+                  <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Phonological</span>
+                </div>
+              </div>
+
+              <h3 style="font-size:1.0625rem; margin-bottom:0.625rem; line-height:1.35; color:var(--navy-900);">
+                Tugmang Pambata: Tunog ng mga Hayop
+              </h3>
+
+              <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.875rem; padding-bottom:0.75rem; border-bottom:1px solid var(--line);">
+                <div class="tb-avatar" style="width:1.75rem; height:1.75rem; font-size:0.6875rem;">MV</div>
+                <div style="font-size:0.75rem; color:var(--slate-600); line-height:1.2;">
+                  <strong style="color:var(--navy-900);">Teacher Mila V.</strong><br>
+                  <span>San Juan Elementary</span>
+                </div>
+              </div>
+
+              <p class="tb-clamp-3" style="font-size:0.8125rem; color:var(--slate-600); margin-bottom:1rem; line-height:1.5;">
+                Aw, aw, aw ang tahol ng aso. Meow, meow, meow ang iyak ng pusa. Kokak, kokak ang tawag ng palaka sa tabi ng sapa. Alamin ang magkakatugmang tunog sa bawat saknong.
+              </p>
+            </div>
+
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem; padding-top:0.75rem; border-top:1px solid var(--line);">
+              <button type="button" class="tb-btn tb-btn--ghost tb-btn--sm" onclick="openPreviewModal('Tugmang Pambata: Tunog ng mga Hayop', 'Teacher Mila V. (San Juan Elem)', 'Grade 1 • Phonological', 'Aw, aw, aw ang tahol ng aso. Meow, meow, meow ang iyak ng pusa. Kokak, kokak ang tawag ng palaka sa tabi ng sapa. Alamin ang magkakatugmang tunog sa bawat saknong upang mahasa ang pandinig ng bata sa palabaybayan.')">
+                Preview Passage
+              </button>
+              <form method="POST" action="/teacher/repository/304/copy" style="margin:0;">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm">
+                  + Add to Activities
+                </button>
+              </form>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- EMPTY STATE: "No activities match your filters. Be the first to share one!" + CTA to My Activities -->
+        <div id="repoEmptyState" class="tb-empty-state" style="display:none;">
+          <div class="tb-empty-state__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="tb-empty-state__title">No activities match your filters</h3>
+          <p class="tb-empty-state__text">Be the first to share an approved reading module to this category and earn +2 AI credits!</p>
+          <a href="/my-activities.html#section-approved" class="tb-btn tb-btn--teal">
+            Share an Approved Activity &rarr;
+          </a>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- PREVIEW PASSAGE MODAL -->
+  <div id="passagePreviewModal" class="tb-modal" style="display:none; position:fixed; inset:0; background:rgba(19, 31, 43, 0.6); z-index:100; align-items:center; justify-content:center; padding:1rem;">
+    <div class="tb-card" style="max-width:34rem; width:100%; max-height:90vh; overflow-y:auto; position:relative; box-shadow:0 12px 32px rgba(19,31,43,0.2);">
+      <button type="button" class="tb-btn tb-btn--ghost tb-btn--sm" style="position:absolute; top:1rem; right:1rem;" onclick="closePreviewModal()" aria-label="Close modal">
+        ✕
+      </button>
+      <div style="margin-bottom:0.75rem;">
+        <span class="tb-tag tb-tag--grade" id="modalMeta">Grade 1</span>
+      </div>
+      <h3 id="modalTitle" style="font-size:1.25rem; margin-bottom:0.25rem; color:var(--navy-900);">Title</h3>
+      <p id="modalAuthor" style="font-size:0.8125rem; color:var(--slate-600); margin-bottom:1rem; padding-bottom:0.75rem; border-bottom:1px solid var(--line);">Author</p>
+
+      <div style="background:#f8fafc; border:1px solid var(--line); border-radius:var(--radius-sm); padding:1.25rem; font-family:'Baloo 2', cursive, sans-serif; font-size:1.125rem; line-height:1.7; color:var(--navy-900); margin-bottom:1.5rem;" id="modalPassageText">
+        Passage text goes here...
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+        <button type="button" class="tb-btn tb-btn--outline" onclick="closePreviewModal()">Close Preview</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="tb-bottom-nav" aria-label="Mobile Quick Nav">
+    <ul class="tb-bottom-nav__list">
+      <li><a href="/dashboard.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Home</span></a></li>
+      <li><a href="/classes.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg><span>Classes</span></a></li>
+      <li><a href="/generate-activity.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path></svg><span>Generate</span></a></li>
+      <li><a href="/promotions.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span class="tb-bottom-nav__badge">3</span><span>Promote</span></a></li>
+      <li><a href="/notifications.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class="tb-bottom-nav__badge">5</span><span>Alerts</span></a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function applyRepoFilters() {
+      const grade = document.getElementById('filter_grade_level').value;
+      const competency = document.getElementById('filter_competency').value;
+      const pricing = document.getElementById('filter_pricing_type').value;
+      const search = document.getElementById('filter_search').value.toLowerCase().trim();
+
+      const cards = document.querySelectorAll('.repo-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const cGrade = card.getAttribute('data-grade');
+        const cComp = card.getAttribute('data-competency');
+        const cPrice = card.getAttribute('data-pricing');
+        const cSearch = card.getAttribute('data-search') + ' ' + card.innerText.toLowerCase();
+
+        let match = true;
+        if (grade !== 'all' && cGrade !== grade) match = false;
+        if (competency !== 'all' && cComp !== competency) match = false;
+        if (pricing !== 'all' && cPrice !== pricing) match = false;
+        if (search && !cSearch.includes(search)) match = false;
+
+        if (match) {
+          card.style.display = 'flex';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('repoEmptyState').style.display = visible === 0 ? 'flex' : 'none';
+    }
+
+    function clearRepoFilters() {
+      document.getElementById('filter_grade_level').value = 'all';
+      document.getElementById('filter_competency').value = 'all';
+      document.getElementById('filter_pricing_type').value = 'all';
+      document.getElementById('filter_search').value = '';
+      applyRepoFilters();
+    }
+
+    function openPreviewModal(title, author, meta, text) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalAuthor').textContent = 'Created by ' + author;
+      document.getElementById('modalMeta').textContent = meta;
+      document.getElementById('modalPassageText').textContent = text;
+      document.getElementById('passagePreviewModal').style.display = 'flex';
+    }
+
+    function closePreviewModal() {
+      document.getElementById('passagePreviewModal').style.display = 'none';
+    }
+
+    // Close modal on escape key or clicking backdrop
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePreviewModal();
+    });
+    document.getElementById('passagePreviewModal').addEventListener('click', (e) => {
+      if (e.target.id === 'passagePreviewModal') closePreviewModal();
+    });
+
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('sidebarNav');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    if (menuBtn && sidebar && backdrop) {
+      function toggleSidebar() {
+        const isOpen = sidebar.classList.toggle('tb-sidebar--open');
+        backdrop.classList.toggle('tb-sidebar-backdrop--active');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+      }
+      menuBtn.addEventListener('click', toggleSidebar);
+      backdrop.addEventListener('click', toggleSidebar);
+    }
+  </script>
+</body>
+</html>

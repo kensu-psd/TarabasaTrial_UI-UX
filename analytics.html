@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics — TaraBasa AI Teacher Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-teacher.css">
+  <link rel="stylesheet" href="/css/tarabasa-teacher.css">
+</head>
+<body>
+  <!-- Mobile Topbar (< 768px) -->
+  <header class="tb-mobile-topbar" id="mobileTopbar">
+    <a href="/dashboard.html" class="tb-brand" style="padding:0;">
+      <div class="tb-brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </div>
+      <div class="tb-brand__text">
+        <span class="tb-brand__title">TaraBasa AI</span>
+        <span class="tb-brand__role-tag">Teacher</span>
+      </div>
+    </a>
+    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <div class="tb-sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <div class="tb-shell">
+    <!-- PERSISTENT LEFT SIDEBAR SHELL -->
+    <aside class="tb-sidebar" id="sidebarNav" aria-label="Teacher Portal Navigation">
+      <a href="/dashboard.html" class="tb-brand">
+        <div class="tb-brand__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <div class="tb-brand__text">
+          <span class="tb-brand__title">TaraBasa AI</span>
+          <span class="tb-brand__role-tag">Teacher</span>
+        </div>
+      </a>
+
+      <nav class="tb-nav" aria-label="Main Navigation">
+        <li class="tb-nav__item"><a href="/dashboard.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Dashboard</span></a></li>
+        <li class="tb-nav__item"><a href="/classes.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span>Classes</span></a></li>
+        <li class="tb-nav__item"><a href="/generate-activity.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path></svg><span>Generate Activity</span></a></li>
+        <li class="tb-nav__item"><a href="/my-activities.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>My Activities</span></a></li>
+        <li class="tb-nav__item"><a href="/analytics.html" class="tb-nav__link tb-nav__link--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Analytics</span></a></li>
+        <li class="tb-nav__item"><a href="/promotions.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span>Promotions</span><span class="tb-nav__badge tb-nav__badge--amber">3</span></a></li>
+        <li class="tb-nav__item"><a href="/notifications.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span>Notifications</span><span class="tb-nav__badge tb-nav__badge--blue">5</span></a></li>
+      </nav>
+
+      <div class="tb-sidebar__footer">
+        <div class="tb-divider"></div>
+        <a href="/dashboard.html" class="tb-profile-row" id="profileRow">
+          <div class="tb-avatar">MS</div>
+          <div class="tb-profile-info">
+            <span class="tb-profile-name">Maria Santos</span>
+            <div class="tb-profile-status">
+              <span class="tb-pill tb-pill--active" id="sidebarStatusPill">Active</span>
+            </div>
+          </div>
+        </a>
+
+        <form method="POST" action="/logout" class="tb-logout-form">
+          <input type="hidden" name="_token" value="csrf-token-demo">
+          <button type="submit" class="tb-logout-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Log out</span>
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- MAIN ANALYTICS CONTENT -->
+    <main class="tb-main" id="mainContent">
+      <div class="tb-content">
+
+        <!-- Page Header -->
+        <div class="tb-page-header">
+          <div class="tb-page-title-group">
+            <h1 class="tb-page-title">Learner Analytics &amp; Reports</h1>
+            <p class="tb-page-subtitle">Track reading progress, phonics accuracy trends, and teacher vs. parent sessions</p>
+          </div>
+          <div class="tb-page-actions">
+            <button type="button" class="tb-btn tb-btn--outline" onclick="window.print()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>Export DepEd Report</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- TABS: By Learner / By Group -->
+        <div class="tb-tabs" role="tablist">
+          <button type="button" class="tb-tab tb-tab--active" id="tabBtnLearner" role="tab" aria-selected="true" onclick="switchAnalyticsTab('learner')">
+            By Learner
+          </button>
+          <button type="button" class="tb-tab" id="tabBtnGroup" role="tab" aria-selected="false" onclick="switchAnalyticsTab('group')">
+            By Group
+          </button>
+        </div>
+
+        <!-- =================================================================
+             TAB PANE 1: BY LEARNER
+             ================================================================= -->
+        <div id="paneByLearner" role="tabpanel">
+          <!-- Learner Picker (select, GET, name="learner_id") -->
+          <div class="tb-card" style="margin-bottom:1.5rem; padding:1rem 1.25rem;">
+            <form method="GET" action="/analytics.html" class="tb-form-inline">
+              <label for="select_learner_id" class="tb-label" style="margin-bottom:0; font-weight:700;">
+                Select Learner:
+              </label>
+              <select name="learner_id" id="select_learner_id" class="tb-select" style="max-width:22rem;" onchange="handleLearnerSelect(this.value)">
+                <option value="1" selected>Angelo Reyes — Grade 1 (LRN-1029384) [Active Sessions]</option>
+                <option value="2">Bea Dela Cruz — Grade 1 (LRN-1029385) [High Accuracy 92%]</option>
+                <option value="3">Carlo Bautista — Grade 1 (LRN-1029386) [Needs Intervention 58%]</option>
+                <option value="empty">Daniela Ramos — Grade 1 (LRN-1029399) [No Sessions Yet]</option>
+              </select>
+            </form>
+          </div>
+
+          <!-- Learner Active Data Container -->
+          <div id="learnerDataContent">
+            <!-- 2 Stat Cards (Teacher-Assigned / Parent-Initiated session counts + avg accuracy) -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(18rem, 1fr)); gap:1.25rem; margin-bottom:1.5rem;">
+              <!-- Stat Card 1: Teacher-Assigned -->
+              <div class="tb-stat-card">
+                <div class="tb-stat-card__info">
+                  <span class="tb-stat-card__val" style="color:var(--blue-700);">12 sessions</span>
+                  <span class="tb-stat-card__label">Teacher-Assigned Sessions</span>
+                  <span style="font-size:0.875rem; color:var(--teal); font-weight:700; margin-top:0.25rem;">
+                    Avg Accuracy: 84%
+                  </span>
+                </div>
+                <div class="tb-stat-card__icon tb-stat-card__icon--blue" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Stat Card 2: Parent-Initiated -->
+              <div class="tb-stat-card">
+                <div class="tb-stat-card__info">
+                  <span class="tb-stat-card__val" style="color:var(--teal);">6 sessions</span>
+                  <span class="tb-stat-card__label">Parent-Initiated Sessions</span>
+                  <span style="font-size:0.875rem; color:var(--blue-600); font-weight:700; margin-top:0.25rem;">
+                    Avg Accuracy: 78%
+                  </span>
+                </div>
+                <div class="tb-stat-card__icon tb-stat-card__icon--teal" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Line Chart: "Accuracy Trend" (real gridlines, labeled 0/50/100 axis, emphasized latest point) -->
+            <div class="tb-chart-container">
+              <div class="tb-chart-header">
+                <div>
+                  <h3 style="font-size:1.125rem;">Accuracy Trend</h3>
+                  <p style="font-size:0.8125rem; color:var(--slate-600); margin:0;">
+                    Session-by-session phonetic &amp; reading accuracy over time (%)
+                  </p>
+                </div>
+                <div style="display:flex; align-items:center; gap:0.75rem; font-size:0.75rem; font-weight:600;">
+                  <span style="display:inline-flex; align-items:center; gap:0.25rem;">
+                    <span style="width:10px; height:10px; border-radius:50%; background:var(--blue-500);"></span>
+                    Accuracy Trend
+                  </span>
+                  <span style="display:inline-flex; align-items:center; gap:0.25rem;">
+                    <span style="width:12px; height:12px; border-radius:50%; background:var(--teal); border:2px solid #ffffff; box-shadow:0 0 0 2px var(--teal);"></span>
+                    Latest Session (88%)
+                  </span>
+                </div>
+              </div>
+
+              <!-- Inline SVG Chart with Accessible markup & explicit coordinates -->
+              <div style="width:100%; overflow-x:auto;">
+                <svg viewBox="0 0 700 220" style="width:100%; height:auto; min-width:480px; display:block;" role="img" aria-label="Line chart of accuracy trend from Session 1 to Session 6 with 0%, 50%, and 100% axis markers">
+                  <!-- Real Horizontal Gridlines & Axis Labels -->
+                  <!-- 100% Line (y = 30) -->
+                  <line x1="45" y1="30" x2="680" y2="30" stroke="#e3ebf2" stroke-dasharray="4 4" stroke-width="1"></line>
+                  <text x="35" y="34" font-size="11" font-family="Inter, sans-serif" font-weight="600" fill="#8a97a3" text-anchor="end">100%</text>
+
+                  <!-- 50% Line (y = 110) -->
+                  <line x1="45" y1="110" x2="680" y2="110" stroke="#e3ebf2" stroke-dasharray="4 4" stroke-width="1"></line>
+                  <text x="35" y="114" font-size="11" font-family="Inter, sans-serif" font-weight="600" fill="#8a97a3" text-anchor="end">50%</text>
+
+                  <!-- 0% Line (y = 190) -->
+                  <line x1="45" y1="190" x2="680" y2="190" stroke="#131f2b" stroke-width="1.5"></line>
+                  <text x="35" y="194" font-size="11" font-family="Inter, sans-serif" font-weight="600" fill="#8a97a3" text-anchor="end">0%</text>
+
+                  <!-- Vertical X-axis ticks & labels -->
+                  <!-- S1: x=90, y=190-60*1.6 = 94 (60%) -->
+                  <text x="90" y="210" font-size="11" font-family="Inter, sans-serif" fill="#5b6b7a" text-anchor="middle">S1 (May 2)</text>
+                  <!-- S2: x=200, y=190-68*1.6 = 81 (68%) -->
+                  <text x="200" y="210" font-size="11" font-family="Inter, sans-serif" fill="#5b6b7a" text-anchor="middle">S2 (May 6)</text>
+                  <!-- S3: x=310, y=190-74*1.6 = 71 (74%) -->
+                  <text x="310" y="210" font-size="11" font-family="Inter, sans-serif" fill="#5b6b7a" text-anchor="middle">S3 (May 10)</text>
+                  <!-- S4: x=420, y=190-72*1.6 = 74 (72%) -->
+                  <text x="420" y="210" font-size="11" font-family="Inter, sans-serif" fill="#5b6b7a" text-anchor="middle">S4 (May 14)</text>
+                  <!-- S5: x=530, y=190-82*1.6 = 58 (82%) -->
+                  <text x="530" y="210" font-size="11" font-family="Inter, sans-serif" fill="#5b6b7a" text-anchor="middle">S5 (May 18)</text>
+                  <!-- S6: x=640, y=190-88*1.6 = 49 (88%) -->
+                  <text x="640" y="210" font-size="11" font-family="Inter, sans-serif" fill="#0f5fae" font-weight="700" text-anchor="middle">S6 (Latest)</text>
+
+                  <!-- Shaded Area Under Line -->
+                  <path d="M90 94 L200 81 L310 71 L420 74 L530 58 L640 49 L640 190 L90 190 Z" fill="rgba(28, 126, 214, 0.08)"></path>
+
+                  <!-- Connecting Line -->
+                  <polyline points="90,94 200,81 310,71 420,74 530,58 640,49" fill="none" stroke="#1c7ed6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+
+                  <!-- Regular Data Points -->
+                  <circle cx="90" cy="94" r="5" fill="#ffffff" stroke="#1c7ed6" stroke-width="2.5"></circle>
+                  <circle cx="200" cy="81" r="5" fill="#ffffff" stroke="#1c7ed6" stroke-width="2.5"></circle>
+                  <circle cx="310" cy="71" r="5" fill="#ffffff" stroke="#1c7ed6" stroke-width="2.5"></circle>
+                  <circle cx="420" cy="74" r="5" fill="#ffffff" stroke="#1c7ed6" stroke-width="2.5"></circle>
+                  <circle cx="530" cy="58" r="5" fill="#ffffff" stroke="#1c7ed6" stroke-width="2.5"></circle>
+
+                  <!-- EMPHASIZED LATEST POINT (Halo ring + filled teal center) -->
+                  <circle cx="640" cy="49" r="10" fill="rgba(31, 158, 131, 0.25)"></circle>
+                  <circle cx="640" cy="49" r="6" fill="#1f9e83" stroke="#ffffff" stroke-width="2.5"></circle>
+                  <text x="640" y="32" font-size="12" font-family="Inter, sans-serif" font-weight="800" fill="#1f9e83" text-anchor="middle">88%</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Session History List -->
+            <!-- Activity title, level-before -> level-after, source, date, score/accuracy -->
+            <div class="tb-card" style="padding:0; overflow:hidden;">
+              <div style="padding:1rem 1.25rem; border-bottom:1px solid var(--line); background:#fafcff; display:flex; justify-content:space-between; align-items:center;">
+                <h3 style="font-size:1.0625rem;">Session History</h3>
+                <span style="font-size:0.75rem; color:var(--slate-600); font-weight:600;">Showing 5 most recent reading assessments</span>
+              </div>
+              <div style="overflow-x:auto;">
+                <table class="tb-table">
+                  <thead>
+                    <tr>
+                      <th>Activity Title</th>
+                      <th>Level Progression</th>
+                      <th>Source</th>
+                      <th>Date</th>
+                      <th style="text-align:right;">Accuracy</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <strong>Ang Pusa sa Mesa</strong><br>
+                        <span style="font-size:0.75rem; color:var(--slate-400);">Phonics (Marungko Aralin 1)</span>
+                      </td>
+                      <td>
+                        <span class="tb-tag tb-tag--grade">Step 1</span>
+                        <span style="margin:0 0.25rem; color:var(--blue-500); font-weight:bold;">&rarr;</span>
+                        <span class="tb-tag tb-tag--approved">Step 2 (Advanced)</span>
+                      </td>
+                      <td>
+                        <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Teacher-Assigned</span>
+                      </td>
+                      <td style="color:var(--slate-600);">May 20, 2025</td>
+                      <td style="text-align:right; font-weight:700; color:var(--teal);">88%</td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <strong>Si Mimi at ang Kanyang Tasa</strong><br>
+                        <span style="font-size:0.75rem; color:var(--slate-400);">Word Blending</span>
+                      </td>
+                      <td>
+                        <span class="tb-tag tb-tag--grade">Step 1</span>
+                        <span style="margin:0 0.25rem; color:var(--blue-500); font-weight:bold;">&rarr;</span>
+                        <span class="tb-tag tb-tag--grade">Step 1 (Reinforced)</span>
+                      </td>
+                      <td>
+                        <span class="tb-tag" style="background:var(--success-bg); color:var(--teal);">Parent-Initiated</span>
+                      </td>
+                      <td style="color:var(--slate-600);">May 18, 2025</td>
+                      <td style="text-align:right; font-weight:700; color:var(--teal);">82%</td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <strong>Mga Tunog sa Paligid</strong><br>
+                        <span style="font-size:0.75rem; color:var(--slate-400);">Sound Isolation</span>
+                      </td>
+                      <td>
+                        <span class="tb-tag tb-tag--grade">Baseline</span>
+                        <span style="margin:0 0.25rem; color:var(--blue-500); font-weight:bold;">&rarr;</span>
+                        <span class="tb-tag tb-tag--grade">Step 1</span>
+                      </td>
+                      <td>
+                        <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Teacher-Assigned</span>
+                      </td>
+                      <td style="color:var(--slate-600);">May 14, 2025</td>
+                      <td style="text-align:right; font-weight:700; color:var(--blue-600);">72%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty State: "no sessions yet for {name}" -->
+          <div id="learnerEmptyState" class="tb-empty-state" style="display:none;">
+            <div class="tb-empty-state__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="tb-empty-state__title">No sessions yet for Daniela Ramos</h3>
+            <p class="tb-empty-state__text">
+              This learner has not logged or completed any teacher-assigned or parent-initiated reading intervention sessions yet.
+            </p>
+            <a href="/my-activities.html" class="tb-btn tb-btn--primary">
+              Assign First Reading Activity &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- =================================================================
+             TAB PANE 2: BY GROUP
+             ================================================================= -->
+        <div id="paneByGroup" style="display:none;" role="tabpanel">
+          <!-- Group-tag Picker (select, GET, name="group_tag") -->
+          <div class="tb-card" style="margin-bottom:1.5rem; padding:1rem 1.25rem;">
+            <form method="GET" action="/analytics.html" class="tb-form-inline">
+              <label for="select_group_tag" class="tb-label" style="margin-bottom:0; font-weight:700;">
+                Select Group Tag:
+              </label>
+              <select name="group_tag" id="select_group_tag" class="tb-select" style="max-width:22rem;" onchange="handleGroupSelect(this.value)">
+                <option value="remedial_morning" selected>Remedial Morning (Marungko Set 1 - 6 Learners)</option>
+                <option value="fluency_builders">Fluency Builders (Grade 2 - 5 Learners)</option>
+                <option value="empty_tag">Advanced Readers (Empty Group - 0 Learners)</option>
+              </select>
+            </form>
+          </div>
+
+          <!-- Group Active Data Container -->
+          <div id="groupDataContent">
+            <!-- 2 Stat Cards -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(18rem, 1fr)); gap:1.25rem; margin-bottom:1.5rem;">
+              <div class="tb-stat-card">
+                <div class="tb-stat-card__info">
+                  <span class="tb-stat-card__val">34</span>
+                  <span class="tb-stat-card__label">Total Group Sessions Completed</span>
+                </div>
+                <div class="tb-stat-card__icon tb-stat-card__icon--blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="tb-stat-card">
+                <div class="tb-stat-card__info">
+                  <span class="tb-stat-card__val" style="color:var(--teal);">81.5%</span>
+                  <span class="tb-stat-card__label">Group Average Reading Accuracy</span>
+                </div>
+                <div class="tb-stat-card__icon tb-stat-card__icon--teal">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                    <polyline points="16 7 22 7 22 13"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Per-learner Rows (avatar, name, mastery level, session count) -->
+            <div class="tb-card" style="padding:0; overflow:hidden;">
+              <div style="padding:1rem 1.25rem; border-bottom:1px solid var(--line); background:#fafcff;">
+                <h3 style="font-size:1.0625rem;">Group Roster &amp; Mastery Levels</h3>
+              </div>
+              <div style="overflow-x:auto;">
+                <table class="tb-table">
+                  <thead>
+                    <tr>
+                      <th>Learner</th>
+                      <th>Mastery Level</th>
+                      <th>Total Sessions</th>
+                      <th style="text-align:right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div style="display:flex; align-items:center; gap:0.625rem;">
+                          <div class="tb-avatar" style="width:2rem; height:2rem; font-size:0.75rem;">AR</div>
+                          <div>
+                            <strong>Angelo Reyes</strong><br>
+                            <span style="font-size:0.75rem; color:var(--slate-400);">LRN-1029384</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <span class="tb-tag tb-tag--approved">Mastered (84% Avg)</span>
+                      </td>
+                      <td>8 sessions</td>
+                      <td style="text-align:right;">
+                        <button type="button" class="tb-btn tb-btn--ghost tb-btn--sm" onclick="viewLearnerFromGroup('1')">View Individual &rarr;</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div style="display:flex; align-items:center; gap:0.625rem;">
+                          <div class="tb-avatar" style="width:2rem; height:2rem; font-size:0.75rem;">BD</div>
+                          <div>
+                            <strong>Bea Dela Cruz</strong><br>
+                            <span style="font-size:0.75rem; color:var(--slate-400);">LRN-1029385</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <span class="tb-tag tb-tag--approved">High Mastery (92% Avg)</span>
+                      </td>
+                      <td>9 sessions</td>
+                      <td style="text-align:right;">
+                        <button type="button" class="tb-btn tb-btn--ghost tb-btn--sm" onclick="viewLearnerFromGroup('2')">View Individual &rarr;</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div style="display:flex; align-items:center; gap:0.625rem;">
+                          <div class="tb-avatar" style="width:2rem; height:2rem; font-size:0.75rem; background:var(--danger-bg); color:var(--danger); border-color:var(--danger-border);">CB</div>
+                          <div>
+                            <strong>Carlo Bautista</strong><br>
+                            <span style="font-size:0.75rem; color:var(--slate-400);">LRN-1029386</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <span class="tb-tag tb-tag--rejected">Needs Intervention (58% Avg)</span>
+                      </td>
+                      <td>7 sessions</td>
+                      <td style="text-align:right;">
+                        <button type="button" class="tb-btn tb-btn--ghost tb-btn--sm" onclick="viewLearnerFromGroup('3')">View Individual &rarr;</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty State: "no learners in this group." -->
+          <div id="groupEmptyState" class="tb-empty-state" style="display:none;">
+            <div class="tb-empty-state__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <h3 class="tb-empty-state__title">No learners in this group</h3>
+            <p class="tb-empty-state__text">
+              No learners have been assigned the <em>Advanced Readers</em> group tag in your class rosters.
+            </p>
+            <a href="/classes.html" class="tb-btn tb-btn--outline">
+              Manage Class Sections &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="tb-bottom-nav" aria-label="Mobile Quick Nav">
+    <ul class="tb-bottom-nav__list">
+      <li><a href="/dashboard.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Home</span></a></li>
+      <li><a href="/classes.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg><span>Classes</span></a></li>
+      <li><a href="/generate-activity.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path></svg><span>Generate</span></a></li>
+      <li><a href="/promotions.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span class="tb-bottom-nav__badge">3</span><span>Promote</span></a></li>
+      <li><a href="/notifications.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class="tb-bottom-nav__badge">5</span><span>Alerts</span></a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function switchAnalyticsTab(tab) {
+      const btnLearner = document.getElementById('tabBtnLearner');
+      const btnGroup = document.getElementById('tabBtnGroup');
+      const paneLearner = document.getElementById('paneByLearner');
+      const paneGroup = document.getElementById('paneByGroup');
+
+      if (tab === 'learner') {
+        btnLearner.className = 'tb-tab tb-tab--active';
+        btnLearner.setAttribute('aria-selected', 'true');
+        btnGroup.className = 'tb-tab';
+        btnGroup.setAttribute('aria-selected', 'false');
+        paneLearner.style.display = 'block';
+        paneGroup.style.display = 'none';
+      } else {
+        btnGroup.className = 'tb-tab tb-tab--active';
+        btnGroup.setAttribute('aria-selected', 'true');
+        btnLearner.className = 'tb-tab';
+        btnLearner.setAttribute('aria-selected', 'false');
+        paneLearner.style.display = 'none';
+        paneGroup.style.display = 'block';
+      }
+    }
+
+    function handleLearnerSelect(val) {
+      const dataBox = document.getElementById('learnerDataContent');
+      const emptyBox = document.getElementById('learnerEmptyState');
+      if (val === 'empty') {
+        dataBox.style.display = 'none';
+        emptyBox.style.display = 'flex';
+      } else {
+        dataBox.style.display = 'block';
+        emptyBox.style.display = 'none';
+      }
+    }
+
+    function handleGroupSelect(val) {
+      const dataBox = document.getElementById('groupDataContent');
+      const emptyBox = document.getElementById('groupEmptyState');
+      if (val === 'empty_tag') {
+        dataBox.style.display = 'none';
+        emptyBox.style.display = 'flex';
+      } else {
+        dataBox.style.display = 'block';
+        emptyBox.style.display = 'none';
+      }
+    }
+
+    function viewLearnerFromGroup(learnerId) {
+      switchAnalyticsTab('learner');
+      const sel = document.getElementById('select_learner_id');
+      sel.value = learnerId;
+      handleLearnerSelect(learnerId);
+    }
+
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('sidebarNav');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    if (menuBtn && sidebar && backdrop) {
+      function toggleSidebar() {
+        const isOpen = sidebar.classList.toggle('tb-sidebar--open');
+        backdrop.classList.toggle('tb-sidebar-backdrop--active');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+      }
+      menuBtn.addEventListener('click', toggleSidebar);
+      backdrop.addEventListener('click', toggleSidebar);
+    }
+  </script>
+</body>
+</html>

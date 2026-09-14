@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Results — TaraBasa AI Learner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-learner.css">
+  <link rel="stylesheet" href="/css/tarabasa-learner.css">
+</head>
+<body>
+
+  <!-- Screen Switcher Toolbar for Reviewers -->
+  <header class="tb-review-nav" aria-label="Learner Redesign Screen Switcher">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <span style="background:var(--teal); color:#ffffff; font-weight:700; padding:0.125rem 0.5rem; border-radius:4px; font-size:0.75rem;">Learner Role</span>
+      <span style="font-weight:600; color:#e2e8f0;">Screen 9 of 10: Reading Results</span>
+    </div>
+    <nav style="display:flex; align-items:center; gap:0.375rem; flex-wrap:wrap;">
+      <a href="/learner-login.html">1. Login</a>
+      <a href="/learner-dashboard.html">2. Dashboard</a>
+      <a href="/learner-activity-picker.html">3. Picker</a>
+      <a href="/learner-reading.html">4. Reading</a>
+      <a href="/learner-diagnostic-intro.html">5. Diag Intro</a>
+      <a href="/learner-diagnostic-passage.html">6. Diag Passage</a>
+      <a href="/learner-diagnostic-encourage.html">7. Encourage</a>
+      <a href="/learner-diagnostic-results.html">8. Diag Result</a>
+      <a href="/learner-reading-results.html" class="tb-review-nav--active">9. Read Result</a>
+      <a href="/learner-reading-unclear.html">10. Unclear</a>
+      <a href="/learner-recording-widget.html">Widget (6 States)</a>
+    </nav>
+  </header>
+
+  <main class="tb-stage tb-stage--wide" id="mainContent">
+    <!-- Claymorphism Ambient Blobs -->
+    <div class="tb-blob-wrap" aria-hidden="true">
+      <div class="tb-blob tb-blob--yellow"></div>
+      <div class="tb-blob tb-blob--blue"></div>
+      <div class="tb-blob tb-blob--teal"></div>
+    </div>
+
+    <!-- Reviewer Tier Switcher (Verify the Hard "Never Discouraging" Rule) -->
+    <div style="margin-bottom:1rem; z-index:2; position:relative; display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center;">
+      <button type="button" class="tb-btn-quiet" style="margin-top:0; background:rgba(255,255,255,0.9); border:1px solid var(--line); font-size:0.875rem; padding:0.375rem 0.75rem;" onclick="setTier('high')">
+        🌟 High Accuracy Tier
+      </button>
+      <button type="button" class="tb-btn-quiet" style="margin-top:0; background:rgba(255,255,255,0.9); border:1px solid var(--line); font-size:0.875rem; padding:0.375rem 0.75rem;" onclick="setTier('mid')">
+        👍 Mid Accuracy Tier
+      </button>
+      <button type="button" class="tb-btn-quiet" style="margin-top:0; background:rgba(255,255,255,0.9); border:1px solid var(--line); font-size:0.875rem; padding:0.375rem 0.75rem;" onclick="setTier('low')">
+        💪 Low Accuracy / Effort Tier (Never Sad!)
+      </button>
+    </div>
+
+    <!-- Centered Card Shell -->
+    <section class="tb-card" aria-labelledby="resultHeading">
+      
+      <!-- EMOJI BADGE (Always positive, chosen by accuracy tier, NEVER sad) -->
+      <div class="tb-star-badge" id="tierBadge" role="img" aria-label="Celebratory achievement emoji">
+        🌟
+      </div>
+
+      <!-- H1 & Sub -->
+      <h1 id="resultHeading" class="tb-h1">Great reading, Mateo!</h1>
+      <p class="tb-sub" id="tierSub" style="margin-bottom:1.25rem;">
+        You read &ldquo;Si Muning at ang Daga&rdquo;
+      </p>
+
+      <!-- Mastery Level Up Callout (UP-ARROW ONLY, never down-arrow/decline framing) -->
+      <div class="tb-level-progress-callout" id="levelProgressCallout">
+        <span>🎉 Level Up:</span>
+        <span>Emerging Reader</span>
+        <span aria-hidden="true" style="font-size:1.25rem; font-weight:800;">&nearr;</span>
+        <strong style="color:#0a4b3d;">Growing Reader</strong>
+      </div>
+
+      <!-- WORD-BY-WORD BREAKDOWN OF THE PASSAGE -->
+      <!-- Correct: Plain | Skipped: subtle dashed underline (NOT RED) | Substituted: gentle amber tap tooltip -->
+      <article class="tb-passage-card" aria-label="Word by word reading breakdown">
+        <div style="font-size:0.9375rem; font-weight:700; color:var(--slate-600); margin-bottom:0.75rem; text-align:left;">
+          📖 How you read the story:
+        </div>
+        <div class="tb-passage-text">
+          <span class="tb-word tb-word--correct">Si</span>
+          <span class="tb-word tb-word--correct">Muning</span>
+          <span class="tb-word tb-word--correct">ay</span>
+          <span class="tb-word tb-word--correct">may</span>
+          
+          <!-- Substituted word with friendly tooltip: tap to see what was heard -->
+          <span class="tb-word tb-word--substituted" tabindex="0" role="button" aria-describedby="tip1" onclick="toggleTooltip(this)">
+            hinahabol
+            <span class="tb-word-tooltip" id="tip1" role="tooltip">Heard &ldquo;humahabol&rdquo; 🦉</span>
+          </span>
+
+          <span class="tb-word tb-word--correct">na</span>
+          <span class="tb-word tb-word--correct">maliit</span>
+          <span class="tb-word tb-word--correct">na</span>
+          <span class="tb-word tb-word--correct">daga</span>
+          <span class="tb-word tb-word--correct">sa</span>
+          
+          <!-- Skipped word (Subtle dashed underline, gentle neutral styling — NEVER RED!) -->
+          <span class="tb-word tb-word--skipped" title="Skipped word">ilalim</span>
+          
+          <span class="tb-word tb-word--correct">ng</span>
+          <span class="tb-word tb-word--correct">mesa.</span>
+          <span class="tb-word tb-word--correct">Mabilis</span>
+          <span class="tb-word tb-word--correct">tumakbo</span>
+          <span class="tb-word tb-word--correct">ang</span>
+          <span class="tb-word tb-word--correct">daga</span>
+          <span class="tb-word tb-word--correct">papunta</span>
+          <span class="tb-word tb-word--correct">sa</span>
+          <span class="tb-word tb-word--correct">butas.</span>
+        </div>
+
+        <!-- Legend Explaining Non-Correct Markers Gently -->
+        <div class="tb-breakdown-legend">
+          <div class="tb-legend-item">
+            <span class="tb-word tb-word--skipped" style="padding:0 0.25rem;">word</span>
+            <span>Skipped word</span>
+          </div>
+          <div class="tb-legend-item">
+            <span class="tb-word tb-word--substituted" style="padding:0 0.25rem;">word</span>
+            <span>Tap to see what Tara heard</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Warm Note for Extra Words (Celebrates effort, doesn't flag as error!) -->
+      <div class="tb-extra-words-card">
+        <span style="font-size:1.25rem; margin-right:0.25rem;" aria-hidden="true">💡</span>
+        You also said: <strong>&ldquo;at si bantay&rdquo;</strong> &mdash; that's not in this passage, but great effort reading out loud!
+      </div>
+
+      <!-- 4 Stat Tiles: Accuracy % / WCPM / Points Earned / Streak -->
+      <div class="tb-results-stat-grid" aria-label="Activity statistics">
+        <!-- Tile 1: Accuracy % -->
+        <div class="tb-result-stat-tile">
+          <div class="tb-result-stat-tile__num" id="statAccuracy" style="color:var(--teal);">88%</div>
+          <div class="tb-result-stat-tile__label">Accuracy</div>
+        </div>
+
+        <!-- Tile 2: WCPM -->
+        <div class="tb-result-stat-tile">
+          <div class="tb-result-stat-tile__num" id="statWcpm" style="color:var(--blue-600);">42</div>
+          <div class="tb-result-stat-tile__label">WCPM</div>
+        </div>
+
+        <!-- Tile 3: Points Earned -->
+        <div class="tb-result-stat-tile">
+          <div class="tb-result-stat-tile__num" id="statPoints" style="color:var(--amber);">+25 ⭐</div>
+          <div class="tb-result-stat-tile__label">Points</div>
+        </div>
+
+        <!-- Tile 4: Streak -->
+        <div class="tb-result-stat-tile">
+          <div class="tb-result-stat-tile__num" id="statStreak" style="color:var(--owl-orange-500);">🔥 5</div>
+          <div class="tb-result-stat-tile__label">Day Streak</div>
+        </div>
+      </div>
+
+      <!-- Primary Action: "Done" (Returns to Dashboard) -->
+      <a href="/learner-dashboard.html" class="tb-btn-big tb-btn-big--teal" id="doneBtn">
+        <span>Done &mdash; Back to Dashboard! 🚀</span>
+      </a>
+
+    </section>
+  </main>
+
+  <script>
+    function toggleTooltip(el) {
+      el.classList.toggle('tb-tooltip-visible');
+    }
+
+    // Interactive Demo Tiers to prove the "Never Discouraging" rule across all 3 tiers
+    function setTier(tier) {
+      const badge = document.getElementById('tierBadge');
+      const sub = document.getElementById('tierSub');
+      const accuracy = document.getElementById('statAccuracy');
+      const wcpm = document.getElementById('statWcpm');
+      const points = document.getElementById('statPoints');
+      const levelCallout = document.getElementById('levelProgressCallout');
+
+      if (tier === 'high') {
+        badge.textContent = '🌟';
+        sub.innerHTML = 'Outstanding reading! You read &ldquo;Si Muning at ang Daga&rdquo;';
+        accuracy.textContent = '95%';
+        wcpm.textContent = '48';
+        points.textContent = '+30 ⭐';
+        levelCallout.style.display = 'flex';
+      } else if (tier === 'mid') {
+        badge.textContent = '👍';
+        sub.innerHTML = 'Nice job! You read &ldquo;Si Muning at ang Daga&rdquo;';
+        accuracy.textContent = '84%';
+        wcpm.textContent = '38';
+        points.textContent = '+20 ⭐';
+        levelCallout.style.display = 'flex';
+      } else if (tier === 'low') {
+        // Low accuracy tier still gets a warm, encouraging 💪 badge and positive framing!
+        badge.textContent = '💪';
+        sub.innerHTML = 'Super effort! You worked hard reading &ldquo;Si Muning at ang Daga&rdquo;';
+        accuracy.textContent = '68%';
+        wcpm.textContent = '24';
+        points.textContent = '+15 ⭐';
+        // When level doesn't increase, NEVER show a down arrow or negative message:
+        levelCallout.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

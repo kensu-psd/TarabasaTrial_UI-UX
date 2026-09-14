@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnostic Encourage — TaraBasa AI Learner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-learner.css">
+  <link rel="stylesheet" href="/css/tarabasa-learner.css">
+</head>
+<body>
+
+  <!-- Screen Switcher Toolbar for Reviewers -->
+  <header class="tb-review-nav" aria-label="Learner Redesign Screen Switcher">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <span style="background:var(--teal); color:#ffffff; font-weight:700; padding:0.125rem 0.5rem; border-radius:4px; font-size:0.75rem;">Learner Role</span>
+      <span style="font-weight:600; color:#e2e8f0;">Screen 7 of 10: Diagnostic Encourage</span>
+    </div>
+    <nav style="display:flex; align-items:center; gap:0.375rem; flex-wrap:wrap;">
+      <a href="/learner-login.html">1. Login</a>
+      <a href="/learner-dashboard.html">2. Dashboard</a>
+      <a href="/learner-activity-picker.html">3. Picker</a>
+      <a href="/learner-reading.html">4. Reading</a>
+      <a href="/learner-diagnostic-intro.html">5. Diag Intro</a>
+      <a href="/learner-diagnostic-passage.html">6. Diag Passage</a>
+      <a href="/learner-diagnostic-encourage.html" class="tb-review-nav--active">7. Encourage</a>
+      <a href="/learner-diagnostic-results.html">8. Diag Result</a>
+      <a href="/learner-reading-results.html">9. Read Result</a>
+      <a href="/learner-reading-unclear.html">10. Unclear</a>
+      <a href="/learner-recording-widget.html">Widget (6 States)</a>
+    </nav>
+  </header>
+
+  <main class="tb-stage" id="mainContent">
+    <!-- Claymorphism Ambient Blobs -->
+    <div class="tb-blob-wrap" aria-hidden="true">
+      <div class="tb-blob tb-blob--yellow"></div>
+      <div class="tb-blob tb-blob--blue"></div>
+      <div class="tb-blob tb-blob--teal"></div>
+    </div>
+
+    <!-- ABOVE THE CARD: Same progress dots marked one step further (dot 1 done, dot 2 current) -->
+    <div class="tb-progress-container" aria-label="Diagnostic reading progress">
+      <span class="tb-progress-label">Passage 2</span>
+      <div class="tb-progress-dots" role="status">
+        <span class="tb-progress-dot tb-progress-dot--done" title="Passage 1 (Completed)"></span>
+        <span class="tb-progress-dot tb-progress-dot--current" title="Passage 2 (Current)"></span>
+        <span class="tb-progress-dot tb-progress-dot--upcoming" title="Upcoming passage"></span>
+      </div>
+    </div>
+
+    <!-- Centered Card Shell -->
+    <section class="tb-card" aria-labelledby="encourageHeading">
+      
+      <!-- Mascot / Rainbow Emoji -->
+      <div class="tb-mascot tb-mascot--lg" role="img" aria-label="Bright celebratory rainbow and owl">
+        🌈
+      </div>
+
+      <!-- H1: "You're doing awesome, Mateo! 🌈" -->
+      <h1 id="encourageHeading" class="tb-h1">You're doing awesome, Mateo! 🌈</h1>
+
+      <!-- Reassuring mid-staircase sub-copy -->
+      <p class="tb-sub" style="font-size:1.1875rem; line-height:1.6; margin-bottom:2rem;">
+        Take a deep breath and smile! Tara the owl is having so much fun reading with you. Ready for the next passage?
+      </p>
+
+      <!-- Primary Action: "Keep Going! 🚀" -->
+      <a href="/learner-diagnostic-results.html" class="tb-btn-big tb-btn-big--teal" id="keepGoingBtn">
+        <span>Keep Going! 🚀</span>
+      </a>
+
+      <!-- Quiet Secondary Link -->
+      <a href="/learner-dashboard.html" class="tb-btn-quiet">
+        &larr; Back to My Dashboard
+      </a>
+
+    </section>
+  </main>
+
+</body>
+</html>

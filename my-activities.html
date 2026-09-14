@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Activities — TaraBasa AI Teacher Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-teacher.css">
+  <link rel="stylesheet" href="/css/tarabasa-teacher.css">
+</head>
+<body>
+  <!-- Mobile Topbar (< 768px) -->
+  <header class="tb-mobile-topbar" id="mobileTopbar">
+    <a href="/dashboard.html" class="tb-brand" style="padding:0;">
+      <div class="tb-brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </div>
+      <div class="tb-brand__text">
+        <span class="tb-brand__title">TaraBasa AI</span>
+        <span class="tb-brand__role-tag">Teacher</span>
+      </div>
+    </a>
+    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <div class="tb-sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <div class="tb-shell">
+    <!-- PERSISTENT LEFT SIDEBAR SHELL -->
+    <aside class="tb-sidebar" id="sidebarNav" aria-label="Teacher Portal Navigation">
+      <a href="/dashboard.html" class="tb-brand">
+        <div class="tb-brand__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <div class="tb-brand__text">
+          <span class="tb-brand__title">TaraBasa AI</span>
+          <span class="tb-brand__role-tag">Teacher</span>
+        </div>
+      </a>
+
+      <nav class="tb-nav" aria-label="Main Navigation">
+        <li class="tb-nav__item"><a href="/dashboard.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Dashboard</span></a></li>
+        <li class="tb-nav__item"><a href="/classes.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span>Classes</span></a></li>
+        <li class="tb-nav__item"><a href="/generate-activity.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg><span>Generate Activity</span></a></li>
+        <li class="tb-nav__item"><a href="/my-activities.html" class="tb-nav__link tb-nav__link--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>My Activities</span></a></li>
+        <li class="tb-nav__item"><a href="/analytics.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Analytics</span></a></li>
+        <li class="tb-nav__item"><a href="/promotions.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span>Promotions</span><span class="tb-nav__badge tb-nav__badge--amber">3</span></a></li>
+        <li class="tb-nav__item"><a href="/notifications.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span>Notifications</span><span class="tb-nav__badge tb-nav__badge--blue">5</span></a></li>
+      </nav>
+
+      <div class="tb-sidebar__footer">
+        <div class="tb-divider"></div>
+        <a href="/dashboard.html" class="tb-profile-row" id="profileRow">
+          <div class="tb-avatar">MS</div>
+          <div class="tb-profile-info">
+            <span class="tb-profile-name">Maria Santos</span>
+            <div class="tb-profile-status">
+              <span class="tb-pill tb-pill--active" id="sidebarStatusPill">Active</span>
+            </div>
+          </div>
+        </a>
+
+        <form method="POST" action="/logout" class="tb-logout-form">
+          <input type="hidden" name="_token" value="csrf-token-demo">
+          <button type="submit" class="tb-logout-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Log out</span>
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- MAIN MY ACTIVITIES CONTENT -->
+    <main class="tb-main" id="mainContent">
+      <div class="tb-content">
+
+        <!-- Testing State Toolbar -->
+        <div style="background:#eef6ff; border:1px solid #dcedff; border-radius:var(--radius-sm); padding:0.5rem 0.875rem; margin-bottom:1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; font-size:0.8125rem;">
+          <span style="color:var(--blue-700); font-weight:600;">
+            🧪 Rule Condition Switcher:
+          </span>
+          <div style="display:flex; gap:0.5rem;">
+            <button type="button" class="tb-btn tb-btn--sm tb-btn--primary" id="btnActStateActive" onclick="setActivitiesTeacherState('active')">
+              Teacher: Active
+            </button>
+            <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" id="btnActStatePending" onclick="setActivitiesTeacherState('pending')">
+              Teacher: Pending (Locked Draft Actions)
+            </button>
+          </div>
+        </div>
+
+        <!-- Page Header + "Generate Activity" link -->
+        <div class="tb-page-header">
+          <div class="tb-page-title-group">
+            <h1 class="tb-page-title">My Activities</h1>
+            <p class="tb-page-subtitle">Manage reading modules, review AI drafts, and share to community repository</p>
+          </div>
+          <div class="tb-page-actions">
+            <a href="/generate-activity.html" class="tb-btn tb-btn--teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path>
+              </svg>
+              <span>+ Generate Activity</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- SEARCH BOX: client-side, filters by title/grade/competency/topic -->
+        <!-- Only needs to appear once there are more than 5 activities total (Total here = 7) -->
+        <div class="tb-card" style="margin-bottom:1.75rem; padding: 0.875rem 1.25rem;">
+          <div style="position:relative; display:flex; align-items:center;">
+            <svg style="position:absolute; left:0.875rem; width:1.125rem; height:1.125rem; stroke:var(--slate-400); stroke-width:2; fill:none;" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" name="search" id="activitySearchInput" class="tb-input" style="padding-left:2.5rem;" placeholder="Search activities by title, grade level (e.g. 'Grade 1'), competency, or topic..." oninput="handleActivitySearch(this.value)">
+          </div>
+        </div>
+
+        <!-- SECTION 1: DRAFT (N) -->
+        <section id="section-draft" style="margin-bottom:2.5rem;" aria-labelledby="heading-draft">
+          <div style="display:flex; align-items:center; gap:0.625rem; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--line);">
+            <h2 id="heading-draft" style="font-size:1.25rem;">Draft</h2>
+            <span class="tb-tab__count" id="count-draft" style="background:var(--amber-bg); color:var(--amber);">2</span>
+            <span style="font-size:0.8125rem; color:var(--slate-600); margin-left:auto;">Pending your pedagogical review</span>
+          </div>
+
+          <!-- DRAFT ACTIVITY CARD 1 -->
+          <article class="tb-activity-card activity-item" data-search="ang pusa sa mesa grade 1 phonics marungko mga hayop">
+            <div class="tb-activity-card__tags">
+              <span class="tb-tag tb-tag--draft">Draft</span>
+              <span class="tb-tag tb-tag--grade">Grade 1</span>
+              <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Phonics &amp; Word Recognition</span>
+              <span class="tb-tag" style="background:#f1f4f8; color:var(--navy-900);">Difficulty: Easy</span>
+              <span class="tb-tag" style="background:#fef6e6; color:var(--amber);">Variant A</span>
+            </div>
+
+            <h3 class="tb-activity-card__title">Ang Pusa sa Mesa (Tunog ng Titik /m/, /s/, /a/)</h3>
+
+            <div class="tb-activity-card__meta">
+              <span>Grade 1</span>
+              <span>•</span>
+              <span>Competency: Palabigkasan (Marungko Aralin 1)</span>
+              <span>•</span>
+              <span>Topic: Ang Alagang Hayop</span>
+            </div>
+
+            <div class="tb-activity-card__preview">
+              May pusa sa mesa. Ang pusa ay si Mimi. Si Mimi ay may tasa. Masaya si Mimi sa tabi ng tasa sa ibabaw ng mesa.
+            </div>
+
+            <!-- Draft Card Actions: Approve / Edit / Reject OR Locked note if teacher is Pending -->
+            <div class="tb-activity-card__actions">
+              <div class="draft-active-actions" style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+                <!-- Reject Action Form -->
+                <form method="POST" action="/teacher/activities/101/reject" style="margin:0;">
+                  <input type="hidden" name="_token" value="csrf-token-placeholder">
+                  <button type="submit" class="tb-btn tb-btn--sm tb-btn--danger" onclick="return confirm('Reject this generated draft?')">
+                    Reject
+                  </button>
+                </form>
+
+                <!-- Edit Action Toggle -->
+                <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="toggleEditDraft('draft-edit-101')">
+                  Edit Content
+                </button>
+
+                <!-- Approve Action Form -->
+                <form method="POST" action="/teacher/activities/101/approve" style="margin:0;">
+                  <input type="hidden" name="_token" value="csrf-token-placeholder">
+                  <button type="submit" class="tb-btn tb-btn--sm tb-btn--teal">
+                    ✓ Approve Activity
+                  </button>
+                </form>
+              </div>
+
+              <!-- Locked note if teacher is Pending -->
+              <div class="draft-locked-actions" style="display:none;">
+                <div class="tb-locked-state">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span>Locked until your account is Active. Approving &amp; editing require active verification.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- INLINE EDIT FORM: Title, Instructions, Reading Text -->
+            <div id="draft-edit-101" class="tb-inline-form-box" style="display:none; background:#ffffff; border:1px solid var(--line);">
+              <h4 style="margin-bottom:0.75rem; color:var(--navy-900);">Edit Draft Passage &amp; Instructions</h4>
+              <form method="POST" action="/teacher/activities/101/update">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <div class="tb-form-group">
+                  <label class="tb-label" for="title_101">Title</label>
+                  <input type="text" id="title_101" name="title" class="tb-input" value="Ang Pusa sa Mesa (Tunog ng Titik /m/, /s/, /a/)" required>
+                </div>
+                <div class="tb-form-group">
+                  <label class="tb-label" for="instructions_101">Instructions</label>
+                  <input type="text" id="instructions_101" name="instructions" class="tb-input" value="Basahin nang malakas ang maikling kwento. Bigkasin nang wasto ang mga pantig." required>
+                </div>
+                <div class="tb-form-group">
+                  <label class="tb-label" for="reading_text_101">Reading Text</label>
+                  <textarea id="reading_text_101" name="reading_text" class="tb-textarea" rows="4" required>May pusa sa mesa. Ang pusa ay si Mimi. Si Mimi ay may tasa. Masaya si Mimi sa tabi ng tasa sa ibabaw ng mesa.</textarea>
+                </div>
+                <div class="tb-form-inline" style="justify-content:flex-end;">
+                  <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleEditDraft('draft-edit-101')">Cancel</button>
+                  <button type="submit" class="tb-btn tb-btn--primary tb-btn--sm">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </article>
+
+          <!-- DRAFT ACTIVITY CARD 2 -->
+          <article class="tb-activity-card activity-item" data-search="ang masipag na langgam grade 2 comprehension pag-unawa">
+            <div class="tb-activity-card__tags">
+              <span class="tb-tag tb-tag--draft">Draft</span>
+              <span class="tb-tag tb-tag--grade">Grade 2</span>
+              <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Reading Comprehension</span>
+              <span class="tb-tag" style="background:#f1f4f8; color:var(--navy-900);">Difficulty: Medium</span>
+              <span class="tb-tag" style="background:#fef6e6; color:var(--amber);">Variant B</span>
+            </div>
+
+            <h3 class="tb-activity-card__title">Ang Masipag na Langgam</h3>
+
+            <div class="tb-activity-card__meta">
+              <span>Grade 2</span>
+              <span>•</span>
+              <span>Competency: Pag-unawa sa Binasa</span>
+              <span>•</span>
+              <span>Topic: Kasipagan at Paghahanda</span>
+            </div>
+
+            <div class="tb-activity-card__preview">
+              Tuwing tag-araw, nag-iipon ng pagkain si Langgam. Hindi siya naglalaro tulad ni Tipaklong. Nang dumating ang malakas na ulan, ligtas at busog si Langgam sa kanyang bahay.
+            </div>
+
+            <div class="tb-activity-card__actions">
+              <div class="draft-active-actions" style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+                <form method="POST" action="/teacher/activities/102/reject" style="margin:0;">
+                  <input type="hidden" name="_token" value="csrf-token-placeholder">
+                  <button type="submit" class="tb-btn tb-btn--sm tb-btn--danger">Reject</button>
+                </form>
+                <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="toggleEditDraft('draft-edit-102')">Edit Content</button>
+                <form method="POST" action="/teacher/activities/102/approve" style="margin:0;">
+                  <input type="hidden" name="_token" value="csrf-token-placeholder">
+                  <button type="submit" class="tb-btn tb-btn--sm tb-btn--teal">✓ Approve Activity</button>
+                </form>
+              </div>
+
+              <div class="draft-locked-actions" style="display:none;">
+                <div class="tb-locked-state">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span>Locked until your account is Active.</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="draft-edit-102" class="tb-inline-form-box" style="display:none; background:#ffffff; border:1px solid var(--line);">
+              <h4 style="margin-bottom:0.75rem; color:var(--navy-900);">Edit Draft Passage &amp; Instructions</h4>
+              <form method="POST" action="/teacher/activities/102/update">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <div class="tb-form-group">
+                  <label class="tb-label" for="title_102">Title</label>
+                  <input type="text" id="title_102" name="title" class="tb-input" value="Ang Masipag na Langgam" required>
+                </div>
+                <div class="tb-form-group">
+                  <label class="tb-label" for="instructions_102">Instructions</label>
+                  <input type="text" id="instructions_102" name="instructions" class="tb-input" value="Basahin ang talata at sagutin ang tatlong tanong sa pag-unawa." required>
+                </div>
+                <div class="tb-form-group">
+                  <label class="tb-label" for="reading_text_102">Reading Text</label>
+                  <textarea id="reading_text_102" name="reading_text" class="tb-textarea" rows="4" required>Tuwing tag-araw, nag-iipon ng pagkain si Langgam. Hindi siya naglalaro tulad ni Tipaklong. Nang dumating ang malakas na ulan, ligtas at busog si Langgam sa kanyang bahay.</textarea>
+                </div>
+                <div class="tb-form-inline" style="justify-content:flex-end;">
+                  <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleEditDraft('draft-edit-102')">Cancel</button>
+                  <button type="submit" class="tb-btn tb-btn--primary tb-btn--sm">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </article>
+        </section>
+
+        <!-- SECTION 2: APPROVED (N) -->
+        <section id="section-approved" style="margin-bottom:2.5rem;" aria-labelledby="heading-approved">
+          <div style="display:flex; align-items:center; gap:0.625rem; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--line);">
+            <h2 id="heading-approved" style="font-size:1.25rem;">Approved</h2>
+            <span class="tb-tab__count" id="count-approved" style="background:var(--success-bg); color:var(--teal);">4</span>
+            <span style="font-size:0.8125rem; color:var(--slate-600); margin-left:auto;">Ready for learner assignments &amp; repository sharing</span>
+          </div>
+
+          <!-- APPROVED CARD 1 (Not Shared Yet) -->
+          <article class="tb-activity-card activity-item" data-search="si lito at ang saranggola grade 1 fluency kahusayan">
+            <div class="tb-activity-card__tags">
+              <span class="tb-tag tb-tag--approved">Approved</span>
+              <span class="tb-tag tb-tag--grade">Grade 1</span>
+              <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Fluency</span>
+              <span class="tb-tag" style="background:#f1f4f8; color:var(--navy-900);">Difficulty: Easy</span>
+            </div>
+
+            <h3 class="tb-activity-card__title">Si Lito at ang Saranggola</h3>
+
+            <div class="tb-activity-card__meta">
+              <span>Grade 1</span>
+              <span>•</span>
+              <span>Competency: Kahusayan sa Pagbasa</span>
+              <span>•</span>
+              <span>Topic: Laro ng Batang Pilipino</span>
+            </div>
+
+            <div class="tb-activity-card__preview">
+              Lumilipad ang saranggola ni Lito. Mataas ang lipad nito sa bughaw na langit. Hinahawakan ni Lito ang mahabang pisi habang umiihip ang banayad na hangin.
+            </div>
+
+            <div class="tb-activity-card__actions">
+              <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="alert('Open Assign Modal for Class Sections')">
+                Assign to Learner
+              </button>
+              <!-- "Share to Repository" inline form toggler -->
+              <button type="button" class="tb-btn tb-btn--sm tb-btn--primary" onclick="toggleShareRepo('share-box-201')">
+                Share to Repository (+2 Credits)
+              </button>
+            </div>
+
+            <!-- INLINE FORM: Share to Repository (Free/Paid radio, price enabled only when Paid) -->
+            <div id="share-box-201" class="tb-inline-form-box" style="display:none; background:var(--sky-50); border:1px solid var(--sky-100);">
+              <h4 style="margin-bottom:0.35rem; color:var(--blue-700);">Share Activity with Teachers to Earn +2 AI Credits</h4>
+              <p style="font-size:0.8125rem; color:var(--slate-600); margin-bottom:0.875rem;">
+                Select license type for the community repository. Free activities earn credits immediately upon publishing.
+              </p>
+              <form method="POST" action="/teacher/activities/201/share">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <div class="tb-form-row" style="align-items:flex-end;">
+                  <div class="tb-form-group" style="margin-bottom:0;">
+                    <label class="tb-label">Pricing Type</label>
+                    <div class="tb-radio-group">
+                      <label class="tb-radio-label">
+                        <input type="radio" name="pricing_type" value="free" checked onchange="handlePricingChange('price_input_201', false)">
+                        <span>Free Community Access</span>
+                      </label>
+                      <label class="tb-radio-label">
+                        <input type="radio" name="pricing_type" value="paid" onchange="handlePricingChange('price_input_201', true)">
+                        <span>Paid Pass-through (PHP)</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="tb-form-group" style="margin-bottom:0;">
+                    <label class="tb-label" for="price_input_201">Price (₱)</label>
+                    <input type="number" id="price_input_201" name="price" class="tb-input" placeholder="0.00" min="1" step="0.50" disabled>
+                  </div>
+
+                  <div class="tb-form-inline">
+                    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleShareRepo('share-box-201')">Cancel</button>
+                    <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm">Publish &amp; Claim +2 Credits</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </article>
+
+          <!-- APPROVED CARD 2 (Not Shared Yet) -->
+          <article class="tb-activity-card activity-item" data-search="ang masustansyang gulay grade 2 phonics palabigkasan">
+            <div class="tb-activity-card__tags">
+              <span class="tb-tag tb-tag--approved">Approved</span>
+              <span class="tb-tag tb-tag--grade">Grade 2</span>
+              <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Phonics &amp; Word Recognition</span>
+              <span class="tb-tag" style="background:#f1f4f8; color:var(--navy-900);">Difficulty: Medium</span>
+            </div>
+
+            <h3 class="tb-activity-card__title">Ang Masustansyang Gulay sa Bakuran</h3>
+
+            <div class="tb-activity-card__meta">
+              <span>Grade 2</span>
+              <span>•</span>
+              <span>Competency: Palabigkasan at Pagbasa ng Klaster</span>
+              <span>•</span>
+              <span>Topic: Kalusugan</span>
+            </div>
+
+            <div class="tb-activity-card__preview">
+              May tanim na malunggay, talong, at kalabasa si Nanay sa bakuran. Ang mga gulay ay mayaman sa bitamina. Masigla ang buong pamilya dahil kumakain sila ng sariwang gulay araw-araw.
+            </div>
+
+            <div class="tb-activity-card__actions">
+              <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="alert('Open Assign Modal for Class Sections')">
+                Assign to Learner
+              </button>
+              <button type="button" class="tb-btn tb-btn--sm tb-btn--primary" onclick="toggleShareRepo('share-box-202')">
+                Share to Repository (+2 Credits)
+              </button>
+            </div>
+
+            <div id="share-box-202" class="tb-inline-form-box" style="display:none; background:var(--sky-50); border:1px solid var(--sky-100);">
+              <h4 style="margin-bottom:0.35rem; color:var(--blue-700);">Share Activity with Teachers to Earn +2 AI Credits</h4>
+              <form method="POST" action="/teacher/activities/202/share">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <div class="tb-form-row" style="align-items:flex-end;">
+                  <div class="tb-form-group" style="margin-bottom:0;">
+                    <label class="tb-label">Pricing Type</label>
+                    <div class="tb-radio-group">
+                      <label class="tb-radio-label"><input type="radio" name="pricing_type" value="free" checked onchange="handlePricingChange('price_input_202', false)"><span>Free Community</span></label>
+                      <label class="tb-radio-label"><input type="radio" name="pricing_type" value="paid" onchange="handlePricingChange('price_input_202', true)"><span>Paid (PHP)</span></label>
+                    </div>
+                  </div>
+                  <div class="tb-form-group" style="margin-bottom:0;">
+                    <label class="tb-label" for="price_input_202">Price (₱)</label>
+                    <input type="number" id="price_input_202" name="price" class="tb-input" placeholder="0.00" min="1" step="0.50" disabled>
+                  </div>
+                  <div class="tb-form-inline">
+                    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleShareRepo('share-box-202')">Cancel</button>
+                    <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm">Publish &amp; Claim +2 Credits</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </article>
+
+          <!-- APPROVED CARD 3 & 4 (ALREADY SHARED TO REPOSITORY - Visually sorted to bottom of Approved) -->
+          <article class="tb-activity-card tb-activity-card--shared activity-item" data-search="si ambo at ang kanyang kalabaw grade 3 comprehension">
+            <div class="tb-activity-card__tags">
+              <span class="tb-tag tb-tag--approved">Approved</span>
+              <span class="tb-tag tb-tag--grade">Grade 3</span>
+              <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Reading Comprehension</span>
+              <span class="tb-tag tb-tag--shared">✓ Shared to Repository</span>
+            </div>
+
+            <h3 class="tb-activity-card__title">Si Ambo at ang Kanyang Kalabaw</h3>
+
+            <div class="tb-activity-card__meta">
+              <span>Grade 3</span>
+              <span>•</span>
+              <span>Competency: Pagsusuri at Paghihinuha</span>
+              <span>•</span>
+              <span>Topic: Buhay sa Bukid</span>
+            </div>
+
+            <div class="tb-activity-card__preview">
+              Maagang gumigising si Ambo para pakainin si Bating, ang kanyang matapat na kalabaw. Magkasama silang nag-aararo ng bukid bago sumikat ang matinding init ng araw.
+            </div>
+
+            <div class="tb-activity-card__actions">
+              <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="alert('Open Assign Modal for Class Sections')">
+                Assign to Learner
+              </button>
+              <!-- "✓ Shared to Repository" tag if already shared -->
+              <span class="tb-tag tb-tag--shared" style="padding:0.4375rem 0.75rem; font-size:0.8125rem;">
+                ✓ Shared to Community Repository (Free)
+              </span>
+            </div>
+          </article>
+
+          <article class="tb-activity-card tb-activity-card--shared activity-item" data-search="ang masayang mag-anak grade 1 phonics marungko">
+            <div class="tb-activity-card__tags">
+              <span class="tb-tag tb-tag--approved">Approved</span>
+              <span class="tb-tag tb-tag--grade">Grade 1</span>
+              <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700);">Phonics (Marungko Aralin 2)</span>
+              <span class="tb-tag tb-tag--shared">✓ Shared to Repository</span>
+            </div>
+
+            <h3 class="tb-activity-card__title">Ang Masayang Mag-anak</h3>
+
+            <div class="tb-activity-card__meta">
+              <span>Grade 1</span>
+              <span>•</span>
+              <span>Competency: Pagkilala sa mga Tunog /i/, /o/, /b/</span>
+              <span>•</span>
+              <span>Topic: Ang Tahanan</span>
+            </div>
+
+            <div class="tb-activity-card__preview">
+              Sama-samang kumakain ang mag-anak ni Mang Ben. Masarap ang nilutong sabaw ni Aling Iska. Nagpapasalamat sila sa Poong Maykapal bago kumain.
+            </div>
+
+            <div class="tb-activity-card__actions">
+              <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="alert('Open Assign Modal for Class Sections')">
+                Assign to Learner
+              </button>
+              <span class="tb-tag tb-tag--shared" style="padding:0.4375rem 0.75rem; font-size:0.8125rem;">
+                ✓ Shared to Community Repository (Free)
+              </span>
+            </div>
+          </article>
+        </section>
+
+        <!-- SECTION 3: REJECTED (N) -->
+        <section id="section-rejected" aria-labelledby="heading-rejected">
+          <div style="display:flex; align-items:center; gap:0.625rem; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--line);">
+            <h2 id="heading-rejected" style="font-size:1.25rem;">Rejected</h2>
+            <span class="tb-tab__count" id="count-rejected" style="background:var(--danger-bg); color:var(--danger);">1</span>
+            <span style="font-size:0.8125rem; color:var(--slate-600); margin-left:auto;">Discarded drafts not used in classrooms</span>
+          </div>
+
+          <article class="tb-activity-card activity-item" style="opacity:0.85;" data-search="ang mabilis na kotse grade 1 fluency">
+            <div class="tb-activity-card__tags">
+              <span class="tb-tag tb-tag--rejected">Rejected</span>
+              <span class="tb-tag tb-tag--grade">Grade 1</span>
+              <span class="tb-tag" style="background:#f1f4f8; color:var(--navy-900);">Fluency</span>
+            </div>
+
+            <h3 class="tb-activity-card__title" style="text-decoration:line-through; color:var(--slate-600);">Ang Mabilis na Kotse sa Kalye</h3>
+
+            <div class="tb-activity-card__meta">
+              <span>Grade 1</span>
+              <span>•</span>
+              <span>Reason: Contains vocabulary too advanced for Grade 1 Marungko Step 1 learners</span>
+            </div>
+
+            <div class="tb-activity-card__preview" style="background:#fafafa; color:var(--slate-600);">
+              Mabilis ang kotse sa lansangan. Tumakbo ito nang ubod ng bilis lampas sa kanto ng lungsod...
+            </div>
+          </article>
+        </section>
+
+        <!-- No search results empty state -->
+        <div id="noSearchResults" class="tb-empty-state" style="display:none;">
+          <div class="tb-empty-state__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3 class="tb-empty-state__title">No matching activities found</h3>
+          <p class="tb-empty-state__text">Try searching for a different reading topic, grade level, or competency.</p>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="tb-bottom-nav" aria-label="Mobile Quick Nav">
+    <ul class="tb-bottom-nav__list">
+      <li><a href="/dashboard.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Home</span></a></li>
+      <li><a href="/classes.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg><span>Classes</span></a></li>
+      <li><a href="/generate-activity.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path></svg><span>Generate</span></a></li>
+      <li><a href="/promotions.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span class="tb-bottom-nav__badge">3</span><span>Promote</span></a></li>
+      <li><a href="/notifications.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class="tb-bottom-nav__badge">5</span><span>Alerts</span></a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function toggleEditDraft(id) {
+      const box = document.getElementById(id);
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleShareRepo(id) {
+      const box = document.getElementById(id);
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function handlePricingChange(priceInputId, isPaid) {
+      const input = document.getElementById(priceInputId);
+      if (input) {
+        input.disabled = !isPaid;
+        if (isPaid) {
+          input.focus();
+        } else {
+          input.value = '';
+        }
+      }
+    }
+
+    function handleActivitySearch(query) {
+      const q = query.toLowerCase().trim();
+      const items = document.querySelectorAll('.activity-item');
+      let visibleCount = 0;
+
+      items.forEach(item => {
+        const text = item.getAttribute('data-search') || item.innerText.toLowerCase();
+        if (!q || text.toLowerCase().includes(q)) {
+          item.style.display = 'flex';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      const noResults = document.getElementById('noSearchResults');
+      noResults.style.display = visibleCount === 0 ? 'flex' : 'none';
+    }
+
+    function setActivitiesTeacherState(state) {
+      const isPending = state === 'pending';
+      const pill = document.getElementById('sidebarStatusPill');
+      const activeActions = document.querySelectorAll('.draft-active-actions');
+      const lockedActions = document.querySelectorAll('.draft-locked-actions');
+      const btnActive = document.getElementById('btnActStateActive');
+      const btnPending = document.getElementById('btnActStatePending');
+
+      if (isPending) {
+        pill.className = 'tb-pill tb-pill--pending';
+        pill.textContent = 'Pending';
+        activeActions.forEach(el => el.style.display = 'none');
+        lockedActions.forEach(el => el.style.display = 'block');
+        btnPending.className = 'tb-btn tb-btn--sm tb-btn--primary';
+        btnActive.className = 'tb-btn tb-btn--sm tb-btn--outline';
+      } else {
+        pill.className = 'tb-pill tb-pill--active';
+        pill.textContent = 'Active';
+        activeActions.forEach(el => el.style.display = 'flex');
+        lockedActions.forEach(el => el.style.display = 'none');
+        btnActive.className = 'tb-btn tb-btn--sm tb-btn--primary';
+        btnPending.className = 'tb-btn tb-btn--sm tb-btn--outline';
+      }
+    }
+
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('sidebarNav');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    if (menuBtn && sidebar && backdrop) {
+      function toggleSidebar() {
+        const isOpen = sidebar.classList.toggle('tb-sidebar--open');
+        backdrop.classList.toggle('tb-sidebar-backdrop--active');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+      }
+      menuBtn.addEventListener('click', toggleSidebar);
+      backdrop.addEventListener('click', toggleSidebar);
+    }
+  </script>
+</body>
+</html>

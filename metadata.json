@@ -1,0 +1,6 @@
+{
+  "name": "TaraBasa AI - Teacher Portal Redesign",
+  "description": "Production-ready Laravel Blade visual redesign for TaraBasa AI Teacher and Learner roles, featuring chrome-less mascot-led student screens, never-discouraging feedback, and accessible design system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

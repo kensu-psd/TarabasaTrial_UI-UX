@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity Picker — TaraBasa AI Learner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-learner.css">
+  <link rel="stylesheet" href="/css/tarabasa-learner.css">
+</head>
+<body>
+
+  <!-- Screen Switcher Toolbar for Reviewers -->
+  <header class="tb-review-nav" aria-label="Learner Redesign Screen Switcher">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <span style="background:var(--teal); color:#ffffff; font-weight:700; padding:0.125rem 0.5rem; border-radius:4px; font-size:0.75rem;">Learner Role</span>
+      <span style="font-weight:600; color:#e2e8f0;">Screen 3 of 10: Activity Picker</span>
+    </div>
+    <nav style="display:flex; align-items:center; gap:0.375rem; flex-wrap:wrap;">
+      <a href="/learner-login.html">1. Login</a>
+      <a href="/learner-dashboard.html">2. Dashboard</a>
+      <a href="/learner-activity-picker.html" class="tb-review-nav--active">3. Picker</a>
+      <a href="/learner-reading.html">4. Reading</a>
+      <a href="/learner-diagnostic-intro.html">5. Diag Intro</a>
+      <a href="/learner-diagnostic-passage.html">6. Diag Passage</a>
+      <a href="/learner-diagnostic-encourage.html">7. Encourage</a>
+      <a href="/learner-diagnostic-results.html">8. Diag Result</a>
+      <a href="/learner-reading-results.html">9. Read Result</a>
+      <a href="/learner-reading-unclear.html">10. Unclear</a>
+      <a href="/learner-recording-widget.html">Widget (6 States)</a>
+    </nav>
+  </header>
+
+  <main class="tb-stage tb-stage--wide" id="mainContent">
+    <!-- Claymorphism Ambient Blobs -->
+    <div class="tb-blob-wrap" aria-hidden="true">
+      <div class="tb-blob tb-blob--yellow"></div>
+      <div class="tb-blob tb-blob--blue"></div>
+      <div class="tb-blob tb-blob--teal"></div>
+    </div>
+
+    <!-- Reviewer State Switcher -->
+    <div style="margin-bottom:1rem; z-index:2; position:relative; display:flex; gap:0.5rem;">
+      <button type="button" class="tb-btn-quiet" style="margin-top:0; background:rgba(255,255,255,0.85); border:1px solid var(--line); font-size:0.875rem; padding:0.375rem 0.75rem;" onclick="setPickerState('populated')">
+        ⭐ View Populated Activities
+      </button>
+      <button type="button" class="tb-btn-quiet" style="margin-top:0; background:rgba(255,255,255,0.85); border:1px solid var(--line); font-size:0.875rem; padding:0.375rem 0.75rem;" onclick="setPickerState('empty')">
+        🍂 View Empty State
+      </button>
+    </div>
+
+    <!-- STATE A: Populated Activities List -->
+    <section class="tb-card" id="statePopulated" aria-labelledby="pickerHeading">
+      <!-- Mascot -->
+      <div class="tb-mascot tb-mascot--sm" role="img" aria-label="Tara the Owl">
+        🦉
+      </div>
+
+      <h1 id="pickerHeading" class="tb-h1">What should I read?</h1>
+      <p class="tb-sub">Pick one to get started.</p>
+
+      <!-- Option Cards List -->
+      <div class="tb-activity-list" role="list">
+        
+        <!-- Activity 1: Teacher-Assigned -->
+        <a href="/learner-reading.html" class="tb-activity-option" role="listitem">
+          <div class="tb-activity-option__info">
+            <span class="tb-chip tb-chip--assigned">
+              <span>🏫 Teacher-Assigned</span>
+            </span>
+            <span class="tb-activity-option__title">Si Muning at ang Daga</span>
+          </div>
+          <div class="tb-activity-option__arrow" aria-hidden="true">
+            &rarr;
+          </div>
+        </a>
+
+        <!-- Activity 2: Teacher-Assigned -->
+        <a href="/learner-reading.html" class="tb-activity-option" role="listitem">
+          <div class="tb-activity-option__info">
+            <span class="tb-chip tb-chip--assigned">
+              <span>🏫 Teacher-Assigned</span>
+            </span>
+            <span class="tb-activity-option__title">Ang Saranggola ni Pepe</span>
+          </div>
+          <div class="tb-activity-option__arrow" aria-hidden="true">
+            &rarr;
+          </div>
+        </a>
+
+        <!-- Activity 3: Extra Practice (Distinctly styled chip) -->
+        <a href="/learner-reading.html" class="tb-activity-option" role="listitem">
+          <div class="tb-activity-option__info">
+            <span class="tb-chip tb-chip--practice">
+              <span>🌟 Extra Practice</span>
+            </span>
+            <span class="tb-activity-option__title">Mga Tunog sa Bukid</span>
+          </div>
+          <div class="tb-activity-option__arrow" aria-hidden="true">
+            &rarr;
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Quiet Secondary Action -->
+      <a href="/learner-dashboard.html" class="tb-btn-quiet">
+        &larr; Back to My Dashboard
+      </a>
+    </section>
+
+    <!-- STATE B: Empty State (No options yet) -->
+    <section class="tb-card" id="stateEmpty" style="display:none;" aria-labelledby="emptyHeading">
+      <!-- Mascot -->
+      <div class="tb-mascot tb-mascot--sm" role="img" aria-label="Tara the Owl">
+        🦉
+      </div>
+
+      <h1 id="emptyHeading" class="tb-h1">No activity yet</h1>
+      <p class="tb-sub">Ask your teacher, or check back soon!</p>
+
+      <!-- Button back to dashboard -->
+      <a href="/learner-dashboard.html" class="tb-btn-big tb-btn-big--teal" style="margin-top:0.5rem;">
+        <span>Back to My Dashboard 🚀</span>
+      </a>
+    </section>
+
+  </main>
+
+  <script>
+    function setPickerState(state) {
+      const pop = document.getElementById('statePopulated');
+      const empty = document.getElementById('stateEmpty');
+      if (state === 'empty') {
+        pop.style.display = 'none';
+        empty.style.display = 'flex';
+      } else {
+        pop.style.display = 'flex';
+        empty.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnostic Passage — TaraBasa AI Learner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-learner.css">
+  <link rel="stylesheet" href="/css/tarabasa-learner.css">
+</head>
+<body>
+
+  <!-- Screen Switcher Toolbar for Reviewers -->
+  <header class="tb-review-nav" aria-label="Learner Redesign Screen Switcher">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <span style="background:var(--teal); color:#ffffff; font-weight:700; padding:0.125rem 0.5rem; border-radius:4px; font-size:0.75rem;">Learner Role</span>
+      <span style="font-weight:600; color:#e2e8f0;">Screen 6 of 10: Diagnostic Passage</span>
+    </div>
+    <nav style="display:flex; align-items:center; gap:0.375rem; flex-wrap:wrap;">
+      <a href="/learner-login.html">1. Login</a>
+      <a href="/learner-dashboard.html">2. Dashboard</a>
+      <a href="/learner-activity-picker.html">3. Picker</a>
+      <a href="/learner-reading.html">4. Reading</a>
+      <a href="/learner-diagnostic-intro.html">5. Diag Intro</a>
+      <a href="/learner-diagnostic-passage.html" class="tb-review-nav--active">6. Diag Passage</a>
+      <a href="/learner-diagnostic-encourage.html">7. Encourage</a>
+      <a href="/learner-diagnostic-results.html">8. Diag Result</a>
+      <a href="/learner-reading-results.html">9. Read Result</a>
+      <a href="/learner-reading-unclear.html">10. Unclear</a>
+      <a href="/learner-recording-widget.html">Widget (6 States)</a>
+    </nav>
+  </header>
+
+  <main class="tb-stage tb-stage--wide" id="mainContent">
+    <!-- Claymorphism Ambient Blobs -->
+    <div class="tb-blob-wrap" aria-hidden="true">
+      <div class="tb-blob tb-blob--yellow"></div>
+      <div class="tb-blob tb-blob--blue"></div>
+      <div class="tb-blob tb-blob--teal"></div>
+    </div>
+
+    <!-- ABOVE THE CARD: Small progress indicator: "Passage 1" + row of fixed dots (current/upcoming) -->
+    <!-- NOT a real "of N total" count, exactly as requested -->
+    <div class="tb-progress-container" aria-label="Diagnostic reading progress">
+      <span class="tb-progress-label">Passage 1</span>
+      <div class="tb-progress-dots" role="status">
+        <span class="tb-progress-dot tb-progress-dot--current" title="Passage 1 (Current)"></span>
+        <span class="tb-progress-dot tb-progress-dot--upcoming" title="Upcoming passage"></span>
+        <span class="tb-progress-dot tb-progress-dot--upcoming" title="Upcoming passage"></span>
+      </div>
+    </div>
+
+    <!-- Centered Card Shell -->
+    <section class="tb-card" aria-labelledby="diagPassageHeading">
+      
+      <!-- Mascot -->
+      <div class="tb-mascot tb-mascot--sm" role="img" aria-label="Tara the Owl listening">
+        🦉
+      </div>
+
+      <h1 id="diagPassageHeading" class="tb-h1">Masayang Linggo</h1>
+      <p class="tb-sub">Read the words below out loud, then tap the mic!</p>
+
+      <!-- THE PASSAGE: Wrapped word by word with typography floor (20-24px, 1.7 line height) -->
+      <article class="tb-passage-card" aria-label="Passage content">
+        <div class="tb-passage-text" id="passageTextWrap">
+          <span class="tb-word" data-diag-word="0">Araw</span>
+          <span class="tb-word" data-diag-word="1">ng</span>
+          <span class="tb-word" data-diag-word="2">Linggo.</span>
+          <span class="tb-word" data-diag-word="3">Masiglang</span>
+          <span class="tb-word" data-diag-word="4">pumunta</span>
+          <span class="tb-word" data-diag-word="5">ang</span>
+          <span class="tb-word" data-diag-word="6">magkapatid</span>
+          <span class="tb-word" data-diag-word="7">sa</span>
+          <span class="tb-word" data-diag-word="8">malawak</span>
+          <span class="tb-word" data-diag-word="9">na</span>
+          <span class="tb-word" data-diag-word="10">palaruan</span>
+          <span class="tb-word" data-diag-word="11">kasama</span>
+          <span class="tb-word" data-diag-word="12">si</span>
+          <span class="tb-word" data-diag-word="13">Tatay.</span>
+        </div>
+      </article>
+
+      <!-- RECORDING WIDGET (Component) -->
+      <form method="POST" action="/learner/diagnostic/passage/1/submit" enctype="multipart/form-data" id="diagSubmitForm" style="width:100%;">
+        <input type="hidden" name="_token" value="csrf-token-placeholder">
+        <input type="file" name="audio" accept="audio/*" style="display:none;">
+
+        <div class="tb-recording-widget" id="diagRecordingWidget">
+
+          <!-- State: Ready -->
+          <div class="tb-record-state tb-record-state--active" id="diagStateReady">
+            <button type="button" class="tb-mic-btn" aria-label="Tap to start microphone recording" onclick="startDiagRecording()">
+              🎙️
+            </button>
+            <span class="tb-mic-label">Tap the mic, then read the words above out loud!</span>
+          </div>
+
+          <!-- State: Recording -->
+          <div class="tb-record-state" id="diagStateRecording">
+            <div class="tb-recording-pulse-wrap">
+              <div class="tb-recording-pulse-ring"></div>
+              <div class="tb-mic-recording-active" aria-hidden="true">
+                🎙️
+              </div>
+            </div>
+            <div class="tb-timer-badge">
+              <span>🔴</span>
+              <span id="diagTimer">0:03</span>
+            </div>
+            <button type="button" class="tb-btn-big tb-btn-big--teal" style="max-width:18rem;" onclick="finishDiagRecording()">
+              <span>I'm done reading! 👍</span>
+            </button>
+          </div>
+
+          <!-- State: Checking -->
+          <div class="tb-record-state" id="diagStateChecking">
+            <div class="tb-checking-spinner" aria-hidden="true"></div>
+            <span class="tb-checking-label">Checking... ⭐</span>
+          </div>
+
+        </div>
+      </form>
+
+      <!-- Quiet Secondary Action -->
+      <a href="/learner-dashboard.html" class="tb-btn-quiet">
+        &larr; Back to My Dashboard
+      </a>
+
+    </section>
+  </main>
+
+  <script>
+    let diagTimer = null;
+    let diagSeconds = 0;
+    let diagWordIdx = 0;
+    const diagWords = document.querySelectorAll('.tb-word');
+
+    function startDiagRecording() {
+      document.getElementById('diagStateReady').classList.remove('tb-record-state--active');
+      document.getElementById('diagStateRecording').classList.add('tb-record-state--active');
+      diagSeconds = 0;
+      diagWordIdx = 0;
+      document.getElementById('diagTimer').textContent = '0:00';
+
+      clearInterval(diagTimer);
+      diagTimer = setInterval(() => {
+        diagSeconds++;
+        const mins = Math.floor(diagSeconds / 60);
+        const secs = diagSeconds % 60;
+        document.getElementById('diagTimer').textContent = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+        // highlight words sequentially
+        diagWords.forEach(w => w.classList.remove('tb-word--active'));
+        if (diagWords[diagWordIdx]) {
+          diagWords[diagWordIdx].classList.add('tb-word--active');
+          diagWordIdx++;
+        } else {
+          diagWordIdx = 0;
+        }
+      }, 750);
+    }
+
+    function finishDiagRecording() {
+      clearInterval(diagTimer);
+      diagWords.forEach(w => w.classList.remove('tb-word--active'));
+      document.getElementById('diagStateRecording').classList.remove('tb-record-state--active');
+      document.getElementById('diagStateChecking').classList.add('tb-record-state--active');
+
+      setTimeout(() => {
+        // Directs to Screen 7: Diagnostic Encourage (the next step in the staircase)
+        window.location.href = '/learner-diagnostic-encourage.html';
+      }, 1400);
+    }
+  </script>
+</body>
+</html>

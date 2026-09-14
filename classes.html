@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Management — TaraBasa AI Teacher Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-teacher.css">
+  <link rel="stylesheet" href="/css/tarabasa-teacher.css">
+</head>
+<body>
+  <!-- Mobile Topbar (< 768px) -->
+  <header class="tb-mobile-topbar" id="mobileTopbar">
+    <a href="/dashboard.html" class="tb-brand" style="padding:0;">
+      <div class="tb-brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </div>
+      <div class="tb-brand__text">
+        <span class="tb-brand__title">TaraBasa AI</span>
+        <span class="tb-brand__role-tag">Teacher</span>
+      </div>
+    </a>
+    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <div class="tb-sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <div class="tb-shell">
+    <!-- PERSISTENT LEFT SIDEBAR SHELL -->
+    <aside class="tb-sidebar" id="sidebarNav" aria-label="Teacher Portal Navigation">
+      <a href="/dashboard.html" class="tb-brand">
+        <div class="tb-brand__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <div class="tb-brand__text">
+          <span class="tb-brand__title">TaraBasa AI</span>
+          <span class="tb-brand__role-tag">Teacher</span>
+        </div>
+      </a>
+
+      <nav class="tb-nav" aria-label="Main Navigation">
+        <li class="tb-nav__item">
+          <a href="/dashboard.html" class="tb-nav__link" id="nav-dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+              <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+              <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+              <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="tb-nav__item">
+          <a href="/classes.html" class="tb-nav__link tb-nav__link--active" id="nav-classes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Classes</span>
+          </a>
+        </li>
+        <li class="tb-nav__item">
+          <a href="/generate-activity.html" class="tb-nav__link" id="nav-generate">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+            </svg>
+            <span>Generate Activity</span>
+          </a>
+        </li>
+        <li class="tb-nav__item">
+          <a href="/my-activities.html" class="tb-nav__link" id="nav-activities">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+            <span>My Activities</span>
+          </a>
+        </li>
+        <li class="tb-nav__item">
+          <a href="/analytics.html" class="tb-nav__link" id="nav-analytics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Analytics</span>
+          </a>
+        </li>
+        <li class="tb-nav__item">
+          <a href="/promotions.html" class="tb-nav__link" id="nav-promotions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="17 11 12 6 7 11"></polyline>
+              <polyline points="17 18 12 13 7 18"></polyline>
+            </svg>
+            <span>Promotions</span>
+            <span class="tb-nav__badge tb-nav__badge--amber">3</span>
+          </a>
+        </li>
+        <li class="tb-nav__item">
+          <a href="/notifications.html" class="tb-nav__link" id="nav-notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span>Notifications</span>
+            <span class="tb-nav__badge tb-nav__badge--blue">5</span>
+          </a>
+        </li>
+      </nav>
+
+      <div class="tb-sidebar__footer">
+        <div class="tb-divider"></div>
+        <a href="/dashboard.html" class="tb-profile-row" id="profileRow">
+          <div class="tb-avatar">MS</div>
+          <div class="tb-profile-info">
+            <span class="tb-profile-name">Maria Santos</span>
+            <div class="tb-profile-status">
+              <span class="tb-pill tb-pill--active" id="sidebarStatusPill">Active</span>
+            </div>
+          </div>
+        </a>
+
+        <form method="POST" action="/logout" class="tb-logout-form">
+          <input type="hidden" name="_token" value="csrf-token-demo">
+          <button type="submit" class="tb-logout-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Log out</span>
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- MAIN CLASS MANAGEMENT CONTENT -->
+    <main class="tb-main" id="mainContent">
+      <div class="tb-content">
+
+        <!-- Testing State Toolbar -->
+        <div style="background:#eef6ff; border:1px solid #dcedff; border-radius:var(--radius-sm); padding:0.5rem 0.875rem; margin-bottom:1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; font-size:0.8125rem;">
+          <span style="color:var(--blue-700); font-weight:600;">
+            🧪 Rule Condition Switcher:
+          </span>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button type="button" class="tb-btn tb-btn--sm tb-btn--primary" id="btnModeActive" onclick="setClassTeacherState('active')">
+              Teacher: Active
+            </button>
+            <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" id="btnModePending" onclick="setClassTeacherState('pending')">
+              Teacher: Pending (Locked Actions)
+            </button>
+            <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" id="btnToggleEmpty" onclick="toggleEmptyState()">
+              Toggle: Empty Year State
+            </button>
+          </div>
+        </div>
+
+        <!-- Page Header: Only page <h1> and page-specific primary action "+ New Class" -->
+        <div class="tb-page-header">
+          <div class="tb-page-title-group">
+            <h1 class="tb-page-title">Class Management</h1>
+            <p class="tb-page-subtitle">Manage reading intervention sections, school years, and enrolled learners</p>
+          </div>
+          <div class="tb-page-actions" id="headerActionWrapper">
+            <!-- "+ New Class" button (only if status = Active) -->
+            <!-- In Blade: @if(auth()->user()->status === 'active') -->
+            <button type="button" class="tb-btn tb-btn--primary" id="btnNewClass" onclick="openCreateClassModal()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>+ New Class</span>
+            </button>
+            <!-- In Blade: @else (Locked pattern for Pending teacher) -->
+            <div class="tb-locked-state" id="lockedNewClass" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Locked until your account is Active.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- School-year Selector (Dropdown, GET, shows "(current)" on active year) -->
+        <div class="tb-card" style="margin-bottom:1.5rem; padding: 1rem 1.25rem;">
+          <form method="GET" action="/classes.html" id="schoolYearForm" class="tb-form-inline">
+            <label for="school_year_select" class="tb-label" style="margin-bottom:0; font-weight:700;">
+              School Year:
+            </label>
+            <select name="school_year" id="school_year_select" class="tb-select" style="max-width: 18rem;" onchange="handleYearChange(this.value)">
+              <option value="2024-2025" selected>S.Y. 2024–2025 (current)</option>
+              <option value="2023-2024">S.Y. 2023–2024 (past year - read-only)</option>
+              <option value="2022-2023">S.Y. 2022–2023 (past year - empty)</option>
+            </select>
+            <span id="readOnlyNotice" style="display:none; font-size:0.8125rem; color:var(--slate-600); background:#f1f4f8; padding:0.25rem 0.625rem; border-radius:var(--radius-sm); font-weight:600;">
+              🔒 Past School Year: Read-only mode
+            </span>
+          </form>
+        </div>
+
+
+
+        <!-- LIST OF CLASS CARDS -->
+        <div id="classListContainer">
+          
+          <!-- CLASS CARD 1 -->
+          <article class="tb-class-card" id="class-card-1">
+            <div class="tb-class-card__top">
+              <div>
+                <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                  <h2 style="font-size:1.25rem;">Mabini — Diamond</h2>
+                  <span class="tb-tag tb-tag--grade">Grade 1</span>
+                  <span class="tb-tag tb-tag--blue">S.Y. 2024–2025</span>
+                  <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700); font-weight:600;">Tag: Remedial Morning</span>
+                </div>
+                <div class="tb-class-card__meta">
+                  <span>Enrolled: <strong>38 learners</strong> (DepEd Class Standard)</span>
+                  <span>•</span>
+                  <span>Intervention Approach: Marungko (Unang Hakbang sa Pagbasa)</span>
+                </div>
+              </div>
+
+              <!-- Action buttons (Hidden if past year) -->
+              <div class="tb-page-actions class-actions">
+                <div class="action-active-state" style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                  <button type="button" class="tb-btn tb-btn--sm tb-btn--primary" id="btnRosterModal1" onclick="openClassRosterModal('1')" title="Open high-density roster modal for Grade 1 Mabini">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>View Roster Modal (38)</span>
+                  </button>
+                  <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" id="btnRosterToggle1" onclick="toggleRoster('roster-box-1', 'btnRosterToggle1')" aria-expanded="false" aria-controls="roster-box-1" title="Inline view toggle">
+                    <span>Inline Accordion</span>
+                  </button>
+                  <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="toggleEditClass('edit-box-1')">
+                    Edit Class
+                  </button>
+                  <button type="button" class="tb-btn tb-btn--sm tb-btn--teal" onclick="toggleAddLearner('add-box-1')">
+                    + Add Learner
+                  </button>
+                </div>
+                <!-- Locked state for Pending Teacher -->
+                <div class="action-locked-state" style="display:none;">
+                  <div class="tb-locked-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Locked until your account is Active.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- INLINE EDIT FORM: Name, Section, Grade Level only (School Year is NOT editable) -->
+            <div id="edit-box-1" class="tb-inline-form-box" style="display:none; margin-bottom:1rem; background:#ffffff; border:1px solid var(--line);">
+              <h4 style="margin-bottom:0.75rem;">Edit Class Details (School Year is locked to this academic period)</h4>
+              <form method="POST" action="/teacher/classes/1">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <div class="tb-form-row">
+                  <div class="tb-form-group">
+                    <label class="tb-label" for="edit_name_1">Class Name</label>
+                    <input type="text" id="edit_name_1" name="name" class="tb-input" value="Mabini" required>
+                  </div>
+                  <div class="tb-form-group">
+                    <label class="tb-label" for="edit_section_1">Section</label>
+                    <input type="text" id="edit_section_1" name="section" class="tb-input" value="Diamond" required>
+                  </div>
+                  <div class="tb-form-group">
+                    <label class="tb-label" for="edit_grade_1">Grade Level</label>
+                    <select id="edit_grade_1" name="grade_level" class="tb-select" required>
+                      <option value="1" selected>Grade 1</option>
+                      <option value="2">Grade 2</option>
+                      <option value="3">Grade 3</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="tb-form-inline" style="justify-content:flex-end;">
+                  <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleEditClass('edit-box-1')">Cancel</button>
+                  <button type="submit" class="tb-btn tb-btn--primary tb-btn--sm">Save Changes</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- INLINE ADD LEARNER FORM: single "learner_code" input + Add button -->
+            <div id="add-box-1" class="tb-inline-form-box" style="display:none; margin-bottom:1rem; background:var(--sky-50);">
+              <h4 style="margin-bottom:0.35rem; color:var(--blue-700);">Connect Learner via Learner Code</h4>
+              <p style="font-size:0.8125rem; color:var(--slate-600); margin-bottom:0.75rem;">
+                Enter the student's DepEd Learner Code (LRN or TaraBasa PIN). This is the exclusive way a teacher connects to a learner.
+              </p>
+              <form method="POST" action="/teacher/classes/1/learners" class="tb-form-inline">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <label for="learner_code_1" class="tb-label" style="margin-bottom:0;">Learner Code:</label>
+                <input type="text" id="learner_code_1" name="learner_code" class="tb-input" style="max-width:14rem;" placeholder="e.g. LRN-1029384" required>
+                <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm">Add Learner</button>
+                <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleAddLearner('add-box-1')">Cancel</button>
+              </form>
+            </div>
+
+            <!-- HIGH-CAPACITY TEACHER SUMMARY BAR (Solves 30-40 student scroll fatigue) -->
+            <div class="tb-roster-summary-bar">
+              <div class="tb-roster-summary-chips">
+                <span style="font-size:0.75rem; font-weight:700; color:var(--slate-700); text-transform:uppercase;">Quick Triage:</span>
+                <button type="button" class="tb-roster-chip tb-roster-chip--active" id="chip-all-1" onclick="filterClassRoster('1', 'all')" title="Show all 38 learners in class">
+                  All (38)
+                </button>
+                <button type="button" class="tb-roster-chip tb-roster-chip--amber" id="chip-attention-1" onclick="filterClassRoster('1', 'attention')" title="Filter to 6 learners needing urgent reading intervention">
+                  ⚠️ Needs Help (6)
+                </button>
+                <button type="button" class="tb-roster-chip" id="chip-growing-1" onclick="filterClassRoster('1', 'growing')" title="Filter to 14 growing readers">
+                  🌱 Growing (14)
+                </button>
+                <button type="button" class="tb-roster-chip tb-roster-chip--green" id="chip-fluent-1" onclick="filterClassRoster('1', 'fluent')" title="Filter to 18 fluent readers">
+                  ⭐ Fluent (18)
+                </button>
+              </div>
+              <div style="display:flex; align-items:center; gap:0.75rem;">
+                <span style="font-size:0.75rem; color:var(--slate-600);">Class Avg Accuracy: <strong style="color:#0d9488;">86.4%</strong></span>
+                <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="printClassCredentials('Mabini — Diamond', 38)" title="Print wallet cards with LRN & PIN for all 38 students">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.8125rem; height:0.8125rem; margin-right:0.25rem;">
+                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                    <rect x="6" y="14" width="12" height="8"></rect>
+                  </svg>
+                  <span>Print PIN Cards (38)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- EXPANDABLE HIGH-CAPACITY CLASS ROSTER (ACCORDION) -->
+            <div id="roster-box-1" class="tb-roster-accordion" style="display:none;">
+              <!-- Roster Toolbar with live search, sort & view toggle -->
+              <div class="tb-roster-toolbar">
+                <div class="tb-roster-search-wrapper">
+                  <svg class="tb-roster-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" id="roster-search-1" class="tb-roster-search-input" placeholder="Search learner by name or LRN..." oninput="handleRosterSearch('1')">
+                </div>
+
+                <div class="tb-roster-actions-group">
+                  <label for="roster-sort-1" style="font-size:0.75rem; color:var(--slate-600); font-weight:600;">Sort:</label>
+                  <select id="roster-sort-1" class="tb-select" style="font-size:0.8125rem; height:2.25rem; padding-top:0.25rem; padding-bottom:0.25rem;" onchange="handleRosterSort('1')">
+                    <option value="name-asc">Name (A–Z)</option>
+                    <option value="accuracy-asc">Needs Help First (Lowest %)</option>
+                    <option value="accuracy-desc">Highest Accuracy (%)</option>
+                    <option value="wcpm-desc">Highest Fluency (WCPM)</option>
+                  </select>
+
+                  <div style="display:flex; gap:0.25rem; margin-left:0.25rem;">
+                    <button type="button" class="tb-view-toggle-btn tb-view-toggle-btn--active" id="btn-view-table-1" onclick="setRosterViewMode('1', 'table')" title="High-density Table View (Best for 30-40 students)">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem;">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                      </svg>
+                    </button>
+                    <button type="button" class="tb-view-toggle-btn" id="btn-view-cards-1" onclick="setRosterViewMode('1', 'cards')" title="Card Grid View">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem;">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Status header: showing counter -->
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; font-size:0.75rem; color:var(--slate-600);">
+                <span id="roster-count-label-1">Showing 38 enrolled learners • Click any student to inspect reading diagnostic</span>
+                <span>DepEd School Year 2024–2025</span>
+              </div>
+
+              <!-- Table View Container (Scrollable 360px viewport prevents pushing the page down) -->
+              <div id="roster-table-view-1" class="tb-roster-table-container">
+                <table class="tb-roster-table">
+                  <thead>
+                    <tr>
+                      <th style="width:36px;">#</th>
+                      <th>Learner Name &amp; LRN</th>
+                      <th>PIN</th>
+                      <th>Reading Stage</th>
+                      <th>Accuracy</th>
+                      <th>Fluency (WCPM)</th>
+                      <th>Status / Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="roster-table-body-1">
+                    <!-- Populated dynamically by renderRoster('1') -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Card View Container (Alternative) -->
+              <div id="roster-cards-view-1" class="tb-roster-grid" style="display:none; max-height:420px; overflow-y:auto; padding:0.25rem;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </article>
+
+          <!-- CLASS CARD 2 -->
+          <article class="tb-class-card" id="class-card-2">
+            <div class="tb-class-card__top">
+              <div>
+                <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                  <h2 style="font-size:1.25rem;">Rizal — Emerald</h2>
+                  <span class="tb-tag tb-tag--grade">Grade 2</span>
+                  <span class="tb-tag tb-tag--blue">S.Y. 2024–2025</span>
+                  <span class="tb-tag" style="background:#eef6ff; color:var(--blue-700); font-weight:600;">Tag: Fluency Builders</span>
+                </div>
+                <div class="tb-class-card__meta">
+                  <span>Enrolled: <strong>35 learners</strong> (DepEd Class Standard)</span>
+                  <span>•</span>
+                  <span>Intervention Approach: Reading Comprehension &amp; Filipino Syllabication</span>
+                </div>
+              </div>
+
+              <!-- Action buttons -->
+              <div class="tb-page-actions class-actions">
+                <div class="action-active-state" style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                  <button type="button" class="tb-btn tb-btn--sm tb-btn--primary" id="btnRosterModal2" onclick="openClassRosterModal('2')" title="Open high-density roster modal for Grade 2 Rizal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>View Roster Modal (35)</span>
+                  </button>
+                  <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" id="btnRosterToggle2" onclick="toggleRoster('roster-box-2', 'btnRosterToggle2')" aria-expanded="false" aria-controls="roster-box-2" title="Inline view toggle">
+                    <span>Inline Accordion</span>
+                  </button>
+                  <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="toggleEditClass('edit-box-2')">
+                    Edit Class
+                  </button>
+                  <button type="button" class="tb-btn tb-btn--sm tb-btn--teal" onclick="toggleAddLearner('add-box-2')">
+                    + Add Learner
+                  </button>
+                </div>
+                <div class="action-locked-state" style="display:none;">
+                  <div class="tb-locked-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>Locked until your account is Active.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- INLINE EDIT FORM -->
+            <div id="edit-box-2" class="tb-inline-form-box" style="display:none; margin-bottom:1rem; background:#ffffff; border:1px solid var(--line);">
+              <h4 style="margin-bottom:0.75rem;">Edit Class Details (School Year is locked to this academic period)</h4>
+              <form method="POST" action="/teacher/classes/2">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <div class="tb-form-row">
+                  <div class="tb-form-group">
+                    <label class="tb-label" for="edit_name_2">Class Name</label>
+                    <input type="text" id="edit_name_2" name="name" class="tb-input" value="Rizal" required>
+                  </div>
+                  <div class="tb-form-group">
+                    <label class="tb-label" for="edit_section_2">Section</label>
+                    <input type="text" id="edit_section_2" name="section" class="tb-input" value="Emerald" required>
+                  </div>
+                  <div class="tb-form-group">
+                    <label class="tb-label" for="edit_grade_2">Grade Level</label>
+                    <select id="edit_grade_2" name="grade_level" class="tb-select" required>
+                      <option value="1">Grade 1</option>
+                      <option value="2" selected>Grade 2</option>
+                      <option value="3">Grade 3</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="tb-form-inline" style="justify-content:flex-end;">
+                  <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleEditClass('edit-box-2')">Cancel</button>
+                  <button type="submit" class="tb-btn tb-btn--primary tb-btn--sm">Save Changes</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- INLINE ADD LEARNER FORM -->
+            <div id="add-box-2" class="tb-inline-form-box" style="display:none; margin-bottom:1rem; background:var(--sky-50);">
+              <h4 style="margin-bottom:0.35rem; color:var(--blue-700);">Connect Learner via Learner Code</h4>
+              <p style="font-size:0.8125rem; color:var(--slate-600); margin-bottom:0.75rem;">
+                Enter the student's DepEd Learner Code (LRN or TaraBasa PIN). This is the exclusive way a teacher connects to a learner.
+              </p>
+              <form method="POST" action="/teacher/classes/2/learners" class="tb-form-inline">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <label for="learner_code_2" class="tb-label" style="margin-bottom:0;">Learner Code:</label>
+                <input type="text" id="learner_code_2" name="learner_code" class="tb-input" style="max-width:14rem;" placeholder="e.g. LRN-2039481" required>
+                <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm">Add Learner</button>
+                <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleAddLearner('add-box-2')">Cancel</button>
+              </form>
+            </div>
+
+            <!-- HIGH-CAPACITY TEACHER SUMMARY BAR (RIZAL) -->
+            <div class="tb-roster-summary-bar">
+              <div class="tb-roster-summary-chips">
+                <span style="font-size:0.75rem; font-weight:700; color:var(--slate-700); text-transform:uppercase;">Quick Triage:</span>
+                <button type="button" class="tb-roster-chip tb-roster-chip--active" id="chip-all-2" onclick="filterClassRoster('2', 'all')" title="Show all 35 learners in class">
+                  All (35)
+                </button>
+                <button type="button" class="tb-roster-chip tb-roster-chip--amber" id="chip-attention-2" onclick="filterClassRoster('2', 'attention')" title="Filter to 5 learners needing intervention">
+                  ⚠️ Needs Help (5)
+                </button>
+                <button type="button" class="tb-roster-chip" id="chip-growing-2" onclick="filterClassRoster('2', 'growing')" title="Filter to 16 growing readers">
+                  🌱 Growing (16)
+                </button>
+                <button type="button" class="tb-roster-chip tb-roster-chip--green" id="chip-fluent-2" onclick="filterClassRoster('2', 'fluent')" title="Filter to 14 fluent readers">
+                  ⭐ Fluent (14)
+                </button>
+              </div>
+              <div style="display:flex; align-items:center; gap:0.75rem;">
+                <span style="font-size:0.75rem; color:var(--slate-600);">Class Avg Accuracy: <strong style="color:#0d9488;">84.2%</strong></span>
+                <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="printClassCredentials('Rizal — Emerald', 35)" title="Print PIN cards for all 35 students">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.8125rem; height:0.8125rem; margin-right:0.25rem;">
+                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                    <rect x="6" y="14" width="12" height="8"></rect>
+                  </svg>
+                  <span>Print PIN Cards (35)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- EXPANDABLE HIGH-CAPACITY CLASS ROSTER 2 (ACCORDION) -->
+            <div id="roster-box-2" class="tb-roster-accordion" style="display:none;">
+              <!-- Roster Toolbar -->
+              <div class="tb-roster-toolbar">
+                <div class="tb-roster-search-wrapper">
+                  <svg class="tb-roster-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" id="roster-search-2" class="tb-roster-search-input" placeholder="Search learner by name or LRN..." oninput="handleRosterSearch('2')">
+                </div>
+
+                <div class="tb-roster-actions-group">
+                  <label for="roster-sort-2" style="font-size:0.75rem; color:var(--slate-600); font-weight:600;">Sort:</label>
+                  <select id="roster-sort-2" class="tb-select" style="font-size:0.8125rem; height:2.25rem; padding-top:0.25rem; padding-bottom:0.25rem;" onchange="handleRosterSort('2')">
+                    <option value="name-asc">Name (A–Z)</option>
+                    <option value="accuracy-asc">Needs Help First (Lowest %)</option>
+                    <option value="accuracy-desc">Highest Accuracy (%)</option>
+                    <option value="wcpm-desc">Highest Fluency (WCPM)</option>
+                  </select>
+
+                  <div style="display:flex; gap:0.25rem; margin-left:0.25rem;">
+                    <button type="button" class="tb-view-toggle-btn tb-view-toggle-btn--active" id="btn-view-table-2" onclick="setRosterViewMode('2', 'table')" title="High-density Table View">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem;">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                      </svg>
+                    </button>
+                    <button type="button" class="tb-view-toggle-btn" id="btn-view-cards-2" onclick="setRosterViewMode('2', 'cards')" title="Card Grid View">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem;">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Status header -->
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; font-size:0.75rem; color:var(--slate-600);">
+                <span id="roster-count-label-2">Showing 35 enrolled learners • Click any student to inspect reading diagnostic</span>
+                <span>DepEd School Year 2024–2025</span>
+              </div>
+
+              <!-- Table View Container -->
+              <div id="roster-table-view-2" class="tb-roster-table-container">
+                <table class="tb-roster-table">
+                  <thead>
+                    <tr>
+                      <th style="width:36px;">#</th>
+                      <th>Learner Name &amp; LRN</th>
+                      <th>PIN</th>
+                      <th>Reading Stage</th>
+                      <th>Accuracy</th>
+                      <th>Fluency (WCPM)</th>
+                      <th>Status / Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="roster-table-body-2">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Card View Container -->
+              <div id="roster-cards-view-2" class="tb-roster-grid" style="display:none; max-height:420px; overflow-y:auto; padding:0.25rem;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- EMPTY STATE: If a year has no classes (explanatory text + inline 'create your first class' link) -->
+        <div class="tb-empty-state" id="emptyStateBox" style="display:none;">
+          <div class="tb-empty-state__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <line x1="19" y1="8" x2="19" y2="14"></line>
+              <line x1="22" y1="11" x2="16" y2="11"></line>
+            </svg>
+          </div>
+          <h3 class="tb-empty-state__title">No classes found for this school year</h3>
+          <p class="tb-empty-state__text">
+            There are no active classes or enrolled Filipino learners recorded for this selected academic calendar.
+          </p>
+          <button type="button" class="tb-btn tb-btn--primary" onclick="openCreateClassModal()">
+            Create your first class for this year &rarr;
+          </button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="tb-bottom-nav" aria-label="Mobile Quick Nav">
+    <ul class="tb-bottom-nav__list">
+      <li><a href="/dashboard.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Home</span></a></li>
+      <li><a href="/classes.html" class="tb-bottom-nav__link tb-bottom-nav__link--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg><span>Classes</span></a></li>
+      <li><a href="/generate-activity.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path></svg><span>Generate</span></a></li>
+      <li><a href="/promotions.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span class="tb-bottom-nav__badge">3</span><span>Promote</span></a></li>
+      <li><a href="/notifications.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class="tb-bottom-nav__badge">5</span><span>Alerts</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- CREATE CLASS MODAL (Toggled by "+ New Class") -->
+  <!-- Non-negotiable preserved field names: name, section, grade_level, school_year, group_tag -->
+  <div class="tb-modal-backdrop" id="createClassModal" role="dialog" aria-modal="true" aria-labelledby="createClassModalTitle" aria-describedby="createClassModalSubtitle" onclick="handleModalBackdropClick(event)">
+    <div class="tb-modal" onclick="event.stopPropagation()">
+      <!-- Modal Header -->
+      <div class="tb-modal__header">
+        <div class="tb-modal__title-group">
+          <h3 class="tb-modal__title" id="createClassModalTitle">Create New Reading Class</h3>
+          <p class="tb-modal__subtitle" id="createClassModalSubtitle">
+            Set up a section or reading intervention cohort for Grade 1–3 learners
+          </p>
+        </div>
+        <button type="button" class="tb-modal__close" onclick="closeCreateClassModal()" aria-label="Close dialog">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal Form -->
+      <form method="POST" action="/teacher/classes" id="createClassForm" onsubmit="handleCreateClassSubmit(event)">
+        <input type="hidden" name="_token" value="csrf-token-placeholder">
+
+        <div class="tb-modal__body">
+          <div class="tb-form-row">
+            <!-- Field: name -->
+            <div class="tb-form-group" style="grid-column: 1 / -1;">
+              <label class="tb-label" for="new_class_name">
+                Class Name <span style="color:var(--danger)">*</span>
+              </label>
+              <input type="text" id="new_class_name" name="name" class="tb-input" placeholder="e.g. Mabini Reading Group" required autocomplete="off">
+              <span class="tb-label__hint" style="margin-top:0.25rem;">Descriptive name displayed in rosters and intervention reports.</span>
+            </div>
+
+            <!-- Field: section -->
+            <div class="tb-form-group">
+              <label class="tb-label" for="new_class_section">
+                Section <span style="color:var(--danger)">*</span>
+              </label>
+              <input type="text" id="new_class_section" name="section" class="tb-input" placeholder="e.g. Diamond" required autocomplete="off">
+            </div>
+
+            <!-- Field: grade_level -->
+            <div class="tb-form-group">
+              <label class="tb-label" for="new_class_grade">
+                Grade Level <span style="color:var(--danger)">*</span>
+              </label>
+              <select id="new_class_grade" name="grade_level" class="tb-select" required>
+                <option value="">Select Grade Level</option>
+                <option value="1">Grade 1</option>
+                <option value="2">Grade 2</option>
+                <option value="3">Grade 3</option>
+              </select>
+            </div>
+
+            <!-- Field: school_year -->
+            <div class="tb-form-group">
+              <label class="tb-label" for="new_class_school_year">
+                School Year <span style="color:var(--danger)">*</span>
+              </label>
+              <select id="new_class_school_year" name="school_year" class="tb-select" required>
+                <option value="2024-2025" selected>2024–2025 (Current)</option>
+                <option value="2025-2026">2025–2026 (Next)</option>
+              </select>
+            </div>
+
+            <!-- Field: group_tag -->
+            <div class="tb-form-group">
+              <label class="tb-label" for="new_class_group_tag">
+                Group Tag <span class="tb-label__hint">(Optional)</span>
+              </label>
+              <input type="text" id="new_class_group_tag" name="group_tag" class="tb-input" placeholder="e.g. Remedial Morning, Marungko Set 1">
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="tb-modal__footer">
+          <button type="button" class="tb-btn tb-btn--outline" onclick="closeCreateClassModal()">Cancel</button>
+          <button type="submit" class="tb-btn tb-btn--primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="width:1rem; height:1rem; margin-right:0.25rem;">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Create Class</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- LEARNER DETAIL MODAL -->
+  <div class="tb-modal-backdrop" id="learnerDetailModal" role="dialog" aria-modal="true" aria-labelledby="learnerModalName" aria-describedby="learnerModalSubtitle" onclick="handleLearnerBackdropClick(event)">
+    <div class="tb-modal tb-modal--lg" onclick="event.stopPropagation()">
+      <!-- Modal Header -->
+      <div class="tb-modal__header">
+        <div class="tb-modal__title-group">
+          <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+            <h3 class="tb-modal__title" id="learnerModalName">Angelo Reyes</h3>
+            <span class="tb-tag tb-tag--approved" id="learnerModalStatus">Active Learner</span>
+          </div>
+          <p class="tb-modal__subtitle" id="learnerModalSubtitle">
+            Grade 1 &bull; Mabini — Diamond &bull; DepEd Region IV-A
+          </p>
+        </div>
+        <button type="button" class="tb-modal__close" onclick="closeLearnerModal()" aria-label="Close learner details">
+          &times;
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="tb-modal__body" style="overflow-y:auto; max-height:calc(85vh - 8rem);">
+        <!-- Profile Identity & Credentials Card -->
+        <div class="tb-profile-header-card">
+          <div class="tb-profile-identity">
+            <div class="tb-profile-avatar-big" id="learnerModalAvatar" style="background:#0284c7;">AR</div>
+            <div>
+              <div style="font-size:1.1875rem; font-weight:800; color:var(--navy-900);" id="learnerModalFullName">Angelo Reyes</div>
+              <div style="display:flex; align-items:center; gap:0.5rem; margin-top:0.35rem; flex-wrap:wrap;">
+                <span class="tb-tag" style="background:#ffffff; border:1px solid var(--line); font-family:monospace; font-weight:700;" id="learnerModalLRN">LRN: 1029384</span>
+                <span class="tb-tag" style="background:#ffffff; border:1px solid var(--line); font-family:monospace; font-weight:700;" id="learnerModalPIN">PIN: 4821</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" id="btnCopyCredentials" onclick="copyLearnerCredentials()" style="background:#ffffff;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="copyCredentialsText">Copy Code &amp; PIN</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Key Metric Tiles -->
+        <div class="tb-stat-metrics-row">
+          <div class="tb-stat-metric-tile">
+            <span class="tb-stat-metric-tile__label">Reading Stage</span>
+            <span class="tb-stat-metric-tile__val" style="font-size:1.125rem; color:var(--teal);" id="learnerModalStage">Growing Reader 🌱</span>
+            <span class="tb-stat-metric-tile__sub" id="learnerModalApproachSub">Marungko Hakbang 1</span>
+          </div>
+          <div class="tb-stat-metric-tile">
+            <span class="tb-stat-metric-tile__label">Oral Accuracy</span>
+            <span class="tb-stat-metric-tile__val" style="color:var(--blue-600);" id="learnerModalAccuracy">84%</span>
+            <span class="tb-stat-metric-tile__sub" id="learnerModalAccuracySub">42 of 50 words correct</span>
+          </div>
+          <div class="tb-stat-metric-tile">
+            <span class="tb-stat-metric-tile__label">Fluency Rate</span>
+            <span class="tb-stat-metric-tile__val" style="color:var(--navy-900);" id="learnerModalWCPM">28 WCPM</span>
+            <span class="tb-stat-metric-tile__sub" id="learnerModalWCPMSub">Grade Target: 30+ WCPM</span>
+          </div>
+        </div>
+
+        <!-- Diagnostic & Intervention Targets -->
+        <div style="background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); padding:1rem; margin-bottom:1.25rem;">
+          <h4 style="font-size:0.875rem; font-weight:700; color:var(--navy-900); margin-bottom:0.625rem; text-transform:uppercase; letter-spacing:0.04em;">
+            Diagnostic &amp; Intervention Profile
+          </h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
+            <div style="font-size:0.8125rem;">
+              <span style="color:var(--slate-600); display:block; margin-bottom:0.25rem;">Phonemic Mastery:</span>
+              <span style="font-weight:600; color:var(--navy-900);" id="learnerModalMastery">Set 1: m, s, a, i, o (Proficient)</span>
+            </div>
+            <div style="font-size:0.8125rem;">
+              <span style="color:var(--slate-600); display:block; margin-bottom:0.25rem;">Priority Intervention Need:</span>
+              <span style="font-weight:600; color:#b45309;" id="learnerModalPriority">Double-consonant blends &amp; diphthongs (-ay, -aw)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Latest Audio Reading Assessment -->
+        <div style="background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); padding:1rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <div>
+              <h4 style="font-size:0.875rem; font-weight:700; color:var(--navy-900);" id="learnerModalStoryTitle">
+                Latest Audio Assessment: "Si Muning at ang Daga"
+              </h4>
+              <p style="font-size:0.75rem; color:var(--slate-400); margin-top:0.125rem;" id="learnerModalStoryDate">
+                Recorded Yesterday &bull; Session Duration: 1m 45s
+              </p>
+            </div>
+            <span class="tb-tag tb-tag--blue" id="learnerModalPassageTag">Grade 1 Decodable</span>
+          </div>
+
+          <!-- Interactive Playable Mock Audio Bar -->
+          <div class="tb-audio-player-card">
+            <button type="button" class="tb-btn tb-btn--sm tb-btn--primary" id="btnPlayLearnerAudio" onclick="togglePlayLearnerAudio()">
+              <svg id="playIconSvg" viewBox="0 0 24 24" fill="currentColor" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span id="playAudioLabel">Listen to Reading</span>
+            </button>
+            <div class="tb-waveform-bars" id="waveformBars" aria-hidden="true">
+              <span class="tb-waveform-bar" style="height:8px;"></span>
+              <span class="tb-waveform-bar" style="height:16px;"></span>
+              <span class="tb-waveform-bar" style="height:22px;"></span>
+              <span class="tb-waveform-bar" style="height:12px;"></span>
+              <span class="tb-waveform-bar" style="height:18px;"></span>
+              <span class="tb-waveform-bar" style="height:24px;"></span>
+              <span class="tb-waveform-bar" style="height:14px;"></span>
+              <span class="tb-waveform-bar" style="height:20px;"></span>
+              <span class="tb-waveform-bar" style="height:9px;"></span>
+              <span class="tb-waveform-bar" style="height:15px;"></span>
+            </div>
+            <span style="font-size:0.8125rem; font-family:monospace; color:var(--slate-600);" id="audioTimestamp">0:00 / 1:45</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Actions -->
+      <div class="tb-modal__footer" style="justify-content:space-between; flex-wrap:wrap;">
+        <button type="button" class="tb-btn tb-btn--outline" onclick="closeLearnerModal()">Close</button>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <a href="/analytics.html" class="tb-btn tb-btn--outline" id="learnerModalAnalyticsLink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Full Analytics</span>
+          </a>
+          <a href="/generate-activity.html" class="tb-btn tb-btn--primary" id="learnerModalGenerateLink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path>
+            </svg>
+            <span id="learnerModalGenerateText">Generate Story for Learner</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       DEDICATED FULL CLASS ROSTER MODAL
+       Allows comprehensive full-screen viewing, filtering, sorting, and management
+       of large cohorts (30–40 learners) without scrolling or cluttering the page
+       ========================================================================= -->
+  <div id="classRosterModal" class="tb-modal-backdrop" onclick="handleRosterBackdropClick(event)" role="dialog" aria-modal="true" aria-labelledby="rosterModalTitle">
+    <div class="tb-modal tb-modal--roster" onclick="event.stopPropagation()">
+      <!-- Modal Header -->
+      <div class="tb-modal__header">
+        <div class="tb-modal__title-group">
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem;">
+            <h3 class="tb-modal__title" id="rosterModalTitle">Class Roster</h3>
+            <span class="tb-tag tb-tag--grade" id="rosterModalGradeTag">Grade 1</span>
+            <span class="tb-tag tb-tag--blue">S.Y. 2024–2025</span>
+          </div>
+          <p class="tb-modal__subtitle" id="rosterModalSubtitle">DepEd Class Directory • 38 Enrolled Learners</p>
+        </div>
+        <button type="button" class="tb-modal__close" onclick="closeClassRosterModal()" aria-label="Close roster dialog">&times;</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="tb-roster-modal__body">
+        <!-- Roster Quick Statistics & Triage Bar -->
+        <div class="tb-roster-modal-stats">
+          <div class="tb-roster-stat-group">
+            <span style="font-size:0.75rem; font-weight:700; color:var(--slate-700); text-transform:uppercase; margin-right:0.25rem;">Triage Filter:</span>
+            <button type="button" class="tb-roster-chip tb-roster-chip--active" id="modal-chip-all" onclick="setModalRosterFilter('all')">
+              All (<span id="modal-stat-total">38</span>)
+            </button>
+            <button type="button" class="tb-roster-chip tb-roster-chip--amber" id="modal-chip-attention" onclick="setModalRosterFilter('attention')">
+              ⚠️ Needs Help (<span id="modal-stat-attention">6</span>)
+            </button>
+            <button type="button" class="tb-roster-chip" id="modal-chip-growing" onclick="setModalRosterFilter('growing')">
+              🌱 Growing (<span id="modal-stat-growing">14</span>)
+            </button>
+            <button type="button" class="tb-roster-chip tb-roster-chip--green" id="modal-chip-fluent" onclick="setModalRosterFilter('fluent')">
+              ⭐ Fluent (<span id="modal-stat-fluent">18</span>)
+            </button>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <span style="font-size:0.8125rem; color:var(--slate-600);">
+              Avg Accuracy: <strong style="color:var(--teal); font-weight:700;" id="modal-stat-avg">86.4%</strong>
+            </span>
+            <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" id="modalBtnPrintCards" onclick="handleModalPrintCredentials()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.8125rem; height:0.8125rem; margin-right:0.25rem;">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>Print PIN Cards</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search, Sort & View Controls -->
+        <div class="tb-roster-toolbar" style="margin-bottom:0.75rem;">
+          <div class="tb-roster-search-wrapper" style="max-width:320px;">
+            <svg class="tb-roster-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="modalRosterSearch" class="tb-roster-search-input" placeholder="Search learner by name, LRN, or PIN..." oninput="handleModalRosterSearch()">
+          </div>
+
+          <div class="tb-roster-actions-group">
+            <label for="modalRosterSort" style="font-size:0.75rem; color:var(--slate-600); font-weight:600;">Sort:</label>
+            <select id="modalRosterSort" class="tb-select" style="font-size:0.8125rem; height:2.25rem; padding-top:0.25rem; padding-bottom:0.25rem;" onchange="handleModalRosterSort()">
+              <option value="name-asc">Name (A–Z)</option>
+              <option value="accuracy-asc">Needs Help First (Lowest %)</option>
+              <option value="accuracy-desc">Highest Accuracy (%)</option>
+              <option value="wcpm-desc">Highest Fluency (WCPM)</option>
+            </select>
+
+            <div style="display:flex; gap:0.25rem; margin-left:0.25rem;">
+              <button type="button" class="tb-view-toggle-btn tb-view-toggle-btn--active" id="btnModalViewTable" onclick="setModalRosterView('table')" title="High-Density Table View">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem;">
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+              </button>
+              <button type="button" class="tb-view-toggle-btn" id="btnModalViewCards" onclick="setModalRosterView('cards')" title="Card Grid View">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem;">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Counter label -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; font-size:0.75rem; color:var(--slate-600);">
+          <span id="modalRosterCountLabel">Showing 38 enrolled learners • Click any student row to view full audio diagnostic</span>
+          <span style="font-weight:600; color:var(--blue-700);">Official DepEd LRN Verified ✓</span>
+        </div>
+
+        <!-- Scrollable content area -->
+        <div class="tb-roster-scroll-area">
+          <!-- Table View Container -->
+          <div id="modalRosterTableView">
+            <table class="tb-roster-table">
+              <thead>
+                <tr>
+                  <th style="width:40px;">#</th>
+                  <th>Learner Name &amp; LRN</th>
+                  <th style="width:80px;">PIN</th>
+                  <th>Reading Stage</th>
+                  <th>Accuracy</th>
+                  <th>Fluency (WCPM)</th>
+                  <th style="width:140px;">Status / Action</th>
+                </tr>
+              </thead>
+              <tbody id="modalRosterTableBody">
+                <!-- Dynamically injected -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Cards View Container -->
+          <div id="modalRosterCardsView" class="tb-roster-grid" style="display:none; padding:0.75rem;">
+            <!-- Dynamically injected -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="tb-modal__footer" style="justify-content:space-between; flex-wrap:wrap; padding:1rem 1.5rem; background:#ffffff;">
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <button type="button" class="tb-btn tb-btn--outline" onclick="closeClassRosterModal()">Close</button>
+          <span style="font-size:0.75rem; color:var(--slate-400);">Tip: Press Esc anytime to close</span>
+        </div>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <button type="button" class="tb-btn tb-btn--outline" onclick="handleModalAddLearner()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Add Learner to Class</span>
+          </button>
+          <a href="/analytics.html" class="tb-btn tb-btn--primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+              <path d="M18 20V10M12 20V4M6 20v-6"></path>
+            </svg>
+            <span>View Class Diagnostics &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openCreateClassModal() {
+      const modal = document.getElementById('createClassModal');
+      if (modal) {
+        modal.classList.add('tb-modal-backdrop--active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+          const input = document.getElementById('new_class_name');
+          if (input) input.focus();
+        }, 60);
+      }
+    }
+
+    function closeCreateClassModal() {
+      const modal = document.getElementById('createClassModal');
+      if (modal) {
+        modal.classList.remove('tb-modal-backdrop--active');
+        document.body.style.overflow = '';
+        const triggerBtn = document.getElementById('btnNewClass');
+        if (triggerBtn) triggerBtn.focus();
+      }
+    }
+
+    function handleModalBackdropClick(event) {
+      if (event.target && event.target.id === 'createClassModal') {
+        closeCreateClassModal();
+      }
+    }
+
+    // Escape key closes open modal
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const modal = document.getElementById('createClassModal');
+        if (modal && modal.classList.contains('tb-modal-backdrop--active')) {
+          closeCreateClassModal();
+        }
+      }
+    });
+
+    // Alias for backward compatibility
+    function toggleCreateClassForm() {
+      const modal = document.getElementById('createClassModal');
+      if (modal && modal.classList.contains('tb-modal-backdrop--active')) {
+        closeCreateClassModal();
+      } else {
+        openCreateClassModal();
+      }
+    }
+
+    function handleCreateClassSubmit(event) {
+      // In production Laravel Blade, this will submit normally via POST /teacher/classes.
+      // For the static review preview, provide responsive visual confirmation.
+      event.preventDefault();
+      const name = document.getElementById('new_class_name').value;
+      const section = document.getElementById('new_class_section').value;
+      const grade = document.getElementById('new_class_grade').value;
+      
+      if (!name || !section || !grade) {
+        return;
+      }
+      
+      closeCreateClassModal();
+      alert(`🎉 Class Created Successfully!\n\nName: ${name}\nSection: ${section}\nGrade: Grade ${grade}\n\n(In production Blade, this POSTs to /teacher/classes)`);
+      document.getElementById('createClassForm').reset();
+    }
+
+    function toggleEditClass(boxId) {
+      const box = document.getElementById(boxId);
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleAddLearner(boxId) {
+      const box = document.getElementById(boxId);
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Toggle Expandable Class Roster Accordion
+    function toggleRoster(boxId, btnId) {
+      const box = document.getElementById(boxId);
+      const btn = document.getElementById(btnId);
+      if (!box) return;
+
+      const isHidden = box.style.display === 'none';
+      box.style.display = isHidden ? 'block' : 'none';
+
+      if (btn) {
+        btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        const countMatch = btn.textContent.match(/\((\d+)\)/);
+        const count = countMatch ? countMatch[1] : '';
+        const countStr = count ? ` (${count})` : '';
+
+        if (isHidden) {
+          btn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+            <span>Hide Roster${countStr}</span>
+          `;
+          btn.className = 'tb-btn tb-btn--sm tb-btn--outline';
+          // Smooth scroll to roster if outside viewport
+          box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          btn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>View Roster${countStr}</span>
+          `;
+          btn.className = 'tb-btn tb-btn--sm tb-btn--primary';
+        }
+      }
+    }
+
+    // State management for high-capacity rosters
+    const rosterStates = {
+      '1': { filter: 'all', search: '', sort: 'name-asc', view: 'table' },
+      '2': { filter: 'all', search: '', sort: 'name-asc', view: 'table' }
+    };
+
+    // Helper to generate full cohort of learners for 30-40 student classes
+    function generateCohort(classId, className, section, grade, totalCount) {
+      const firstNames = [
+        'Angelo', 'Bea', 'Carlo', 'Daphne', 'Eduardo', 'Faith', 'Gabriel', 'Hannah', 'Ian', 'Janice',
+        'Kyle', 'Lianne', 'Mateo', 'Nica', 'Oliver', 'Princess', 'Rafael', 'Sofia', 'Tristan', 'Ursula',
+        'Vincent', 'Wendy', 'Xavier', 'Yanna', 'Zoren', 'Althea', 'Bryan', 'Chloe', 'Danilo', 'Ella',
+        'Francis', 'Giselle', 'Harold', 'Iris', 'Joshua', 'Katrina', 'Lance', 'Maricar', 'Nathan', 'Olivia'
+      ];
+      const lastNames = [
+        'Reyes', 'Dela Cruz', 'Bautista', 'Ramos', 'Tan', 'Garcia', 'Mendoza', 'Torres', 'Villanueva', 'Perez',
+        'Ocampo', 'Santos', 'Aquino', 'Castro', 'Navarro', 'Salazar', 'Mercado', 'Flores', 'Tolentino', 'Morales',
+        'Santiago', 'Castillo', 'Espiritu', 'Corpuz', 'Valdez', 'Soriano', 'Guinto', 'Cordova', 'De Jesus', 'Robles',
+        'Alcantara', 'Cabrera', 'Manalo', 'Legaspi', 'Rivera', 'Ferrer', 'Ignacio', 'Pascual', 'Mallari', 'Gomez'
+      ];
+      const colors = ['#0284c7', '#be185d', '#b45309', '#6d28d9', '#15803d', '#a21caf', '#0369a1', '#059669', '#d97706', '#4f46e5'];
+
+      const list = [];
+      const prefix = classId === '1' ? '10293' : '20394';
+
+      for (let i = 0; i < totalCount; i++) {
+        const lrnNumber = 80 + i;
+        const lrnKey = `LRN-${prefix}${lrnNumber}`;
+        const fn = firstNames[i % firstNames.length];
+        const ln = lastNames[i % lastNames.length];
+        const fullName = `${fn} ${ln}`;
+        const initials = `${fn[0]}${ln[0]}`;
+        const avatarBg = colors[i % colors.length];
+        const pin = String(1000 + ((i * 347) % 8999));
+
+        // Deterministic reading stages and scores for genuine variety
+        let stage = 'Growing Reader 🌱';
+        let status = 'Active Learner';
+        let statusClass = 'tb-tag--approved';
+        let category = 'growing';
+        let accuracyVal = 75 + ((i * 13) % 20); // 75-94%
+        let wcpmVal = grade === 'Grade 1' ? (24 + ((i * 7) % 15)) : (30 + ((i * 7) % 16));
+
+        // Mark intentional students needing intervention / help (approx 5-6 students)
+        if (i === 2 || i === 8 || i === 15 || i === 23 || i === 31 || (classId === '1' && i === 36)) {
+          stage = 'Emerging Reader 🌱';
+          status = 'Needs Intervention';
+          statusClass = 'tb-tag--pending';
+          category = 'attention';
+          accuracyVal = 54 + ((i * 3) % 12); // 54% - 65%
+          wcpmVal = grade === 'Grade 1' ? 16 + (i % 5) : 20 + (i % 6);
+        } else if (i === 1 || i === 5 || i === 11 || i === 18 || i === 24 || i === 30 || i === 34) {
+          stage = 'Fluent Reader ⭐';
+          status = 'Fluent Reader';
+          statusClass = 'tb-tag--approved';
+          category = 'fluent';
+          accuracyVal = 92 + (i % 7); // 92-98%
+          wcpmVal = grade === 'Grade 1' ? 36 + (i % 8) : 42 + (i % 9);
+        }
+
+        list.push({
+          lrn: lrnKey,
+          name: fullName,
+          initials: initials,
+          avatarBg: avatarBg,
+          pin: pin,
+          grade: grade,
+          section: section,
+          className: className,
+          status: status,
+          statusClass: statusClass,
+          category: category,
+          readingStage: stage,
+          accuracyPercent: accuracyVal,
+          accuracy: `${accuracyVal}%`,
+          accuracySub: `${Math.round(accuracyVal * 0.5)} of 50 words correct`,
+          wcpmNum: wcpmVal,
+          wcpm: `${wcpmVal} WCPM`,
+          wcpmSub: `${grade} Target: ${grade === 'Grade 1' ? '30+' : '40+'} WCPM`,
+          mastery: category === 'attention' ? 'Letter recognition & basic consonants (/m/, /s/, /a/)' : 'Fluent decodable reading across Grade-level passages',
+          priority: category === 'attention' ? 'Vowel contrast & /b/ vs /d/ reversal support' : 'Expressive reading, intonation & vocabulary comprehension',
+          storyTitle: `Audio Diagnostic: "${grade === 'Grade 1' ? 'Si Muning sa Banig' : 'Ang Bundok Makiling'}"`,
+          storyDate: `Assessment ${((i % 4) + 1)} days ago • Duration: 1m 40s`,
+          passageTag: `${grade} Decodable Story`
+        });
+      }
+      return list;
+    }
+
+    const CLASS_COHORTS = {
+      '1': generateCohort('1', 'Mabini', 'Diamond', 'Grade 1', 38),
+      '2': generateCohort('2', 'Rizal', 'Emerald', 'Grade 2', 35)
+    };
+
+    // Detailed Learners Dataset for Interactive Inspection (Indexed by LRN)
+    const LEARNERS_DATA = {};
+    Object.values(CLASS_COHORTS).forEach(cohort => {
+      cohort.forEach(item => {
+        LEARNERS_DATA[item.lrn] = item;
+      });
+    });
+
+    // High-Capacity Roster Filter handler
+    function filterClassRoster(classId, filterType) {
+      rosterStates[classId].filter = filterType;
+      
+      // Update chip styling
+      const chips = document.querySelectorAll(`[id^="chip-"][id$="-${classId}"]`);
+      chips.forEach(chip => chip.classList.remove('tb-roster-chip--active'));
+      
+      const activeChip = document.getElementById(`chip-${filterType}-${classId}`);
+      if (activeChip) activeChip.classList.add('tb-roster-chip--active');
+
+      // Make sure roster is open when user clicks a filter chip
+      const box = document.getElementById(`roster-box-${classId}`);
+      const btn = document.getElementById(`btnRosterToggle${classId}`);
+      if (box && box.style.display === 'none') {
+        toggleRoster(`roster-box-${classId}`, `btnRosterToggle${classId}`);
+      }
+
+      renderRoster(classId);
+    }
+
+    // Live Search input handler
+    function handleRosterSearch(classId) {
+      const input = document.getElementById(`roster-search-${classId}`);
+      if (!input) return;
+      rosterStates[classId].search = input.value.trim().toLowerCase();
+      renderRoster(classId);
+    }
+
+    // Sort selector handler
+    function handleRosterSort(classId) {
+      const select = document.getElementById(`roster-sort-${classId}`);
+      if (!select) return;
+      rosterStates[classId].sort = select.value;
+      renderRoster(classId);
+    }
+
+    // Switch between compact Table View and Card Grid View
+    function setRosterViewMode(classId, mode) {
+      rosterStates[classId].view = mode;
+      
+      const btnTable = document.getElementById(`btn-view-table-${classId}`);
+      const btnCards = document.getElementById(`btn-view-cards-${classId}`);
+      const tableView = document.getElementById(`roster-table-view-${classId}`);
+      const cardsView = document.getElementById(`roster-cards-view-${classId}`);
+
+      if (mode === 'table') {
+        btnTable?.classList.add('tb-view-toggle-btn--active');
+        btnCards?.classList.remove('tb-view-toggle-btn--active');
+        if (tableView) tableView.style.display = 'block';
+        if (cardsView) cardsView.style.display = 'none';
+      } else {
+        btnCards?.classList.add('tb-view-toggle-btn--active');
+        btnTable?.classList.remove('tb-view-toggle-btn--active');
+        if (tableView) tableView.style.display = 'none';
+        if (cardsView) cardsView.style.display = 'grid';
+      }
+      renderRoster(classId);
+    }
+
+    // Main Renderer for high-capacity roster with filters and sorting
+    function renderRoster(classId) {
+      const cohort = CLASS_COHORTS[classId] || [];
+      const state = rosterStates[classId];
+
+      let filtered = cohort.filter(item => {
+        // Category Filter
+        if (state.filter === 'attention' && item.category !== 'attention') return false;
+        if (state.filter === 'growing' && item.category !== 'growing') return false;
+        if (state.filter === 'fluent' && item.category !== 'fluent') return false;
+
+        // Search Filter
+        if (state.search) {
+          const matchName = item.name.toLowerCase().includes(state.search);
+          const matchLRN = item.lrn.toLowerCase().includes(state.search);
+          const matchPIN = item.pin.includes(state.search);
+          if (!matchName && !matchLRN && !matchPIN) return false;
+        }
+        return true;
+      });
+
+      // Sorting
+      filtered.sort((a, b) => {
+        if (state.sort === 'name-asc') return a.name.localeCompare(b.name);
+        if (state.sort === 'accuracy-asc') return a.accuracyPercent - b.accuracyPercent;
+        if (state.sort === 'accuracy-desc') return b.accuracyPercent - a.accuracyPercent;
+        if (state.sort === 'wcpm-desc') return b.wcpmNum - a.wcpmNum;
+        return 0;
+      });
+
+      // Update counter label
+      const counterLabel = document.getElementById(`roster-count-label-${classId}`);
+      if (counterLabel) {
+        counterLabel.textContent = `Showing ${filtered.length} of ${cohort.length} enrolled learners • Click any student to inspect reading diagnostic`;
+      }
+
+      // Render Table
+      const tableBody = document.getElementById(`roster-table-body-${classId}`);
+      if (tableBody) {
+        if (filtered.length === 0) {
+          tableBody.innerHTML = `
+            <tr>
+              <td colspan="7" class="tb-roster-empty-state">
+                <p style="margin-bottom:0.5rem; font-weight:600; color:var(--slate-700);">No learners match your search or filter</p>
+                <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="filterClassRoster('${classId}', 'all'); document.getElementById('roster-search-${classId}').value=''; handleRosterSearch('${classId}');">
+                  Reset Filters
+                </button>
+              </td>
+            </tr>
+          `;
+        } else {
+          tableBody.innerHTML = filtered.map((l, index) => {
+            const accClass = l.accuracyPercent < 70 ? 'tb-accuracy-pill--low' : (l.accuracyPercent < 85 ? 'tb-accuracy-pill--mid' : 'tb-accuracy-pill--high');
+            const rowHighlight = l.category === 'attention' ? 'background-color:#fffdf7;' : '';
+            const stageColor = l.category === 'attention' ? '#b45309' : (l.category === 'fluent' ? 'var(--blue-700)' : 'var(--teal)');
+            return `
+              <tr style="${rowHighlight}" onclick="showLearnerModal('${l.lrn}')" title="Click to view ${l.name}'s complete diagnostic records">
+                <td style="color:var(--slate-400); font-size:0.75rem; font-weight:600;">${index + 1}</td>
+                <td>
+                  <div class="tb-roster-student-cell">
+                    <div class="tb-roster-avatar-sm" style="background-color:${l.avatarBg};">${l.initials}</div>
+                    <div>
+                      <div class="tb-roster-student-name">${l.name}</div>
+                      <div class="tb-roster-student-code">${l.lrn}</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span style="font-family:monospace; font-weight:600; font-size:0.8125rem; background:#f1f5f9; padding:0.15rem 0.35rem; border-radius:0.25rem;">${l.pin}</span>
+                </td>
+                <td>
+                  <span style="font-weight:600; font-size:0.78125rem; color:${stageColor};">
+                    ${l.readingStage}
+                  </span>
+                </td>
+                <td>
+                  <span class="tb-accuracy-pill ${accClass}">${l.accuracy}</span>
+                </td>
+                <td>
+                  <strong style="color:var(--navy-900); font-size:0.8125rem;">${l.wcpm}</strong>
+                </td>
+                <td>
+                  <div style="display:flex; align-items:center; gap:0.35rem;">
+                    <span class="tb-tag ${l.statusClass}" style="font-size:0.7rem; padding:0.15rem 0.45rem;">${l.status}</span>
+                    <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" style="padding:0.2rem 0.5rem; font-size:0.75rem;" onclick="event.stopPropagation(); showLearnerModal('${l.lrn}')">
+                      View
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join('');
+        }
+      }
+
+      // Render Cards View (Alternative View)
+      const cardsView = document.getElementById(`roster-cards-view-${classId}`);
+      if (cardsView) {
+        if (filtered.length === 0) {
+          cardsView.innerHTML = `
+            <div style="grid-column:1/-1; text-align:center; padding:2rem; color:var(--slate-500);">
+              No learners match your current filter.
+            </div>
+          `;
+        } else {
+          cardsView.innerHTML = filtered.map(l => {
+            const accClass = l.accuracyPercent < 70 ? 'tb-accuracy-pill--low' : (l.accuracyPercent < 85 ? 'tb-accuracy-pill--mid' : 'tb-accuracy-pill--high');
+            const borderStyle = l.category === 'attention' ? 'border-color:rgba(245, 158, 11, 0.4); background:#fffdfa;' : '';
+            return `
+              <button type="button" class="tb-learner-card" onclick="showLearnerModal('${l.lrn}')" style="${borderStyle}">
+                <div class="tb-learner-card__left">
+                  <div class="tb-learner-avatar-lg" style="background:${l.avatarBg}20; color:${l.avatarBg};">${l.initials}</div>
+                  <div class="tb-learner-card__info">
+                    <span class="tb-learner-card__name">${l.name}</span>
+                    <span class="tb-learner-card__meta">${l.lrn} &bull; PIN: ${l.pin}</span>
+                    <span style="font-size:0.75rem; color:${l.category === 'attention' ? '#b45309' : 'var(--teal)'}; font-weight:600;">${l.readingStage}</span>
+                  </div>
+                </div>
+                <div class="tb-learner-card__right">
+                  <span class="tb-accuracy-pill ${accClass}">${l.accuracy}</span>
+                  <span style="font-size:0.7rem; color:var(--slate-500); font-weight:600;">${l.wcpm}</span>
+                </div>
+              </button>
+            `;
+          }).join('');
+        }
+      }
+    }
+
+    // Active class roster modal state
+    let activeModalClassId = null;
+    const modalRosterState = {
+      filter: 'all',
+      search: '',
+      sort: 'name-asc',
+      view: 'table'
+    };
+
+    function openClassRosterModal(classId) {
+      activeModalClassId = classId;
+      const modal = document.getElementById('classRosterModal');
+      if (!modal) return;
+
+      const cohort = CLASS_COHORTS[classId] || [];
+      const className = classId === '1' ? 'Mabini — Diamond' : 'Rizal — Emerald';
+      const grade = classId === '1' ? 'Grade 1' : 'Grade 2';
+
+      // Update Header
+      document.getElementById('rosterModalTitle').textContent = `${className} Roster`;
+      document.getElementById('rosterModalGradeTag').textContent = grade;
+      document.getElementById('rosterModalSubtitle').textContent = `DepEd Class Directory • ${cohort.length} Enrolled Learners • School Year 2024–2025`;
+
+      // Update Stats & Triage Counts
+      const attentionCount = cohort.filter(c => c.category === 'attention').length;
+      const growingCount = cohort.filter(c => c.category === 'growing').length;
+      const fluentCount = cohort.filter(c => c.category === 'fluent').length;
+      const avgAcc = (cohort.reduce((acc, c) => acc + c.accuracyPercent, 0) / (cohort.length || 1)).toFixed(1);
+
+      document.getElementById('modal-stat-total').textContent = cohort.length;
+      document.getElementById('modal-stat-attention').textContent = attentionCount;
+      document.getElementById('modal-stat-growing').textContent = growingCount;
+      document.getElementById('modal-stat-fluent').textContent = fluentCount;
+      document.getElementById('modal-stat-avg').textContent = `${avgAcc}%`;
+
+      // Reset filters & search
+      modalRosterState.filter = 'all';
+      modalRosterState.search = '';
+      modalRosterState.sort = 'name-asc';
+      document.getElementById('modalRosterSearch').value = '';
+      document.getElementById('modalRosterSort').value = 'name-asc';
+      updateModalFilterChipUI();
+
+      renderModalRoster();
+
+      modal.classList.add('tb-modal-backdrop--active');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        const searchInp = document.getElementById('modalRosterSearch');
+        if (searchInp) searchInp.focus();
+      }, 50);
+    }
+
+    function closeClassRosterModal() {
+      const modal = document.getElementById('classRosterModal');
+      if (modal) {
+        modal.classList.remove('tb-modal-backdrop--active');
+        document.body.style.overflow = '';
+      }
+      activeModalClassId = null;
+    }
+
+    function handleRosterBackdropClick(event) {
+      if (event.target && event.target.id === 'classRosterModal') {
+        closeClassRosterModal();
+      }
+    }
+
+    function setModalRosterFilter(filterType) {
+      modalRosterState.filter = filterType;
+      updateModalFilterChipUI();
+      renderModalRoster();
+    }
+
+    function updateModalFilterChipUI() {
+      const chips = ['all', 'attention', 'growing', 'fluent'];
+      chips.forEach(chip => {
+        const el = document.getElementById(`modal-chip-${chip}`);
+        if (el) {
+          if (chip === modalRosterState.filter) {
+            el.classList.add('tb-roster-chip--active');
+          } else {
+            el.classList.remove('tb-roster-chip--active');
+          }
+        }
+      });
+    }
+
+    function handleModalRosterSearch() {
+      const input = document.getElementById('modalRosterSearch');
+      if (!input) return;
+      modalRosterState.search = input.value.trim().toLowerCase();
+      renderModalRoster();
+    }
+
+    function handleModalRosterSort() {
+      const select = document.getElementById('modalRosterSort');
+      if (!select) return;
+      modalRosterState.sort = select.value;
+      renderModalRoster();
+    }
+
+    function setModalRosterView(mode) {
+      modalRosterState.view = mode;
+      const btnTable = document.getElementById('btnModalViewTable');
+      const btnCards = document.getElementById('btnModalViewCards');
+      const tableView = document.getElementById('modalRosterTableView');
+      const cardsView = document.getElementById('modalRosterCardsView');
+
+      if (mode === 'table') {
+        btnTable?.classList.add('tb-view-toggle-btn--active');
+        btnCards?.classList.remove('tb-view-toggle-btn--active');
+        if (tableView) tableView.style.display = 'block';
+        if (cardsView) cardsView.style.display = 'none';
+      } else {
+        btnCards?.classList.add('tb-view-toggle-btn--active');
+        btnTable?.classList.remove('tb-view-toggle-btn--active');
+        if (tableView) tableView.style.display = 'none';
+        if (cardsView) cardsView.style.display = 'grid';
+      }
+      renderModalRoster();
+    }
+
+    function renderModalRoster() {
+      if (!activeModalClassId) return;
+      const cohort = CLASS_COHORTS[activeModalClassId] || [];
+
+      let filtered = cohort.filter(item => {
+        if (modalRosterState.filter === 'attention' && item.category !== 'attention') return false;
+        if (modalRosterState.filter === 'growing' && item.category !== 'growing') return false;
+        if (modalRosterState.filter === 'fluent' && item.category !== 'fluent') return false;
+
+        if (modalRosterState.search) {
+          const matchName = item.name.toLowerCase().includes(modalRosterState.search);
+          const matchLRN = item.lrn.toLowerCase().includes(modalRosterState.search);
+          const matchPIN = item.pin.includes(modalRosterState.search);
+          if (!matchName && !matchLRN && !matchPIN) return false;
+        }
+        return true;
+      });
+
+      // Sort
+      filtered.sort((a, b) => {
+        if (modalRosterState.sort === 'name-asc') return a.name.localeCompare(b.name);
+        if (modalRosterState.sort === 'accuracy-asc') return a.accuracyPercent - b.accuracyPercent;
+        if (modalRosterState.sort === 'accuracy-desc') return b.accuracyPercent - a.accuracyPercent;
+        if (modalRosterState.sort === 'wcpm-desc') return b.wcpmNum - a.wcpmNum;
+        return 0;
+      });
+
+      // Update counter
+      const countLabel = document.getElementById('modalRosterCountLabel');
+      if (countLabel) {
+        countLabel.textContent = `Showing ${filtered.length} of ${cohort.length} enrolled learners • Click any student row to view full audio diagnostic`;
+      }
+
+      // Render Table
+      const tableBody = document.getElementById('modalRosterTableBody');
+      if (tableBody) {
+        if (filtered.length === 0) {
+          tableBody.innerHTML = `
+            <tr>
+              <td colspan="7" class="tb-roster-empty-state">
+                <p style="margin-bottom:0.5rem; font-weight:600; color:var(--slate-700);">No learners match your search or filter</p>
+                <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" onclick="modalRosterState.search=''; document.getElementById('modalRosterSearch').value=''; setModalRosterFilter('all');">
+                  Reset Search &amp; Filters
+                </button>
+              </td>
+            </tr>
+          `;
+        } else {
+          tableBody.innerHTML = filtered.map((l, index) => {
+            const accClass = l.accuracyPercent < 70 ? 'tb-accuracy-pill--low' : (l.accuracyPercent < 85 ? 'tb-accuracy-pill--mid' : 'tb-accuracy-pill--high');
+            const rowHighlight = l.category === 'attention' ? 'background-color:#fffdf7;' : '';
+            const stageColor = l.category === 'attention' ? '#b45309' : (l.category === 'fluent' ? 'var(--blue-700)' : 'var(--teal)');
+            return `
+              <tr style="${rowHighlight}" onclick="showLearnerModal('${l.lrn}')" title="Click to view ${l.name}'s complete diagnostic records">
+                <td style="color:var(--slate-400); font-size:0.75rem; font-weight:600;">${index + 1}</td>
+                <td>
+                  <div class="tb-roster-student-cell">
+                    <div class="tb-roster-avatar-sm" style="background-color:${l.avatarBg};">${l.initials}</div>
+                    <div>
+                      <div class="tb-roster-student-name">${l.name}</div>
+                      <div class="tb-roster-student-code">${l.lrn}</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span style="font-family:monospace; font-weight:600; font-size:0.8125rem; background:#f1f5f9; padding:0.15rem 0.35rem; border-radius:0.25rem;">${l.pin}</span>
+                </td>
+                <td>
+                  <span style="font-weight:600; font-size:0.78125rem; color:${stageColor};">
+                    ${l.readingStage}
+                  </span>
+                </td>
+                <td>
+                  <span class="tb-accuracy-pill ${accClass}">${l.accuracy}</span>
+                </td>
+                <td>
+                  <strong style="color:var(--navy-900); font-size:0.8125rem;">${l.wcpm}</strong>
+                </td>
+                <td>
+                  <div style="display:flex; align-items:center; gap:0.35rem;">
+                    <span class="tb-tag ${l.statusClass}" style="font-size:0.7rem; padding:0.15rem 0.45rem;">${l.status}</span>
+                    <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" style="padding:0.2rem 0.5rem; font-size:0.75rem;" onclick="event.stopPropagation(); showLearnerModal('${l.lrn}')">
+                      View
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join('');
+        }
+      }
+
+      // Render Cards View
+      const cardsView = document.getElementById('modalRosterCardsView');
+      if (cardsView) {
+        if (filtered.length === 0) {
+          cardsView.innerHTML = `
+            <div style="grid-column:1/-1; text-align:center; padding:2rem; color:var(--slate-500);">
+              No learners match your search or filter.
+            </div>
+          `;
+        } else {
+          cardsView.innerHTML = filtered.map(l => {
+            const accClass = l.accuracyPercent < 70 ? 'tb-accuracy-pill--low' : (l.accuracyPercent < 85 ? 'tb-accuracy-pill--mid' : 'tb-accuracy-pill--high');
+            const borderStyle = l.category === 'attention' ? 'border-color:rgba(245, 158, 11, 0.4); background:#fffdfa;' : '';
+            return `
+              <button type="button" class="tb-learner-card" onclick="showLearnerModal('${l.lrn}')" style="${borderStyle}">
+                <div class="tb-learner-card__left">
+                  <div class="tb-learner-avatar-lg" style="background:${l.avatarBg}20; color:${l.avatarBg};">${l.initials}</div>
+                  <div class="tb-learner-card__info">
+                    <span class="tb-learner-card__name">${l.name}</span>
+                    <span class="tb-learner-card__meta">${l.lrn} &bull; PIN: ${l.pin}</span>
+                    <span style="font-size:0.75rem; color:${l.category === 'attention' ? '#b45309' : 'var(--teal)'}; font-weight:600;">${l.readingStage}</span>
+                  </div>
+                </div>
+                <div class="tb-learner-card__right">
+                  <span class="tb-accuracy-pill ${accClass}">${l.accuracy}</span>
+                  <span style="font-size:0.7rem; color:var(--slate-500); font-weight:600;">${l.wcpm}</span>
+                </div>
+              </button>
+            `;
+          }).join('');
+        }
+      }
+    }
+
+    function handleModalPrintCredentials() {
+      if (!activeModalClassId) return;
+      const className = activeModalClassId === '1' ? 'Mabini — Diamond' : 'Rizal — Emerald';
+      const cohort = CLASS_COHORTS[activeModalClassId] || [];
+      printClassCredentials(className, cohort.length);
+    }
+
+    function handleModalAddLearner() {
+      if (!activeModalClassId) return;
+      const boxId = `add-box-${activeModalClassId}`;
+      closeClassRosterModal();
+      toggleAddLearner(boxId);
+      const box = document.getElementById(boxId);
+      if (box) box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Initialize high-capacity rosters on load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderRoster('1');
+      renderRoster('2');
+    });
+
+    // Teacher Utility: Print Credentials Dialog for 30-40 students
+    function printClassCredentials(className, count) {
+      const modal = document.createElement('div');
+      modal.className = 'tb-modal-backdrop tb-modal-backdrop--active';
+      modal.id = 'printCredentialsModal';
+      modal.innerHTML = `
+        <div class="tb-modal" style="max-width:34rem;" onclick="event.stopPropagation()">
+          <div class="tb-modal__header">
+            <div class="tb-modal__title-group">
+              <h3 class="tb-modal__title">Print Student Wallet Cards</h3>
+              <p class="tb-modal__subtitle">${className} • ${count} Enrolled Learners</p>
+            </div>
+            <button type="button" class="tb-modal__close" onclick="document.getElementById('printCredentialsModal').remove()">&times;</button>
+          </div>
+          <div class="tb-modal__body" style="padding:1.25rem 1.5rem;">
+            <div style="background:var(--sky-50); border:1px solid #bfdbfe; border-radius:var(--radius-md); padding:1rem; margin-bottom:1rem;">
+              <p style="font-size:0.875rem; color:var(--blue-900); font-weight:600; margin-bottom:0.25rem;">
+                🖨️ Ready to print 3x2 inch Learner Login Slips
+              </p>
+              <p style="font-size:0.8125rem; color:var(--slate-600);">
+                Each slip contains the student's name, DepEd LRN, and unique 4-digit TaraBasa PIN so young learners (Grade 1–3) can easily log into tablet reading kiosks.
+              </p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.8125rem; color:var(--slate-700);">
+              <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                <input type="checkbox" checked> Include QR code for rapid kiosk scan
+              </label>
+              <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                <input type="checkbox" checked> Group by Reading Group / Intervention Category
+              </label>
+              <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                <input type="checkbox" checked> Format for standard DepEd A4 printing (8 slips per sheet)
+              </label>
+            </div>
+          </div>
+          <div class="tb-modal__footer" style="padding:1rem 1.5rem; display:flex; justify-content:flex-end; gap:0.75rem; border-top:1px solid var(--line);">
+            <button type="button" class="tb-btn tb-btn--outline" onclick="document.getElementById('printCredentialsModal').remove()">Cancel</button>
+            <button type="button" class="tb-btn tb-btn--primary" onclick="window.print(); document.getElementById('printCredentialsModal').remove();">
+              Open Print Preview &rarr;
+            </button>
+          </div>
+        </div>
+      `;
+      modal.onclick = () => modal.remove();
+      document.body.appendChild(modal);
+    }
+
+    let activeLearnerId = null;
+    let audioPlayingInterval = null;
+    let audioPlaybackSeconds = 0;
+
+    // Show Learner Detail Modal
+    function showLearnerModal(learnerId) {
+      const data = LEARNERS_DATA[learnerId];
+      if (!data) return;
+
+      activeLearnerId = learnerId;
+
+      // Populate Modal Fields
+      document.getElementById('learnerModalName').textContent = data.name;
+      document.getElementById('learnerModalFullName').textContent = data.name;
+      document.getElementById('learnerModalAvatar').textContent = data.initials;
+      document.getElementById('learnerModalAvatar').style.backgroundColor = data.avatarBg;
+      document.getElementById('learnerModalLRN').textContent = `LRN: ${data.lrn.replace('LRN-', '')}`;
+      document.getElementById('learnerModalPIN').textContent = `PIN: ${data.pin}`;
+      document.getElementById('learnerModalSubtitle').textContent = `${data.grade} • ${data.className} — ${data.section} • DepEd Region IV-A`;
+      
+      const statusEl = document.getElementById('learnerModalStatus');
+      statusEl.textContent = data.status;
+      statusEl.className = `tb-tag ${data.statusClass}`;
+
+      document.getElementById('learnerModalStage').textContent = data.readingStage;
+      document.getElementById('learnerModalApproachSub').textContent = data.approachSub;
+      document.getElementById('learnerModalAccuracy').textContent = data.accuracy;
+      document.getElementById('learnerModalAccuracySub').textContent = data.accuracySub;
+      document.getElementById('learnerModalWCPM').textContent = data.wcpm;
+      document.getElementById('learnerModalWCPMSub').textContent = data.wcpmSub;
+
+      document.getElementById('learnerModalMastery').textContent = data.mastery;
+      document.getElementById('learnerModalPriority').textContent = data.priority;
+
+      document.getElementById('learnerModalStoryTitle').textContent = data.storyTitle;
+      document.getElementById('learnerModalStoryDate').textContent = data.storyDate;
+      document.getElementById('learnerModalPassageTag').textContent = data.passageTag;
+
+      document.getElementById('learnerModalAnalyticsLink').href = `/analytics.html?learner=${encodeURIComponent(learnerId)}`;
+      document.getElementById('learnerModalGenerateLink').href = `/generate-activity.html?learner=${encodeURIComponent(learnerId)}&grade=${encodeURIComponent(data.grade)}`;
+      document.getElementById('learnerModalGenerateText').textContent = `Generate Story for ${data.name.split(' ')[0]}`;
+
+      // Reset audio player state
+      resetLearnerAudio();
+
+      // Open Modal
+      const modal = document.getElementById('learnerDetailModal');
+      if (modal) {
+        modal.classList.add('tb-modal-backdrop--active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeLearnerModal() {
+      const modal = document.getElementById('learnerDetailModal');
+      if (modal) {
+        modal.classList.remove('tb-modal-backdrop--active');
+        document.body.style.overflow = '';
+      }
+      resetLearnerAudio();
+    }
+
+    function handleLearnerBackdropClick(event) {
+      if (event.target && event.target.id === 'learnerDetailModal') {
+        closeLearnerModal();
+      }
+    }
+
+    function copyLearnerCredentials() {
+      if (!activeLearnerId) return;
+      const data = LEARNERS_DATA[activeLearnerId];
+      if (!data) return;
+
+      const credText = `Learner: ${data.name}\nLRN Code: ${data.lrn}\nTaraBasa PIN: ${data.pin}\nClass: ${data.className} — ${data.section} (${data.grade})`;
+
+      navigator.clipboard.writeText(credText).then(() => {
+        const btnText = document.getElementById('copyCredentialsText');
+        const originalText = btnText.textContent;
+        btnText.textContent = 'Copied to Clipboard! ✓';
+        setTimeout(() => {
+          btnText.textContent = originalText;
+        }, 2000);
+      }).catch(() => {
+        alert(credText);
+      });
+    }
+
+    function resetLearnerAudio() {
+      if (audioPlayingInterval) {
+        clearInterval(audioPlayingInterval);
+        audioPlayingInterval = null;
+      }
+      audioPlaybackSeconds = 0;
+      const playBtn = document.getElementById('btnPlayLearnerAudio');
+      if (playBtn) {
+        playBtn.className = 'tb-btn tb-btn--sm tb-btn--primary';
+        playBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span>Listen to Reading</span>
+        `;
+      }
+      const timestampEl = document.getElementById('audioTimestamp');
+      if (timestampEl) {
+        timestampEl.textContent = '0:00 / 1:45';
+      }
+      const bars = document.querySelectorAll('#waveformBars .tb-waveform-bar');
+      bars.forEach(bar => {
+        bar.style.opacity = '0.6';
+        bar.style.transform = 'scaleY(1)';
+      });
+    }
+
+    function togglePlayLearnerAudio() {
+      const playBtn = document.getElementById('btnPlayLearnerAudio');
+      const timestampEl = document.getElementById('audioTimestamp');
+      const bars = document.querySelectorAll('#waveformBars .tb-waveform-bar');
+
+      if (audioPlayingInterval) {
+        // Pause
+        clearInterval(audioPlayingInterval);
+        audioPlayingInterval = null;
+        playBtn.className = 'tb-btn tb-btn--sm tb-btn--primary';
+        playBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span>Resume Reading</span>
+        `;
+        bars.forEach(bar => bar.style.opacity = '0.6');
+      } else {
+        // Play
+        playBtn.className = 'tb-btn tb-btn--sm tb-btn--amber';
+        playBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:0.875rem; height:0.875rem; margin-right:0.25rem;">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+          <span>Pause Audio</span>
+        `;
+        bars.forEach(bar => bar.style.opacity = '1');
+
+        audioPlayingInterval = setInterval(() => {
+          audioPlaybackSeconds += 1;
+          if (audioPlaybackSeconds >= 105) { // 1m 45s
+            resetLearnerAudio();
+            return;
+          }
+          const m = Math.floor(audioPlaybackSeconds / 60);
+          const s = audioPlaybackSeconds % 60;
+          timestampEl.textContent = `${m}:${s < 10 ? '0' : ''}${s} / 1:45`;
+
+          // Animate waveform bars randomly
+          bars.forEach(bar => {
+            const randomScale = 0.5 + Math.random() * 0.9;
+            bar.style.transform = `scaleY(${randomScale})`;
+          });
+        }, 1000);
+      }
+    }
+
+    // Escape key closes open modal (handles Create Class, Class Roster Modal, and Learner Detail)
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const createModal = document.getElementById('createClassModal');
+        if (createModal && createModal.classList.contains('tb-modal-backdrop--active')) {
+          closeCreateClassModal();
+          return;
+        }
+        const rosterModal = document.getElementById('classRosterModal');
+        if (rosterModal && rosterModal.classList.contains('tb-modal-backdrop--active')) {
+          closeClassRosterModal();
+          return;
+        }
+        const learnerModal = document.getElementById('learnerDetailModal');
+        if (learnerModal && learnerModal.classList.contains('tb-modal-backdrop--active')) {
+          closeLearnerModal();
+          return;
+        }
+      }
+    });
+
+    function handleYearChange(year) {
+      const isPast = year === '2023-2024';
+      const isEmpty = year === '2022-2023';
+      const actionEls = document.querySelectorAll('.class-actions');
+      const readOnlyNotice = document.getElementById('readOnlyNotice');
+      const newClassBtn = document.getElementById('btnNewClass');
+      const classList = document.getElementById('classListContainer');
+      const emptyState = document.getElementById('emptyStateBox');
+
+      if (isEmpty) {
+        classList.style.display = 'none';
+        emptyState.style.display = 'flex';
+        readOnlyNotice.style.display = 'none';
+        newClassBtn.style.display = 'inline-flex';
+      } else {
+        classList.style.display = 'block';
+        emptyState.style.display = 'none';
+        if (isPast) {
+          actionEls.forEach(el => el.style.display = 'none');
+          readOnlyNotice.style.display = 'inline-block';
+          newClassBtn.style.display = 'none';
+        } else {
+          actionEls.forEach(el => el.style.display = 'flex');
+          readOnlyNotice.style.display = 'none';
+          newClassBtn.style.display = 'inline-flex';
+        }
+      }
+    }
+
+    function setClassTeacherState(state) {
+      const isPending = state === 'pending';
+      const pill = document.getElementById('sidebarStatusPill');
+      const btnNewClass = document.getElementById('btnNewClass');
+      const lockedNewClass = document.getElementById('lockedNewClass');
+      const activeActions = document.querySelectorAll('.action-active-state');
+      const lockedActions = document.querySelectorAll('.action-locked-state');
+      const btnModeActive = document.getElementById('btnModeActive');
+      const btnModePending = document.getElementById('btnModePending');
+
+      if (isPending) {
+        pill.className = 'tb-pill tb-pill--pending';
+        pill.textContent = 'Pending';
+        btnNewClass.style.display = 'none';
+        lockedNewClass.style.display = 'inline-flex';
+        activeActions.forEach(el => el.style.display = 'none');
+        lockedActions.forEach(el => el.style.display = 'block');
+        btnModePending.className = 'tb-btn tb-btn--sm tb-btn--primary';
+        btnModeActive.className = 'tb-btn tb-btn--sm tb-btn--outline';
+      } else {
+        pill.className = 'tb-pill tb-pill--active';
+        pill.textContent = 'Active';
+        btnNewClass.style.display = 'inline-flex';
+        lockedNewClass.style.display = 'none';
+        activeActions.forEach(el => el.style.display = 'flex');
+        lockedActions.forEach(el => el.style.display = 'none');
+        btnModeActive.className = 'tb-btn tb-btn--sm tb-btn--primary';
+        btnModePending.className = 'tb-btn tb-btn--sm tb-btn--outline';
+      }
+    }
+
+    function toggleEmptyState() {
+      const sel = document.getElementById('school_year_select');
+      if (sel.value === '2022-2023') {
+        sel.value = '2024-2025';
+      } else {
+        sel.value = '2022-2023';
+      }
+      handleYearChange(sel.value);
+    }
+
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('sidebarNav');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    if (menuBtn && sidebar && backdrop) {
+      function toggleSidebar() {
+        const isOpen = sidebar.classList.toggle('tb-sidebar--open');
+        backdrop.classList.toggle('tb-sidebar-backdrop--active');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+      }
+      menuBtn.addEventListener('click', toggleSidebar);
+      backdrop.addEventListener('click', toggleSidebar);
+    }
+
+    // Check if URL parameters request opening the modal
+    if (window.location.hash === '#new-class' || new URLSearchParams(window.location.search).get('action') === 'new') {
+      openCreateClassModal();
+    }
+  </script>
+</body>
+</html>

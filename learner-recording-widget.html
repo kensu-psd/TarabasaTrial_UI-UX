@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shared Recording Widget (6 States) — TaraBasa AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-learner.css">
+  <link rel="stylesheet" href="/css/tarabasa-learner.css">
+</head>
+<body>
+
+  <!-- Screen Switcher Toolbar for Reviewers -->
+  <header class="tb-review-nav" aria-label="Learner Redesign Screen Switcher">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <span style="background:var(--teal); color:#ffffff; font-weight:700; padding:0.125rem 0.5rem; border-radius:4px; font-size:0.75rem;">Learner Component</span>
+      <span style="font-weight:600; color:#e2e8f0;">Shared Recording Widget (6 Mutually-Exclusive States)</span>
+    </div>
+    <nav style="display:flex; align-items:center; gap:0.375rem; flex-wrap:wrap;">
+      <a href="/learner-login.html">1. Login</a>
+      <a href="/learner-dashboard.html">2. Dashboard</a>
+      <a href="/learner-activity-picker.html">3. Picker</a>
+      <a href="/learner-reading.html">4. Reading</a>
+      <a href="/learner-diagnostic-intro.html">5. Diag Intro</a>
+      <a href="/learner-diagnostic-passage.html">6. Diag Passage</a>
+      <a href="/learner-diagnostic-encourage.html">7. Encourage</a>
+      <a href="/learner-diagnostic-results.html">8. Diag Result</a>
+      <a href="/learner-reading-results.html">9. Read Result</a>
+      <a href="/learner-reading-unclear.html">10. Unclear</a>
+      <a href="/learner-recording-widget.html" class="tb-review-nav--active">Widget (6 States)</a>
+    </nav>
+  </header>
+
+  <main class="tb-stage tb-stage--wide" id="mainContent">
+    <!-- Claymorphism Ambient Blobs -->
+    <div class="tb-blob-wrap" aria-hidden="true">
+      <div class="tb-blob tb-blob--yellow"></div>
+      <div class="tb-blob tb-blob--blue"></div>
+      <div class="tb-blob tb-blob--teal"></div>
+    </div>
+
+    <!-- Centered Container -->
+    <section class="tb-card" aria-labelledby="widgetHeading">
+      
+      <!-- Mascot -->
+      <div class="tb-mascot tb-mascot--sm" role="img" aria-label="Tara the Owl with headphones">
+        🎧
+      </div>
+
+      <h1 id="widgetHeading" class="tb-h1">Recording Widget Component</h1>
+      <p class="tb-sub">
+        Below is the production-ready shared widget demonstrating all <strong>6 mutually exclusive states</strong>. Click any state button to test the live transition.
+      </p>
+
+      <!-- Interactive 6-State Selector Tabs -->
+      <div style="display:flex; flex-wrap:wrap; gap:0.375rem; justify-content:center; width:100%; margin-bottom:1.5rem;" role="tablist" aria-label="Recording widget states">
+        <button type="button" class="tb-btn-quiet" style="margin:0; background:var(--sky-50); border:1px solid var(--line); font-size:0.8125rem; padding:0.375rem 0.625rem;" onclick="activateState('ready')" id="tabReady">
+          3. Ready (Default)
+        </button>
+        <button type="button" class="tb-btn-quiet" style="margin:0; background:var(--sky-50); border:1px solid var(--line); font-size:0.8125rem; padding:0.375rem 0.625rem;" onclick="activateState('recording')" id="tabRecording">
+          4. Recording (Active)
+        </button>
+        <button type="button" class="tb-btn-quiet" style="margin:0; background:var(--sky-50); border:1px solid var(--line); font-size:0.8125rem; padding:0.375rem 0.625rem;" onclick="activateState('checking')" id="tabChecking">
+          5. Checking
+        </button>
+        <button type="button" class="tb-btn-quiet" style="margin:0; background:var(--sky-50); border:1px solid var(--line); font-size:0.8125rem; padding:0.375rem 0.625rem;" onclick="activateState('silent')" id="tabSilent">
+          6. Silent (No Audio)
+        </button>
+        <button type="button" class="tb-btn-quiet" style="margin:0; background:var(--sky-50); border:1px solid var(--line); font-size:0.8125rem; padding:0.375rem 0.625rem;" onclick="activateState('permission')" id="tabPermission">
+          2. Permission
+        </button>
+        <button type="button" class="tb-btn-quiet" style="margin:0; background:var(--sky-50); border:1px solid var(--line); font-size:0.8125rem; padding:0.375rem 0.625rem;" onclick="activateState('unsupported')" id="tabUnsupported">
+          1. Unsupported
+        </button>
+      </div>
+
+      <!-- ================================================================
+           SHARED RECORDING WIDGET MARKUP (Ready for Blade extraction)
+           ================================================================ -->
+      <div class="tb-recording-widget" id="demoRecordingWidget" style="border:2px dashed var(--line); border-radius:var(--radius-md); padding:1.5rem 1rem; width:100%; background:#fcfdfe;">
+        
+        <!-- 1. UNSUPPORTED STATE (Amber note) -->
+        <div class="tb-record-state" id="wStateUnsupported" role="status">
+          <div class="tb-banner-learner tb-banner-learner--amber" style="margin-bottom:0;">
+            <span class="tb-banner-learner__icon" aria-hidden="true">💡</span>
+            <div>Recording isn't supported in this browser yet &mdash; please try a newer browser like Chrome.</div>
+          </div>
+        </div>
+
+        <!-- 2. PERMISSION STATE (Amber note) -->
+        <div class="tb-record-state" id="wStatePermission" role="status">
+          <div class="tb-banner-learner tb-banner-learner--amber" style="margin-bottom:0;">
+            <span class="tb-banner-learner__icon" aria-hidden="true">🎙️</span>
+            <div>We need to hear you read! Please allow microphone access when your browser asks, then tap the mic again.</div>
+          </div>
+        </div>
+
+        <!-- 3. READY STATE (Default / Idle) -->
+        <div class="tb-record-state tb-record-state--active" id="wStateReady">
+          <button type="button" class="tb-mic-btn" aria-label="Tap to start microphone recording" onclick="activateState('recording')">
+            🎙️
+          </button>
+          <span class="tb-mic-label">Tap the mic, then read the words above out loud!</span>
+        </div>
+
+        <!-- 4. RECORDING STATE (Pulsing ring, running timer, "I'm done reading!" button) -->
+        <div class="tb-record-state" id="wStateRecording">
+          <div class="tb-recording-pulse-wrap">
+            <div class="tb-recording-pulse-ring"></div>
+            <div class="tb-mic-recording-active" aria-hidden="true">
+              🎙️
+            </div>
+          </div>
+          <div class="tb-timer-badge">
+            <span>🔴</span>
+            <span id="demoTimerText">0:03</span>
+          </div>
+          <button type="button" class="tb-btn-big tb-btn-big--teal" style="max-width:18rem;" onclick="activateState('checking')">
+            <span>I'm done reading! 👍</span>
+          </button>
+        </div>
+
+        <!-- 5. CHECKING STATE (Processing loading spinner + "Checking...") -->
+        <div class="tb-record-state" id="wStateChecking" role="status" aria-live="polite">
+          <div class="tb-checking-spinner" aria-hidden="true"></div>
+          <span class="tb-checking-label">Checking... ⭐</span>
+        </div>
+
+        <!-- 6. SILENT STATE (No audio detected — gentle retry note) -->
+        <div class="tb-record-state" id="wStateSilent" role="alert">
+          <div class="tb-banner-learner tb-banner-learner--amber" style="margin-bottom:1rem;">
+            <span class="tb-banner-learner__icon" aria-hidden="true">👂</span>
+            <div>We didn't hear anything that time! Check that your microphone isn't muted or blocked, then give it another try.</div>
+          </div>
+          <button type="button" class="tb-btn-big tb-btn-big--amber" style="max-width:16rem;" onclick="activateState('ready')">
+            <span>Try Again 🎙️</span>
+          </button>
+        </div>
+
+      </div>
+      <!-- ================================================================
+           END SHARED RECORDING WIDGET
+           ================================================================ -->
+
+      <!-- Implementation Note for Laravel Blade Developers -->
+      <div style="margin-top:1.5rem; text-align:left; background:var(--sky-50); border:1px solid var(--line); border-radius:var(--radius-sm); padding:0.875rem 1rem; width:100%; font-size:0.875rem; color:var(--slate-600);">
+        <strong>💡 Blade Usage:</strong> Paste this markup into <code>resources/views/components/recording-widget.blade.php</code>. It accepts any standard <code>&lt;input type="file" name="audio"&gt;</code> file payload upon form submission and is driven by simple <code>tb-record-state--active</code> toggles.
+      </div>
+
+      <!-- Quiet Link Back to Dashboard -->
+      <a href="/learner-dashboard.html" class="tb-btn-quiet">
+        &larr; Back to My Dashboard
+      </a>
+
+    </section>
+  </main>
+
+  <script>
+    let timerTimer = null;
+    let secondsCount = 0;
+
+    function activateState(stateName) {
+      // Clear timers
+      clearInterval(timerTimer);
+
+      const allStates = {
+        'unsupported': 'wStateUnsupported',
+        'permission': 'wStatePermission',
+        'ready': 'wStateReady',
+        'recording': 'wStateRecording',
+        'checking': 'wStateChecking',
+        'silent': 'wStateSilent'
+      };
+
+      Object.keys(allStates).forEach(key => {
+        const el = document.getElementById(allStates[key]);
+        if (el) el.classList.remove('tb-record-state--active');
+        const tab = document.getElementById('tab' + key.charAt(0).toUpperCase() + key.slice(1));
+        if (tab) tab.style.background = 'var(--sky-50)';
+      });
+
+      const targetEl = document.getElementById(allStates[stateName]);
+      if (targetEl) targetEl.classList.add('tb-record-state--active');
+
+      const targetTab = document.getElementById('tab' + stateName.charAt(0).toUpperCase() + stateName.slice(1));
+      if (targetTab) targetTab.style.background = 'var(--sky-100)';
+
+      if (stateName === 'recording') {
+        secondsCount = 0;
+        document.getElementById('demoTimerText').textContent = '0:00';
+        timerTimer = setInterval(() => {
+          secondsCount++;
+          const mins = Math.floor(secondsCount / 60);
+          const secs = secondsCount % 60;
+          document.getElementById('demoTimerText').textContent = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }, 1000);
+      }
+    }
+
+    // Default activate ready
+    activateState('ready');
+  </script>
+</body>
+</html>

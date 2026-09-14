@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Activity — TaraBasa AI Learner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-learner.css">
+  <link rel="stylesheet" href="/css/tarabasa-learner.css">
+</head>
+<body>
+
+  <!-- Screen Switcher Toolbar for Reviewers -->
+  <header class="tb-review-nav" aria-label="Learner Redesign Screen Switcher">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <span style="background:var(--teal); color:#ffffff; font-weight:700; padding:0.125rem 0.5rem; border-radius:4px; font-size:0.75rem;">Learner Role</span>
+      <span style="font-weight:600; color:#e2e8f0;">Screen 4 of 10: Activity Found / Reading Screen</span>
+    </div>
+    <nav style="display:flex; align-items:center; gap:0.375rem; flex-wrap:wrap;">
+      <a href="/learner-login.html">1. Login</a>
+      <a href="/learner-dashboard.html">2. Dashboard</a>
+      <a href="/learner-activity-picker.html">3. Picker</a>
+      <a href="/learner-reading.html" class="tb-review-nav--active">4. Reading</a>
+      <a href="/learner-diagnostic-intro.html">5. Diag Intro</a>
+      <a href="/learner-diagnostic-passage.html">6. Diag Passage</a>
+      <a href="/learner-diagnostic-encourage.html">7. Encourage</a>
+      <a href="/learner-diagnostic-results.html">8. Diag Result</a>
+      <a href="/learner-reading-results.html">9. Read Result</a>
+      <a href="/learner-reading-unclear.html">10. Unclear</a>
+      <a href="/learner-recording-widget.html">Widget (6 States)</a>
+    </nav>
+  </header>
+
+  <main class="tb-stage tb-stage--wide" id="mainContent">
+    <!-- Claymorphism Ambient Blobs -->
+    <div class="tb-blob-wrap" aria-hidden="true">
+      <div class="tb-blob tb-blob--yellow"></div>
+      <div class="tb-blob tb-blob--blue"></div>
+      <div class="tb-blob tb-blob--teal"></div>
+    </div>
+
+    <!-- Centered Card Shell -->
+    <section class="tb-card" aria-labelledby="activityTitle">
+      
+      <!-- Mascot -->
+      <div class="tb-mascot tb-mascot--sm" role="img" aria-label="Tara the Owl cheering">
+        🦉
+      </div>
+
+      <!-- H1 = Activity Title -->
+      <h1 id="activityTitle" class="tb-h1">Si Muning at ang Daga</h1>
+      <p class="tb-sub">Read the words below out loud, then tap the mic!</p>
+
+      <!-- Reviewer Error State Switcher (Toggleable demo for technical error banner) -->
+      <div style="margin-bottom:0.75rem; width:100%; display:flex; justify-content:center; gap:0.5rem;">
+        <button type="button" onclick="toggleErrorBanner()" class="tb-btn-quiet" style="margin-top:0; font-size:0.8125rem; padding:0.25rem 0.5rem; min-height:auto; color:var(--slate-600);">
+          ⚙️ Toggle Technical Error Banner
+        </button>
+      </div>
+
+      <!-- Error Banner Slot (Only shown if submission/upload error occurred) -->
+      <div class="tb-banner-learner tb-banner-learner--danger" id="submissionErrorBanner" style="display:none;" role="alert">
+        <span class="tb-banner-learner__icon" aria-hidden="true">⚠️</span>
+        <div>
+          <strong>Oops!</strong> We couldn't send your reading. Check your internet connection, then give it another try!
+        </div>
+      </div>
+
+      <!-- THE PASSAGE ITSELF: Each word wrapped as an inline unit for decorative/paced tracking -->
+      <!-- Meets typography floor: 20-24px, line-height: 1.7 -->
+      <article class="tb-passage-card" aria-label="Reading passage text">
+        <div class="tb-passage-text" id="passageContainer">
+          <span class="tb-word" data-word-idx="0">Si</span>
+          <span class="tb-word" data-word-idx="1">Muning</span>
+          <span class="tb-word" data-word-idx="2">ay</span>
+          <span class="tb-word" data-word-idx="3">may</span>
+          <span class="tb-word" data-word-idx="4">hinahabol</span>
+          <span class="tb-word" data-word-idx="5">na</span>
+          <span class="tb-word" data-word-idx="6">maliit</span>
+          <span class="tb-word" data-word-idx="7">na</span>
+          <span class="tb-word" data-word-idx="8">daga</span>
+          <span class="tb-word" data-word-idx="9">sa</span>
+          <span class="tb-word" data-word-idx="10">ilalim</span>
+          <span class="tb-word" data-word-idx="11">ng</span>
+          <span class="tb-word" data-word-idx="12">mesa.</span>
+          <span class="tb-word" data-word-idx="13">Mabilis</span>
+          <span class="tb-word" data-word-idx="14">tumakbo</span>
+          <span class="tb-word" data-word-idx="15">ang</span>
+          <span class="tb-word" data-word-idx="16">daga</span>
+          <span class="tb-word" data-word-idx="17">papunta</span>
+          <span class="tb-word" data-word-idx="18">sa</span>
+          <span class="tb-word" data-word-idx="19">butas.</span>
+        </div>
+      </article>
+
+      <!-- REAL AUDIO FORM CONTAINER (Enctype multipart for Laravel file upload) -->
+      <form method="POST" action="/learner/activities/101/submit" enctype="multipart/form-data" id="audioSubmitForm" style="width:100%;">
+        <input type="hidden" name="_token" value="csrf-token-placeholder">
+        <input type="file" name="audio" id="audioFileInput" accept="audio/*" style="display:none;">
+
+        <!-- SHARED RECORDING WIDGET (Component with 6 States) -->
+        <div class="tb-recording-widget" id="recordingWidget">
+
+          <!-- STATE 1: Unsupported (Amber note) -->
+          <div class="tb-record-state" id="stateUnsupported">
+            <div class="tb-banner-learner tb-banner-learner--amber" style="margin-bottom:0;">
+              <span class="tb-banner-learner__icon">💡</span>
+              <div>Recording isn't supported in this browser yet — please try a newer browser like Chrome.</div>
+            </div>
+          </div>
+
+          <!-- STATE 2: Permission (Amber note) -->
+          <div class="tb-record-state" id="statePermission">
+            <div class="tb-banner-learner tb-banner-learner--amber" style="margin-bottom:0;">
+              <span class="tb-banner-learner__icon">🎙️</span>
+              <div>We need to hear you read! Please allow microphone access when your browser asks, then tap the mic again.</div>
+            </div>
+          </div>
+
+          <!-- STATE 3: Ready (Default/Idle) -->
+          <div class="tb-record-state tb-record-state--active" id="stateReady">
+            <button type="button" class="tb-mic-btn" id="startRecordingBtn" aria-label="Tap to start microphone recording" onclick="startSimulatedRecording()">
+              🎙️
+            </button>
+            <span class="tb-mic-label">Tap the mic, then read the words above out loud!</span>
+          </div>
+
+          <!-- STATE 4: Recording (Pulsing ring, timer, "I'm done reading!" button) -->
+          <div class="tb-record-state" id="stateRecording">
+            <div class="tb-recording-pulse-wrap">
+              <div class="tb-recording-pulse-ring"></div>
+              <div class="tb-mic-recording-active" aria-hidden="true">
+                🎙️
+              </div>
+            </div>
+            <div class="tb-timer-badge">
+              <span>🔴</span>
+              <span id="recordingTimer">0:04</span>
+            </div>
+            <button type="button" class="tb-btn-big tb-btn-big--teal" style="max-width:18rem;" onclick="finishSimulatedRecording()">
+              <span>I'm done reading! 👍</span>
+            </button>
+          </div>
+
+          <!-- STATE 5: Checking (Spinner + "Checking...") -->
+          <div class="tb-record-state" id="stateChecking">
+            <div class="tb-checking-spinner" aria-hidden="true"></div>
+            <span class="tb-checking-label">Checking... ⭐</span>
+          </div>
+
+          <!-- STATE 6: Silent (No audio detected) -->
+          <div class="tb-record-state" id="stateSilent">
+            <div class="tb-banner-learner tb-banner-learner--amber" style="margin-bottom:1rem;">
+              <span class="tb-banner-learner__icon">👂</span>
+              <div>We didn't hear anything that time! Check that your microphone isn't muted or blocked, then give it another try.</div>
+            </div>
+            <button type="button" class="tb-btn-big tb-btn-big--amber" style="max-width:16rem;" onclick="setWidgetState('stateReady')">
+              <span>Try Again 🎙️</span>
+            </button>
+          </div>
+
+        </div>
+      </form>
+
+      <!-- Reviewer Widget State Quick-Switcher -->
+      <div style="background:var(--sky-50); border:1px solid var(--line); border-radius:var(--radius-sm); padding:0.5rem; margin-top:1rem; width:100%; display:flex; align-items:center; justify-content:center; gap:0.375rem; flex-wrap:wrap; font-size:0.75rem;">
+        <span style="font-weight:700; color:var(--slate-600);">Widget Demo State:</span>
+        <button type="button" class="tb-btn-quiet" style="margin:0; padding:0.2rem 0.4rem; min-height:auto; font-size:0.75rem;" onclick="setWidgetState('stateReady')">1. Ready</button>
+        <button type="button" class="tb-btn-quiet" style="margin:0; padding:0.2rem 0.4rem; min-height:auto; font-size:0.75rem;" onclick="startSimulatedRecording()">2. Recording</button>
+        <button type="button" class="tb-btn-quiet" style="margin:0; padding:0.2rem 0.4rem; min-height:auto; font-size:0.75rem;" onclick="setWidgetState('stateChecking')">3. Checking</button>
+        <button type="button" class="tb-btn-quiet" style="margin:0; padding:0.2rem 0.4rem; min-height:auto; font-size:0.75rem;" onclick="setWidgetState('stateSilent')">4. Silent</button>
+        <button type="button" class="tb-btn-quiet" style="margin:0; padding:0.2rem 0.4rem; min-height:auto; font-size:0.75rem;" onclick="setWidgetState('statePermission')">5. Permission</button>
+        <button type="button" class="tb-btn-quiet" style="margin:0; padding:0.2rem 0.4rem; min-height:auto; font-size:0.75rem;" onclick="setWidgetState('stateUnsupported')">6. Unsupported</button>
+      </div>
+
+      <!-- Quiet Secondary Button: "Back to My Dashboard" -->
+      <a href="/learner-dashboard.html" class="tb-btn-quiet">
+        &larr; Back to My Dashboard
+      </a>
+
+    </section>
+  </main>
+
+  <script>
+    // State switcher helper
+    function setWidgetState(targetId) {
+      const states = ['stateUnsupported', 'statePermission', 'stateReady', 'stateRecording', 'stateChecking', 'stateSilent'];
+      states.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('tb-record-state--active');
+      });
+      const activeEl = document.getElementById(targetId);
+      if (activeEl) activeEl.classList.add('tb-record-state--active');
+
+      if (targetId !== 'stateRecording') {
+        stopPacedTracking();
+      }
+    }
+
+    // Word Tracking & Recording Simulation
+    let timerInterval = null;
+    let trackInterval = null;
+    let seconds = 0;
+    let currentWordIdx = 0;
+    const words = document.querySelectorAll('.tb-word');
+
+    function startSimulatedRecording() {
+      setWidgetState('stateRecording');
+      seconds = 0;
+      currentWordIdx = 0;
+      document.getElementById('recordingTimer').textContent = '0:00';
+
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        seconds++;
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        document.getElementById('recordingTimer').textContent = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+      }, 1000);
+
+      // Paced visual word tracker
+      clearInterval(trackInterval);
+      trackInterval = setInterval(() => {
+        words.forEach(w => w.classList.remove('tb-word--active'));
+        if (words[currentWordIdx]) {
+          words[currentWordIdx].classList.add('tb-word--active');
+          currentWordIdx++;
+        } else {
+          currentWordIdx = 0; // loop gently
+        }
+      }, 700);
+    }
+
+    function stopPacedTracking() {
+      clearInterval(timerInterval);
+      clearInterval(trackInterval);
+      words.forEach(w => w.classList.remove('tb-word--active'));
+    }
+
+    function finishSimulatedRecording() {
+      stopPacedTracking();
+      setWidgetState('stateChecking');
+      setTimeout(() => {
+        // Automatically redirects to reading results in interactive flow
+        window.location.href = '/learner-reading-results.html';
+      }, 1600);
+    }
+
+    function toggleErrorBanner() {
+      const banner = document.getElementById('submissionErrorBanner');
+      banner.style.display = banner.style.display === 'none' ? 'flex' : 'none';
+    }
+  </script>
+</body>
+</html>

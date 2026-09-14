@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learner Login — TaraBasa AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-learner.css">
+  <link rel="stylesheet" href="/css/tarabasa-learner.css">
+</head>
+<body>
+
+  <!-- Screen Switcher Toolbar for Reviewers -->
+  <header class="tb-review-nav" aria-label="Learner Redesign Screen Switcher">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <span style="background:var(--teal); color:#ffffff; font-weight:700; padding:0.125rem 0.5rem; border-radius:4px; font-size:0.75rem;">Learner Role</span>
+      <span style="font-weight:600; color:#e2e8f0;">Screen 1 of 10: Learner Login</span>
+    </div>
+    <nav style="display:flex; align-items:center; gap:0.375rem; flex-wrap:wrap;">
+      <a href="/learner-login.html" class="tb-review-nav--active">1. Login</a>
+      <a href="/learner-dashboard.html">2. Dashboard</a>
+      <a href="/learner-activity-picker.html">3. Picker</a>
+      <a href="/learner-reading.html">4. Reading</a>
+      <a href="/learner-diagnostic-intro.html">5. Diag Intro</a>
+      <a href="/learner-diagnostic-passage.html">6. Diag Passage</a>
+      <a href="/learner-diagnostic-encourage.html">7. Encourage</a>
+      <a href="/learner-diagnostic-results.html">8. Diag Result</a>
+      <a href="/learner-reading-results.html">9. Read Result</a>
+      <a href="/learner-reading-unclear.html">10. Unclear</a>
+      <a href="/learner-recording-widget.html">Widget (6 States)</a>
+    </nav>
+  </header>
+
+  <main class="tb-stage" id="mainContent">
+    <!-- Claymorphism Background Blobs -->
+    <div class="tb-blob-wrap" aria-hidden="true">
+      <div class="tb-blob tb-blob--yellow"></div>
+      <div class="tb-blob tb-blob--blue"></div>
+    </div>
+
+    <!-- Centered Card Shell -->
+    <section class="tb-card" aria-labelledby="loginHeading">
+      
+      <!-- Friendly Mascot: Tara the Owl -->
+      <div class="tb-mascot" role="img" aria-label="Tara the Owl welcoming mascot">
+        🦉
+      </div>
+
+      <h1 id="loginHeading" class="tb-h1">Hi there!</h1>
+      <p class="tb-sub">Type your code, then your secret PIN.</p>
+
+      <!-- Reviewer Error State Switcher (Purely for evaluation) -->
+      <div style="margin-bottom:1rem; width:100%; display:flex; justify-content:center;">
+        <button type="button" onclick="toggleErrorBanner()" class="tb-btn-quiet" style="margin-top:0; font-size:0.875rem; padding:0.25rem 0.625rem; min-height:auto; color:var(--blue-600);">
+          ⚙️ Simulate: Toggle Login Error Banner
+        </button>
+      </div>
+
+      <!-- Generic Inline Error Banner (Doesn't reveal which field was wrong) -->
+      <div class="tb-banner-learner tb-banner-learner--danger" id="loginErrorBanner" style="display:none;" role="alert">
+        <span class="tb-banner-learner__icon" aria-hidden="true">🦉</span>
+        <div>
+          <strong>Oops!</strong> Check your code and secret PIN, then try again!
+        </div>
+      </div>
+
+      <!-- Real Form: Learner Login -->
+      <form method="POST" action="/learner/login" class="tb-form-learner" id="learnerLoginForm" autocomplete="off">
+        <input type="hidden" name="_token" value="csrf-token-placeholder">
+
+        <!-- Field 1: Your Code (name="learner_code", max 8 chars, TB-XXXXX) -->
+        <div class="tb-form-group-learner">
+          <label for="learner_code" class="tb-label-learner">
+            <span>🏷️ Your Code</span>
+          </label>
+          <input
+            type="text"
+            id="learner_code"
+            name="learner_code"
+            class="tb-input-learner"
+            placeholder="TB-XXXXX"
+            maxlength="8"
+            required
+            spellcheck="false"
+            autocomplete="off"
+            value="TB-78421"
+            aria-describedby="codeHelp"
+          >
+          <span id="codeHelp" style="font-size:0.875rem; color:var(--slate-400);">Ask your teacher for your reading code if you don't have one!</span>
+        </div>
+
+        <!-- Field 2: Your PIN (Rendered as 4 large visual boxes, submits as single hidden `pin` field) -->
+        <div class="tb-form-group-learner">
+          <label for="pin_visual_input" class="tb-label-learner">
+            <span>⭐ Your Secret PIN</span>
+          </label>
+
+          <div class="tb-pin-wrapper">
+            <!-- Hidden real input for native keypad & accessibility -->
+            <input
+              type="password"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="4"
+              id="pin_visual_input"
+              class="tb-pin-hidden-input"
+              autocomplete="off"
+              aria-label="Enter 4-digit secret PIN"
+            >
+            <!-- Real form submission input -->
+            <input type="hidden" name="pin" id="pin" value="1234">
+
+            <!-- 4 Large Visual Boxes -->
+            <div class="tb-pin-boxes" aria-hidden="true">
+              <div class="tb-pin-box tb-pin-box--filled" id="pinBox0"><span class="tb-pin-dot"></span></div>
+              <div class="tb-pin-box tb-pin-box--filled" id="pinBox1"><span class="tb-pin-dot"></span></div>
+              <div class="tb-pin-box tb-pin-box--filled" id="pinBox2"><span class="tb-pin-dot"></span></div>
+              <div class="tb-pin-box tb-pin-box--filled" id="pinBox3"><span class="tb-pin-dot"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Primary Button: "Let's Go! 🚀" (Full width, big chunky) -->
+        <button type="submit" class="tb-btn-big tb-btn-big--teal" style="margin-top:0.5rem;" id="loginSubmitBtn">
+          <span>Let's Go! 🚀</span>
+        </button>
+
+      </form>
+
+      <!-- Secondary quiet link back to role select -->
+      <a href="/" class="tb-btn-quiet">
+        &larr; Back to role select
+      </a>
+
+    </section>
+  </main>
+
+  <script>
+    // Handle the 4-digit visual PIN boxes synchronized with numeric input
+    const pinHiddenInput = document.getElementById('pin_visual_input');
+    const pinSubmitInput = document.getElementById('pin');
+    const boxes = [
+      document.getElementById('pinBox0'),
+      document.getElementById('pinBox1'),
+      document.getElementById('pinBox2'),
+      document.getElementById('pinBox3')
+    ];
+
+    function updatePinDisplay() {
+      const val = pinHiddenInput.value.replace(/\D/g, '').slice(0, 4);
+      pinHiddenInput.value = val;
+      pinSubmitInput.value = val;
+
+      boxes.forEach((box, i) => {
+        box.classList.remove('tb-pin-box--filled', 'tb-pin-box--active');
+        box.innerHTML = '';
+
+        if (i < val.length) {
+          box.classList.add('tb-pin-box--filled');
+          box.innerHTML = '<span class="tb-pin-dot"></span>';
+        } else if (i === val.length) {
+          box.classList.add('tb-pin-box--active');
+        }
+      });
+    }
+
+    pinHiddenInput.addEventListener('input', updatePinDisplay);
+    pinHiddenInput.addEventListener('focus', () => {
+      const val = pinHiddenInput.value;
+      if (val.length < 4 && boxes[val.length]) {
+        boxes[val.length].classList.add('tb-pin-box--active');
+      }
+    });
+    pinHiddenInput.addEventListener('blur', () => {
+      boxes.forEach(box => box.classList.remove('tb-pin-box--active'));
+    });
+
+    // Initialize with sample pre-fill
+    pinHiddenInput.value = '1234';
+    updatePinDisplay();
+
+    // Reviewer toggle for error banner
+    function toggleErrorBanner() {
+      const banner = document.getElementById('loginErrorBanner');
+      banner.style.display = banner.style.display === 'none' ? 'flex' : 'none';
+    }
+  </script>
+</body>
+</html>

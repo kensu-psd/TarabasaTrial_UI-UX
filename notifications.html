@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications — TaraBasa AI Teacher Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-teacher.css">
+  <link rel="stylesheet" href="/css/tarabasa-teacher.css">
+</head>
+<body>
+  <!-- Mobile Topbar (< 768px) -->
+  <header class="tb-mobile-topbar" id="mobileTopbar">
+    <a href="/dashboard.html" class="tb-brand" style="padding:0;">
+      <div class="tb-brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </div>
+      <div class="tb-brand__text">
+        <span class="tb-brand__title">TaraBasa AI</span>
+        <span class="tb-brand__role-tag">Teacher</span>
+      </div>
+    </a>
+    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <div class="tb-sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <div class="tb-shell">
+    <!-- PERSISTENT LEFT SIDEBAR SHELL -->
+    <aside class="tb-sidebar" id="sidebarNav" aria-label="Teacher Portal Navigation">
+      <a href="/dashboard.html" class="tb-brand">
+        <div class="tb-brand__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <div class="tb-brand__text">
+          <span class="tb-brand__title">TaraBasa AI</span>
+          <span class="tb-brand__role-tag">Teacher</span>
+        </div>
+      </a>
+
+      <nav class="tb-nav" aria-label="Main Navigation">
+        <li class="tb-nav__item"><a href="/dashboard.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Dashboard</span></a></li>
+        <li class="tb-nav__item"><a href="/classes.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span>Classes</span></a></li>
+        <li class="tb-nav__item"><a href="/generate-activity.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path></svg><span>Generate Activity</span></a></li>
+        <li class="tb-nav__item"><a href="/my-activities.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>My Activities</span></a></li>
+        <li class="tb-nav__item"><a href="/analytics.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Analytics</span></a></li>
+        <li class="tb-nav__item"><a href="/promotions.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span>Promotions</span><span class="tb-nav__badge tb-nav__badge--amber">3</span></a></li>
+        <li class="tb-nav__item"><a href="/notifications.html" class="tb-nav__link tb-nav__link--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span>Notifications</span><span class="tb-nav__badge tb-nav__badge--blue" id="sidebarBadgeNotifs">5</span></a></li>
+      </nav>
+
+      <div class="tb-sidebar__footer">
+        <div class="tb-divider"></div>
+        <a href="/dashboard.html" class="tb-profile-row" id="profileRow">
+          <div class="tb-avatar">MS</div>
+          <div class="tb-profile-info">
+            <span class="tb-profile-name">Maria Santos</span>
+            <div class="tb-profile-status">
+              <span class="tb-pill tb-pill--active" id="sidebarStatusPill">Active</span>
+            </div>
+          </div>
+        </a>
+
+        <form method="POST" action="/logout" class="tb-logout-form">
+          <input type="hidden" name="_token" value="csrf-token-demo">
+          <button type="submit" class="tb-logout-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Log out</span>
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- MAIN NOTIFICATIONS CONTENT -->
+    <main class="tb-main" id="mainContent">
+      <div class="tb-content">
+
+        <!-- Page Header -->
+        <div class="tb-page-header">
+          <div class="tb-page-title-group">
+            <h1 class="tb-page-title">Notifications</h1>
+            <p class="tb-page-subtitle">Real-time alerts, learner session results, and AI-generation updates</p>
+          </div>
+          <div class="tb-page-actions">
+            <!-- "Mark all as read" button (form action="/teacher/notifications/mark-all-read" method="POST") -->
+            <form method="POST" action="/teacher/notifications/mark-all-read" id="formMarkAllRead" onsubmit="handleMarkAllRead(event)">
+              <input type="hidden" name="_token" value="csrf-token-placeholder">
+              <button type="submit" class="tb-btn tb-btn--outline" id="btnMarkAllRead">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Mark All as Read</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- FILTER PILLS: "All" / "Unread" / "Learner Activity" / "System" -->
+        <div class="tb-tabs" role="tablist" style="margin-bottom:1.5rem;">
+          <button type="button" class="tb-tab tb-tab--active filter-pill" data-filter="all" onclick="filterNotifications('all')">
+            All <span class="tb-tab__count" id="countAll">5</span>
+          </button>
+          <button type="button" class="tb-tab filter-pill" data-filter="unread" onclick="filterNotifications('unread')">
+            Unread <span class="tb-tab__count" id="countUnread">3</span>
+          </button>
+          <button type="button" class="tb-tab filter-pill" data-filter="learner" onclick="filterNotifications('learner')">
+            Learner Activity
+          </button>
+          <button type="button" class="tb-tab filter-pill" data-filter="system" onclick="filterNotifications('system')">
+            System &amp; Credits
+          </button>
+        </div>
+
+        <!-- NOTIFICATION ITEMS LIST -->
+        <div id="notificationsContainer" style="display:flex; flex-direction:column; gap:0.875rem;">
+
+          <!-- NOTIF 1: UNREAD + LEARNER ACTIVITY -->
+          <article class="tb-card notif-item notif-unread" data-category="learner" data-unread="true" style="padding:1.125rem 1.25rem; border-left:4px solid var(--blue-500); background:#ffffff;">
+            <div style="display:flex; align-items:flex-start; gap:1rem;">
+              <!-- Unread dot indicator (blue) -->
+              <span class="tb-notif-dot" style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--blue-500); flex-shrink:0; margin-top:0.375rem;" title="Unread notification"></span>
+
+              <!-- Category icon: Learner Activity -->
+              <div class="tb-stat-card__icon tb-stat-card__icon--blue" style="width:2.25rem; height:2.25rem; flex-shrink:0;" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                </svg>
+              </div>
+
+              <!-- Content -->
+              <div style="flex-grow:1;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.25rem;">
+                  <!-- Bold subject / title -->
+                  <h3 style="font-size:0.9375rem; font-weight:700; color:var(--navy-900); margin:0;">
+                    Carlo Bautista completed a reading session with 58% accuracy
+                  </h3>
+                  <!-- Timestamp -->
+                  <span style="font-size:0.75rem; color:var(--slate-400); white-space:nowrap;">15 minutes ago</span>
+                </div>
+                <!-- Short body -->
+                <p style="font-size:0.875rem; color:var(--slate-600); margin-bottom:0.625rem; line-height:1.5;">
+                  Learner completed <em>Mga Tunog sa Paligid (Sound Isolation)</em>. The score falls below the 70% threshold. Intervention review recommended.
+                </p>
+                <!-- Link / action -->
+                <a href="/analytics.html?learner_id=3" class="tb-banner__link" style="font-size:0.8125rem;">
+                  View Session Diagnostics &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NOTIF 2: UNREAD + SYSTEM (Repository AI Credit) -->
+          <article class="tb-card notif-item notif-unread" data-category="system" data-unread="true" style="padding:1.125rem 1.25rem; border-left:4px solid var(--teal); background:#ffffff;">
+            <div style="display:flex; align-items:flex-start; gap:1rem;">
+              <span class="tb-notif-dot" style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--blue-500); flex-shrink:0; margin-top:0.375rem;" title="Unread notification"></span>
+
+              <div class="tb-stat-card__icon tb-stat-card__icon--teal" style="width:2.25rem; height:2.25rem; flex-shrink:0;" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+
+              <div style="flex-grow:1;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.25rem;">
+                  <h3 style="font-size:0.9375rem; font-weight:700; color:var(--navy-900); margin:0;">
+                    +2 Free AI Generation Credits Earned!
+                  </h3>
+                  <span style="font-size:0.75rem; color:var(--slate-400); white-space:nowrap;">2 hours ago</span>
+                </div>
+                <p style="font-size:0.875rem; color:var(--slate-600); margin-bottom:0.625rem; line-height:1.5;">
+                  Your activity <em>Si Ambo at ang Kanyang Kalabaw</em> was published to the public Teacher Repository. +2 AI generation credits have been added to your balance.
+                </p>
+                <a href="/generate-activity.html" class="tb-banner__link" style="font-size:0.8125rem; color:var(--teal);">
+                  Generate new activity with credits &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NOTIF 3: UNREAD + LEARNER ACTIVITY (Promotion eligibility) -->
+          <article class="tb-card notif-item notif-unread" data-category="learner" data-unread="true" style="padding:1.125rem 1.25rem; border-left:4px solid var(--amber); background:#ffffff;">
+            <div style="display:flex; align-items:flex-start; gap:1rem;">
+              <span class="tb-notif-dot" style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--blue-500); flex-shrink:0; margin-top:0.375rem;" title="Unread notification"></span>
+
+              <div class="tb-stat-card__icon" style="width:2.25rem; height:2.25rem; flex-shrink:0; background:var(--amber-bg); color:var(--amber);" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="17 11 12 6 7 11"></polyline>
+                  <polyline points="17 18 12 13 7 18"></polyline>
+                </svg>
+              </div>
+
+              <div style="flex-grow:1;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.25rem;">
+                  <h3 style="font-size:0.9375rem; font-weight:700; color:var(--navy-900); margin:0;">
+                    Bea Dela Cruz reached 92% mastery threshold for Grade 2
+                  </h3>
+                  <span style="font-size:0.75rem; color:var(--slate-400); white-space:nowrap;">Yesterday</span>
+                </div>
+                <p style="font-size:0.875rem; color:var(--slate-600); margin-bottom:0.625rem; line-height:1.5;">
+                  Learner has demonstrated mastery across 8 consecutive reading modules. Eligible for grade progression evaluation.
+                </p>
+                <a href="/promotions.html" class="tb-banner__link" style="font-size:0.8125rem; color:var(--amber);">
+                  Review Grade Promotion &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NOTIF 4: READ + SYSTEM (Draft ready) -->
+          <article class="tb-card notif-item" data-category="system" data-unread="false" style="padding:1.125rem 1.25rem; opacity:0.88; background:#fafcff;">
+            <div style="display:flex; align-items:flex-start; gap:1rem;">
+              <span class="tb-notif-dot" style="display:inline-block; width:10px; height:10px; border-radius:50%; background:transparent; flex-shrink:0; margin-top:0.375rem;"></span>
+
+              <div class="tb-stat-card__icon tb-stat-card__icon--blue" style="width:2.25rem; height:2.25rem; flex-shrink:0;" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+              </div>
+
+              <div style="flex-grow:1;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.25rem;">
+                  <h3 style="font-size:0.9375rem; font-weight:600; color:var(--navy-900); margin:0;">
+                    AI Reading Passage Draft Ready for Review
+                  </h3>
+                  <span style="font-size:0.75rem; color:var(--slate-400); white-space:nowrap;">2 days ago</span>
+                </div>
+                <p style="font-size:0.875rem; color:var(--slate-600); margin-bottom:0.625rem; line-height:1.5;">
+                  Generation for <em>Ang Masipag na Langgam (Grade 2 Comprehension)</em> completed successfully and is waiting in your Drafts queue.
+                </p>
+                <a href="/my-activities.html" class="tb-banner__link" style="font-size:0.8125rem;">
+                  Review &amp; Edit Draft &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NOTIF 5: READ + SYSTEM (Account Verification) -->
+          <article class="tb-card notif-item" data-category="system" data-unread="false" style="padding:1.125rem 1.25rem; opacity:0.88; background:#fafcff;">
+            <div style="display:flex; align-items:flex-start; gap:1rem;">
+              <span class="tb-notif-dot" style="display:inline-block; width:10px; height:10px; border-radius:50%; background:transparent; flex-shrink:0; margin-top:0.375rem;"></span>
+
+              <div class="tb-stat-card__icon" style="width:2.25rem; height:2.25rem; flex-shrink:0; background:var(--success-bg); color:var(--teal);" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+
+              <div style="flex-grow:1;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.25rem;">
+                  <h3 style="font-size:0.9375rem; font-weight:600; color:var(--navy-900); margin:0;">
+                    Welcome to TaraBasa AI Teacher Portal
+                  </h3>
+                  <span style="font-size:0.75rem; color:var(--slate-400); white-space:nowrap;">1 week ago</span>
+                </div>
+                <p style="font-size:0.875rem; color:var(--slate-600); margin-bottom:0.625rem; line-height:1.5;">
+                  Your school profile has been registered under San Jose Elementary School. Start by creating class sections or generating your first decodable passage.
+                </p>
+                <a href="/classes.html" class="tb-banner__link" style="font-size:0.8125rem;">
+                  View Classes &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- EMPTY STATE: "No notifications right now." -->
+        <div id="emptyNotifications" class="tb-empty-state" style="display:none;">
+          <div class="tb-empty-state__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </div>
+          <h3 class="tb-empty-state__title">No notifications right now</h3>
+          <p class="tb-empty-state__text">You are all caught up! When learners complete assessments or credits are added, alerts will show here.</p>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="tb-bottom-nav" aria-label="Mobile Quick Nav">
+    <ul class="tb-bottom-nav__list">
+      <li><a href="/dashboard.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Home</span></a></li>
+      <li><a href="/classes.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg><span>Classes</span></a></li>
+      <li><a href="/generate-activity.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path></svg><span>Generate</span></a></li>
+      <li><a href="/promotions.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span class="tb-bottom-nav__badge">3</span><span>Promote</span></a></li>
+      <li><a href="/notifications.html" class="tb-bottom-nav__link tb-bottom-nav__link--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class="tb-bottom-nav__badge" id="mobileBadgeNotifs">5</span><span>Alerts</span></a></li>
+    </ul>
+  </nav>
+
+  <script>
+    let activeFilter = 'all';
+
+    function filterNotifications(filter) {
+      activeFilter = filter;
+      const pills = document.querySelectorAll('.filter-pill');
+      pills.forEach(p => {
+        if (p.getAttribute('data-filter') === filter) {
+          p.classList.add('tb-tab--active');
+        } else {
+          p.classList.remove('tb-tab--active');
+        }
+      });
+
+      const items = document.querySelectorAll('.notif-item');
+      let visible = 0;
+
+      items.forEach(item => {
+        const isUnread = item.getAttribute('data-unread') === 'true';
+        const category = item.getAttribute('data-category');
+
+        let match = false;
+        if (filter === 'all') match = true;
+        else if (filter === 'unread' && isUnread) match = true;
+        else if (filter === 'learner' && category === 'learner') match = true;
+        else if (filter === 'system' && category === 'system') match = true;
+
+        if (match) {
+          item.style.display = 'block';
+          visible++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      const emptyBox = document.getElementById('emptyNotifications');
+      emptyBox.style.display = visible === 0 ? 'flex' : 'none';
+    }
+
+    function handleMarkAllRead(e) {
+      e.preventDefault();
+      const unreadDots = document.querySelectorAll('.tb-notif-dot');
+      unreadDots.forEach(dot => dot.style.background = 'transparent');
+
+      const unreadItems = document.querySelectorAll('.notif-unread');
+      unreadItems.forEach(item => {
+        item.setAttribute('data-unread', 'false');
+        item.style.borderLeft = '1px solid var(--line)';
+        item.style.background = '#fafcff';
+        item.style.opacity = '0.88';
+      });
+
+      document.getElementById('countUnread').textContent = '0';
+      document.getElementById('sidebarBadgeNotifs').style.display = 'none';
+      const mBadge = document.getElementById('mobileBadgeNotifs');
+      if (mBadge) mBadge.style.display = 'none';
+
+      if (activeFilter === 'unread') {
+        filterNotifications('unread');
+      }
+    }
+
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('sidebarNav');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    if (menuBtn && sidebar && backdrop) {
+      function toggleSidebar() {
+        const isOpen = sidebar.classList.toggle('tb-sidebar--open');
+        backdrop.classList.toggle('tb-sidebar-backdrop--active');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+      }
+      menuBtn.addEventListener('click', toggleSidebar);
+      backdrop.addEventListener('click', toggleSidebar);
+    }
+  </script>
+</body>
+</html>

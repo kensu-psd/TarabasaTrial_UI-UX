@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade Promotions — TaraBasa AI Teacher Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-teacher.css">
+  <link rel="stylesheet" href="/css/tarabasa-teacher.css">
+</head>
+<body>
+  <!-- Mobile Topbar (< 768px) -->
+  <header class="tb-mobile-topbar" id="mobileTopbar">
+    <a href="/dashboard.html" class="tb-brand" style="padding:0;">
+      <div class="tb-brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </div>
+      <div class="tb-brand__text">
+        <span class="tb-brand__title">TaraBasa AI</span>
+        <span class="tb-brand__role-tag">Teacher</span>
+      </div>
+    </a>
+    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <div class="tb-sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <div class="tb-shell">
+    <!-- PERSISTENT LEFT SIDEBAR SHELL -->
+    <aside class="tb-sidebar" id="sidebarNav" aria-label="Teacher Portal Navigation">
+      <a href="/dashboard.html" class="tb-brand">
+        <div class="tb-brand__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <div class="tb-brand__text">
+          <span class="tb-brand__title">TaraBasa AI</span>
+          <span class="tb-brand__role-tag">Teacher</span>
+        </div>
+      </a>
+
+      <nav class="tb-nav" aria-label="Main Navigation">
+        <li class="tb-nav__item"><a href="/dashboard.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Dashboard</span></a></li>
+        <li class="tb-nav__item"><a href="/classes.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span>Classes</span></a></li>
+        <li class="tb-nav__item"><a href="/generate-activity.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg><span>Generate Activity</span></a></li>
+        <li class="tb-nav__item"><a href="/my-activities.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>My Activities</span></a></li>
+        <li class="tb-nav__item"><a href="/analytics.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Analytics</span></a></li>
+        <li class="tb-nav__item"><a href="/promotions.html" class="tb-nav__link tb-nav__link--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span>Promotions</span><span class="tb-nav__badge tb-nav__badge--amber">3</span></a></li>
+        <li class="tb-nav__item"><a href="/notifications.html" class="tb-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span>Notifications</span><span class="tb-nav__badge tb-nav__badge--blue">5</span></a></li>
+      </nav>
+
+      <div class="tb-sidebar__footer">
+        <div class="tb-divider"></div>
+        <a href="/dashboard.html" class="tb-profile-row" id="profileRow">
+          <div class="tb-avatar">MS</div>
+          <div class="tb-profile-info">
+            <span class="tb-profile-name">Maria Santos</span>
+            <div class="tb-profile-status">
+              <span class="tb-pill tb-pill--active" id="sidebarStatusPill">Active</span>
+            </div>
+          </div>
+        </a>
+
+        <form method="POST" action="/logout" class="tb-logout-form">
+          <input type="hidden" name="_token" value="csrf-token-demo">
+          <button type="submit" class="tb-logout-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Log out</span>
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- MAIN PROMOTIONS CONTENT -->
+    <main class="tb-main" id="mainContent">
+      <div class="tb-content">
+
+        <!-- Testing State Switcher -->
+        <div style="background:#eef6ff; border:1px solid #dcedff; border-radius:var(--radius-sm); padding:0.5rem 0.875rem; margin-bottom:1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; font-size:0.8125rem;">
+          <span style="color:var(--blue-700); font-weight:600;">
+            🧪 Rule Condition Switcher:
+          </span>
+          <div style="display:flex; gap:0.5rem;">
+            <button type="button" class="tb-btn tb-btn--sm tb-btn--primary" id="btnPromStateActive" onclick="setPromotionsTeacherState('active')">
+              Teacher: Active
+            </button>
+            <button type="button" class="tb-btn tb-btn--sm tb-btn--outline" id="btnPromStatePending" onclick="setPromotionsTeacherState('pending')">
+              Teacher: Pending (Locked Actions)
+            </button>
+          </div>
+        </div>
+
+        <!-- PENDING TEACHER BANNER (locked if pending) -->
+        <div class="tb-banner tb-banner--amber" id="pendingPromoBanner" style="display:none;" role="alert">
+          <svg class="tb-banner__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <div class="tb-banner__content">
+            <span class="tb-banner__title">Promotions are Locked for Pending Teacher Accounts</span>
+            <span class="tb-banner__text">
+              Your teacher verification is pending administrator approval. Grade promotions, learner section transfers, and retention decisions require an active verified teacher status.
+            </span>
+          </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="tb-page-header">
+          <div class="tb-page-title-group">
+            <h1 class="tb-page-title">Grade Promotions &amp; Progression</h1>
+            <p class="tb-page-subtitle">Evaluate learners eligible for promotion to the next grade or section transfer</p>
+          </div>
+        </div>
+
+        <!-- FILTER BY CURRENT SECTION (Client-side) -->
+        <div class="tb-card" style="margin-bottom:1.5rem; padding:1rem 1.25rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+          <div class="tb-form-inline">
+            <label for="filterSectionSelect" class="tb-label" style="margin-bottom:0; font-weight:700;">
+              Filter Section:
+            </label>
+            <select id="filterSectionSelect" class="tb-select" style="min-width:14rem;" onchange="filterLearnersBySection(this.value)">
+              <option value="all" selected>All Sections (3 eligible)</option>
+              <option value="section-mabini">Grade 1 - Mabini (2)</option>
+              <option value="section-rizal">Grade 2 - Rizal (1)</option>
+              <option value="section-empty">Grade 3 - Bonifacio (0)</option>
+            </select>
+          </div>
+
+          <div style="font-size:0.8125rem; color:var(--slate-600);">
+            Showing <strong id="eligibleCount">3</strong> learners ready for promotion
+          </div>
+        </div>
+
+        <!-- BULK PROMOTE BAR (When >1 learner selected) -->
+        <div id="bulkPromoteBar" class="tb-card" style="background:#eef6ff; border:2px solid var(--blue-500); margin-bottom:1.5rem; padding:0.875rem 1.25rem; display:none;">
+          <form method="POST" action="/teacher/learners/bulk-promote" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; width:100%;">
+            <input type="hidden" name="_token" value="csrf-token-placeholder">
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <span class="tb-tag tb-tag--blue" id="selectedLearnersBadge">2 Selected</span>
+              <span style="font-size:0.875rem; font-weight:600; color:var(--navy-900);">Bulk Promote Selected Learners:</span>
+            </div>
+
+            <div class="tb-form-inline" style="flex-grow:1; max-width:28rem; justify-content:flex-end;">
+              <label for="bulk_target_section_id" class="tb-label" style="margin-bottom:0;">Target Section:</label>
+              <select name="target_section_id" id="bulk_target_section_id" class="tb-select" style="min-width:12rem;" required>
+                <option value="">Select Target Section</option>
+                <option value="sec_2_rizal">Grade 2 - Rizal (SY 2025–2026)</option>
+                <option value="sec_2_luna">Grade 2 - Luna (SY 2025–2026)</option>
+                <option value="sec_3_bonifacio">Grade 3 - Bonifacio (SY 2025–2026)</option>
+              </select>
+              <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm bulk-action-btn">
+                Promote Selected
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- LEARNER PROMOTION CARDS -->
+        <div id="promotionsList" style="display:flex; flex-direction:column; gap:1.25rem;">
+
+          <!-- LEARNER CARD 1 -->
+          <article class="tb-card promo-learner-card" data-section="section-mabini" id="card-learner-1">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+              <div style="display:flex; align-items:center; gap:0.875rem;">
+                <input type="checkbox" class="promo-checkbox" value="1" onchange="handlePromoCheck()" aria-label="Select Angelo Reyes for bulk promotion">
+                <div class="tb-avatar" style="width:3rem; height:3rem; font-size:1rem;">AR</div>
+                <div>
+                  <h3 style="font-size:1.125rem; margin-bottom:0.125rem;">Angelo Reyes</h3>
+                  <div style="font-size:0.8125rem; color:var(--slate-600);">LRN-1029384 • Grade 1 - Mabini</div>
+                </div>
+              </div>
+
+              <!-- Metrics -->
+              <div style="display:flex; gap:0.75rem; align-items:center;">
+                <div style="text-align:right;">
+                  <div style="font-size:0.75rem; color:var(--slate-400); text-transform:uppercase; font-weight:700;">Reading Mastery</div>
+                  <span class="tb-tag tb-tag--approved">88% Avg Accuracy</span>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size:0.75rem; color:var(--slate-400); text-transform:uppercase; font-weight:700;">Promotion Target</div>
+                  <span class="tb-tag tb-tag--grade">Grade 1 &rarr; Grade 2</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- "Promote" inline form: target_section_id (select), Confirm Promotion button (disabled if pending) -->
+            <div style="background:#fafcff; border:1px solid var(--line); border-radius:var(--radius-sm); padding:1rem; margin-top:0.75rem;">
+              <form method="POST" action="/teacher/learners/1/promote">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+                  <div class="tb-form-inline" style="flex-grow:1; max-width:26rem;">
+                    <label class="tb-label" for="target_section_1" style="margin-bottom:0;">Target Section <span style="color:var(--danger)">*</span></label>
+                    <select name="target_section_id" id="target_section_1" class="tb-select promo-select-target" required>
+                      <option value="">Choose Section...</option>
+                      <option value="201" selected>Grade 2 - Rizal (SY 2025–2026)</option>
+                      <option value="202">Grade 2 - Luna (SY 2025–2026)</option>
+                    </select>
+                  </div>
+
+                  <div style="display:flex; gap:0.5rem; align-items:center;">
+                    <!-- Retain Action Toggler -->
+                    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleRetainBox('retain-box-1')">
+                      Retain Options
+                    </button>
+                    <!-- Confirm Promotion button (disabled if pending) -->
+                    <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm btn-confirm-promote">
+                      ✓ Confirm Promotion
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <!-- RETAIN ACTION INLINE BOX: inline form, notes textarea (optional), button "Retain in Current Grade" -->
+              <div id="retain-box-1" style="display:none; margin-top:1rem; padding-top:1rem; border-top:1px dashed var(--line);">
+                <form method="POST" action="/teacher/learners/1/retain">
+                  <input type="hidden" name="_token" value="csrf-token-placeholder">
+                  <div class="tb-form-group">
+                    <label class="tb-label" for="notes_1">
+                      Reason / Notes for Retention <span class="tb-label__hint">(Optional)</span>
+                    </label>
+                    <textarea name="notes" id="notes_1" class="tb-textarea" rows="2" placeholder="e.g. Recommend continuing Grade 1 phonics intervention over the summer..."></textarea>
+                  </div>
+                  <div style="display:flex; justify-content:flex-end; gap:0.5rem;">
+                    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleRetainBox('retain-box-1')">Cancel</button>
+                    <button type="submit" class="tb-btn tb-btn--danger tb-btn--sm btn-confirm-retain">
+                      Retain in Current Grade
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </article>
+
+          <!-- LEARNER CARD 2 -->
+          <article class="tb-card promo-learner-card" data-section="section-mabini" id="card-learner-2">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+              <div style="display:flex; align-items:center; gap:0.875rem;">
+                <input type="checkbox" class="promo-checkbox" value="2" onchange="handlePromoCheck()" aria-label="Select Bea Dela Cruz for bulk promotion">
+                <div class="tb-avatar" style="width:3rem; height:3rem; font-size:1rem;">BD</div>
+                <div>
+                  <h3 style="font-size:1.125rem; margin-bottom:0.125rem;">Bea Dela Cruz</h3>
+                  <div style="font-size:0.8125rem; color:var(--slate-600);">LRN-1029385 • Grade 1 - Mabini</div>
+                </div>
+              </div>
+
+              <div style="display:flex; gap:0.75rem; align-items:center;">
+                <div style="text-align:right;">
+                  <div style="font-size:0.75rem; color:var(--slate-400); text-transform:uppercase; font-weight:700;">Reading Mastery</div>
+                  <span class="tb-tag tb-tag--approved">92% Avg Accuracy</span>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size:0.75rem; color:var(--slate-400); text-transform:uppercase; font-weight:700;">Promotion Target</div>
+                  <span class="tb-tag tb-tag--grade">Grade 1 &rarr; Grade 2</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background:#fafcff; border:1px solid var(--line); border-radius:var(--radius-sm); padding:1rem; margin-top:0.75rem;">
+              <form method="POST" action="/teacher/learners/2/promote">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+                  <div class="tb-form-inline" style="flex-grow:1; max-width:26rem;">
+                    <label class="tb-label" for="target_section_2" style="margin-bottom:0;">Target Section <span style="color:var(--danger)">*</span></label>
+                    <select name="target_section_id" id="target_section_2" class="tb-select promo-select-target" required>
+                      <option value="">Choose Section...</option>
+                      <option value="201">Grade 2 - Rizal (SY 2025–2026)</option>
+                      <option value="202" selected>Grade 2 - Luna (SY 2025–2026)</option>
+                    </select>
+                  </div>
+
+                  <div style="display:flex; gap:0.5rem; align-items:center;">
+                    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleRetainBox('retain-box-2')">Retain Options</button>
+                    <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm btn-confirm-promote">✓ Confirm Promotion</button>
+                  </div>
+                </div>
+              </form>
+
+              <div id="retain-box-2" style="display:none; margin-top:1rem; padding-top:1rem; border-top:1px dashed var(--line);">
+                <form method="POST" action="/teacher/learners/2/retain">
+                  <input type="hidden" name="_token" value="csrf-token-placeholder">
+                  <div class="tb-form-group">
+                    <label class="tb-label" for="notes_2">Reason / Notes for Retention</label>
+                    <textarea name="notes" id="notes_2" class="tb-textarea" rows="2"></textarea>
+                  </div>
+                  <div style="display:flex; justify-content:flex-end; gap:0.5rem;">
+                    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleRetainBox('retain-box-2')">Cancel</button>
+                    <button type="submit" class="tb-btn tb-btn--danger tb-btn--sm btn-confirm-retain">Retain in Current Grade</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </article>
+
+          <!-- LEARNER CARD 3 -->
+          <article class="tb-card promo-learner-card" data-section="section-rizal" id="card-learner-3">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+              <div style="display:flex; align-items:center; gap:0.875rem;">
+                <input type="checkbox" class="promo-checkbox" value="3" onchange="handlePromoCheck()" aria-label="Select Juancho Mendoza for bulk promotion">
+                <div class="tb-avatar" style="width:3rem; height:3rem; font-size:1rem;">JM</div>
+                <div>
+                  <h3 style="font-size:1.125rem; margin-bottom:0.125rem;">Juancho Mendoza</h3>
+                  <div style="font-size:0.8125rem; color:var(--slate-600);">LRN-1029388 • Grade 2 - Rizal</div>
+                </div>
+              </div>
+
+              <div style="display:flex; gap:0.75rem; align-items:center;">
+                <div style="text-align:right;">
+                  <div style="font-size:0.75rem; color:var(--slate-400); text-transform:uppercase; font-weight:700;">Reading Mastery</div>
+                  <span class="tb-tag tb-tag--approved">86% Avg Accuracy</span>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size:0.75rem; color:var(--slate-400); text-transform:uppercase; font-weight:700;">Promotion Target</div>
+                  <span class="tb-tag tb-tag--grade">Grade 2 &rarr; Grade 3</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background:#fafcff; border:1px solid var(--line); border-radius:var(--radius-sm); padding:1rem; margin-top:0.75rem;">
+              <form method="POST" action="/teacher/learners/3/promote">
+                <input type="hidden" name="_token" value="csrf-token-placeholder">
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+                  <div class="tb-form-inline" style="flex-grow:1; max-width:26rem;">
+                    <label class="tb-label" for="target_section_3" style="margin-bottom:0;">Target Section <span style="color:var(--danger)">*</span></label>
+                    <select name="target_section_id" id="target_section_3" class="tb-select promo-select-target" required>
+                      <option value="">Choose Section...</option>
+                      <option value="301" selected>Grade 3 - Bonifacio (SY 2025–2026)</option>
+                    </select>
+                  </div>
+
+                  <div style="display:flex; gap:0.5rem; align-items:center;">
+                    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleRetainBox('retain-box-3')">Retain Options</button>
+                    <button type="submit" class="tb-btn tb-btn--teal tb-btn--sm btn-confirm-promote">✓ Confirm Promotion</button>
+                  </div>
+                </div>
+              </form>
+
+              <div id="retain-box-3" style="display:none; margin-top:1rem; padding-top:1rem; border-top:1px dashed var(--line);">
+                <form method="POST" action="/teacher/learners/3/retain">
+                  <input type="hidden" name="_token" value="csrf-token-placeholder">
+                  <div class="tb-form-group">
+                    <label class="tb-label" for="notes_3">Reason / Notes for Retention</label>
+                    <textarea name="notes" id="notes_3" class="tb-textarea" rows="2"></textarea>
+                  </div>
+                  <div style="display:flex; justify-content:flex-end; gap:0.5rem;">
+                    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" onclick="toggleRetainBox('retain-box-3')">Cancel</button>
+                    <button type="submit" class="tb-btn tb-btn--danger tb-btn--sm btn-confirm-retain">Retain in Current Grade</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- EMPTY STATE: "No learners eligible for promotion right now." -->
+        <div id="emptyPromotionsState" class="tb-empty-state" style="display:none;">
+          <div class="tb-empty-state__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <polyline points="17 11 12 6 7 11"></polyline>
+              <polyline points="17 18 12 13 7 18"></polyline>
+            </svg>
+          </div>
+          <h3 class="tb-empty-state__title">No learners eligible for promotion right now</h3>
+          <p class="tb-empty-state__text">
+            All learners in this section have either completed promotion processing or need further assessment benchmarks.
+          </p>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="tb-bottom-nav" aria-label="Mobile Quick Nav">
+    <ul class="tb-bottom-nav__list">
+      <li><a href="/dashboard.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span>Home</span></a></li>
+      <li><a href="/classes.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg><span>Classes</span></a></li>
+      <li><a href="/generate-activity.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path></svg><span>Generate</span></a></li>
+      <li><a href="/promotions.html" class="tb-bottom-nav__link tb-bottom-nav__link--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg><span class="tb-bottom-nav__badge">3</span><span>Promote</span></a></li>
+      <li><a href="/notifications.html" class="tb-bottom-nav__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class="tb-bottom-nav__badge">5</span><span>Alerts</span></a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function toggleRetainBox(id) {
+      const box = document.getElementById(id);
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function filterLearnersBySection(sectionVal) {
+      const cards = document.querySelectorAll('.promo-learner-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        if (sectionVal === 'all' || card.getAttribute('data-section') === sectionVal) {
+          card.style.display = 'block';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('eligibleCount').textContent = visible;
+      document.getElementById('emptyPromotionsState').style.display = visible === 0 ? 'flex' : 'none';
+      handlePromoCheck();
+    }
+
+    function handlePromoCheck() {
+      const checkedBoxes = document.querySelectorAll('.promo-checkbox:checked');
+      const bar = document.getElementById('bulkPromoteBar');
+      const badge = document.getElementById('selectedLearnersBadge');
+
+      if (checkedBoxes.length > 1) {
+        bar.style.display = 'block';
+        badge.textContent = checkedBoxes.length + ' Selected';
+      } else {
+        bar.style.display = 'none';
+      }
+    }
+
+    function setPromotionsTeacherState(state) {
+      const isPending = state === 'pending';
+      const pill = document.getElementById('sidebarStatusPill');
+      const banner = document.getElementById('pendingPromoBanner');
+      const promoBtns = document.querySelectorAll('.btn-confirm-promote, .btn-confirm-retain, .bulk-action-btn');
+      const btnActive = document.getElementById('btnPromStateActive');
+      const btnPending = document.getElementById('btnPromStatePending');
+
+      if (isPending) {
+        pill.className = 'tb-pill tb-pill--pending';
+        pill.textContent = 'Pending';
+        banner.style.display = 'flex';
+        promoBtns.forEach(btn => {
+          btn.disabled = true;
+          btn.setAttribute('title', 'Action locked: account verification is pending.');
+        });
+        btnPending.className = 'tb-btn tb-btn--sm tb-btn--primary';
+        btnActive.className = 'tb-btn tb-btn--sm tb-btn--outline';
+      } else {
+        pill.className = 'tb-pill tb-pill--active';
+        pill.textContent = 'Active';
+        banner.style.display = 'none';
+        promoBtns.forEach(btn => {
+          btn.disabled = false;
+          btn.removeAttribute('title');
+        });
+        btnActive.className = 'tb-btn tb-btn--sm tb-btn--primary';
+        btnPending.className = 'tb-btn tb-btn--sm tb-btn--outline';
+      }
+    }
+
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('sidebarNav');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    if (menuBtn && sidebar && backdrop) {
+      function toggleSidebar() {
+        const isOpen = sidebar.classList.toggle('tb-sidebar--open');
+        backdrop.classList.toggle('tb-sidebar-backdrop--active');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+      }
+      menuBtn.addEventListener('click', toggleSidebar);
+      backdrop.addEventListener('click', toggleSidebar);
+    }
+  </script>
+</body>
+</html>

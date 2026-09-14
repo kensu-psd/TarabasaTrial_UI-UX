@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaraBasa AI — Teacher Shell & Layout (Laravel Blade Master Layout)</title>
+  <!-- Google Fonts: Baloo 2 (Headings) & Inter (Body/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-teacher.css">
+  <link rel="stylesheet" href="/css/tarabasa-teacher.css">
+</head>
+<body>
+  <!--
+    BLADE MASTER LAYOUT: resources/views/layouts/teacher.blade.php
+    Usage in child views:
+      @extends('layouts.teacher')
+      @section('title', 'Page Title')
+      @section('page_title', 'Header Title')
+      @section('page_actions') ... @endsection
+      @section('content') ... @endsection
+  -->
+
+  <!-- Mobile Topbar (< 768px) -->
+  <header class="tb-mobile-topbar" id="mobileTopbar">
+    <a href="/dashboard.html" class="tb-brand" style="padding:0;">
+      <div class="tb-brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      </div>
+      <div class="tb-brand__text">
+        <span class="tb-brand__title">TaraBasa AI</span>
+        <span class="tb-brand__role-tag">Teacher</span>
+      </div>
+    </a>
+    <button type="button" class="tb-btn tb-btn--outline tb-btn--sm" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Mobile Backdrop Overlay -->
+  <div class="tb-sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <div class="tb-shell">
+    <!-- PERSISTENT LEFT SIDEBAR SHELL -->
+    <aside class="tb-sidebar" id="sidebarNav" aria-label="Teacher Portal Navigation">
+      <!-- 1. Logo mark + TaraBasa AI wordmark, Teacher role label -->
+      <a href="/dashboard.html" class="tb-brand">
+        <div class="tb-brand__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <div class="tb-brand__text">
+          <span class="tb-brand__title">TaraBasa AI</span>
+          <span class="tb-brand__role-tag">Teacher</span>
+        </div>
+      </a>
+
+      <!-- 2. Nav items (highlight whichever is current page) -->
+      <nav class="tb-nav" aria-label="Main Navigation">
+        <!-- 1. Dashboard -->
+        <li class="tb-nav__item">
+          <a href="/dashboard.html" class="tb-nav__link tb-nav__link--active" id="nav-dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+              <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+              <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+              <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+            </svg>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <!-- 2. Classes -->
+        <li class="tb-nav__item">
+          <a href="/classes.html" class="tb-nav__link" id="nav-classes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Classes</span>
+          </a>
+        </li>
+
+        <!-- 3. Generate Activity -->
+        <li class="tb-nav__item">
+          <a href="/generate-activity.html" class="tb-nav__link" id="nav-generate">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+            </svg>
+            <span>Generate Activity</span>
+          </a>
+        </li>
+
+        <!-- 4. My Activities -->
+        <li class="tb-nav__item">
+          <a href="/my-activities.html" class="tb-nav__link" id="nav-activities">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>My Activities</span>
+          </a>
+        </li>
+
+        <!-- 5. Analytics -->
+        <li class="tb-nav__item">
+          <a href="/analytics.html" class="tb-nav__link" id="nav-analytics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Analytics</span>
+          </a>
+        </li>
+
+        <!-- 6. Promotions (badge: count of claimable incoming learners, if > 0) -->
+        <li class="tb-nav__item">
+          <a href="/promotions.html" class="tb-nav__link" id="nav-promotions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="17 11 12 6 7 11"></polyline>
+              <polyline points="17 18 12 13 7 18"></polyline>
+            </svg>
+            <span>Promotions</span>
+            <!-- Badge rendered conditionally in Blade: @if($claimableCount > 0) -->
+            <span class="tb-nav__badge tb-nav__badge--amber" title="3 incoming learners ready to claim">3</span>
+          </a>
+        </li>
+
+        <!-- 7. Notifications (badge: unread count, if > 0) -->
+        <li class="tb-nav__item">
+          <a href="/notifications.html" class="tb-nav__link" id="nav-notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span>Notifications</span>
+            <!-- Badge rendered conditionally in Blade: @if($unreadCount > 0) -->
+            <span class="tb-nav__badge tb-nav__badge--blue" title="5 unread notifications">5</span>
+          </a>
+        </li>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="tb-sidebar__footer">
+        <div class="tb-divider" role="separator"></div>
+
+        <!-- Profile row (avatar initials + teacher name + status pill "Active" / "Pending") -> links to My Profile -->
+        <a href="/profile.html" class="tb-profile-row" id="profileRow" title="View Teacher Profile">
+          <div class="tb-avatar" aria-hidden="true">MS</div>
+          <div class="tb-profile-info">
+            <span class="tb-profile-name">Maria Santos</span>
+            <div class="tb-profile-status">
+              <!-- Rendered in Blade based on $teacher->status -->
+              <span class="tb-pill tb-pill--active" id="teacherStatusPill">Active</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- "Log out" (Must render as real <form method="POST"> in Blade) -->
+        <form method="POST" action="/logout" class="tb-logout-form" id="logoutForm">
+          <!-- @csrf token for Laravel -->
+          <input type="hidden" name="_token" value="csrf-token-placeholder">
+          <button type="submit" class="tb-logout-btn" id="logoutButton">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Log out</span>
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- MAIN PAGE CONTENT AREA -->
+    <main class="tb-main" id="mainContent">
+      <div class="tb-content">
+        <!-- Page Header: Only page <h1> and page-specific primary action button -->
+        <div class="tb-page-header">
+          <div class="tb-page-title-group">
+            <h1 class="tb-page-title">Persistent Sidebar Shell Overview</h1>
+            <p class="tb-page-subtitle">Standard container rendered by <code>resources/views/layouts/teacher.blade.php</code></p>
+          </div>
+          <div class="tb-page-actions">
+            <a href="/classes.html" class="tb-btn tb-btn--primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>+ New Class</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Demo / Integration Explanation Card -->
+        <div class="tb-card" style="margin-bottom: 2rem;">
+          <div class="tb-card__header">
+            <h2 class="tb-card__title">Blade Architecture & Visual Shell Verification</h2>
+          </div>
+          <div class="tb-card__body">
+            <p style="margin-bottom: 1rem;">
+              This file represents the <strong>Shared Persistent Sidebar Shell</strong>. Every teacher screen plugs directly into this shell using standard Blade markup.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; margin-top: 1.25rem;">
+              <div style="background: var(--bg-0); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--line);">
+                <h4 style="margin-bottom: 0.35rem; color: var(--navy-900);">Quick Screen Access</h4>
+                <p style="font-size: 0.8125rem; color: var(--slate-600); margin-bottom: 0.75rem;">Navigate to all 8 redesigned screens:</p>
+                <ul style="padding-left: 1.25rem; font-size: 0.8125rem; display: flex; flex-direction: column; gap: 0.35rem;">
+                  <li><a href="/dashboard.html"><strong>Screen 1:</strong> Dashboard</a></li>
+                  <li><a href="/classes.html"><strong>Screen 2:</strong> Class Management</a></li>
+                  <li><a href="/generate-activity.html"><strong>Screen 3:</strong> Generate Activity</a></li>
+                  <li><a href="/my-activities.html"><strong>Screen 4:</strong> My Activities</a></li>
+                  <li><a href="/analytics.html"><strong>Screen 5:</strong> Analytics</a></li>
+                  <li><a href="/promotions.html"><strong>Screen 6:</strong> Grade Promotions</a></li>
+                  <li><a href="/notifications.html"><strong>Screen 7:</strong> Notifications</a></li>
+                  <li><a href="/repository.html"><strong>Screen 8:</strong> Repository (+2 Credits)</a></li>
+                </ul>
+              </div>
+
+              <div style="background: var(--bg-0); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--line);">
+                <h4 style="margin-bottom: 0.35rem; color: var(--navy-900);">Reusable Locked Pattern</h4>
+                <p style="font-size: 0.8125rem; color: var(--slate-600); margin-bottom: 0.75rem;">Used across screens whenever teacher status is <code>Pending</code> or credits = 0:</p>
+                <div class="tb-locked-state tb-locked-state--standalone">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span><strong>Locked until your account is Active.</strong> Pending Admin verification.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- @yield('content') placeholder -->
+        <div style="border: 2px dashed var(--line); border-radius: var(--radius-md); padding: 2.5rem; text-align: center; color: var(--slate-400);">
+          <p style="font-family: monospace; font-size: 1rem; color: var(--blue-600); margin-bottom: 0.5rem;">@yield('content')</p>
+          <p style="font-size: 0.875rem;">Page specific Blade template content mounts cleanly in this container.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Tab Navigation (< 768px) -->
+  <nav class="tb-bottom-nav" aria-label="Mobile Quick Nav">
+    <ul class="tb-bottom-nav__list">
+      <li>
+        <a href="/dashboard.html" class="tb-bottom-nav__link tb-bottom-nav__link--active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+            <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+            <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+            <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+          </svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="/classes.html" class="tb-bottom-nav__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+          </svg>
+          <span>Classes</span>
+        </a>
+      </li>
+      <li>
+        <a href="/generate-activity.html" class="tb-bottom-nav__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"></path>
+          </svg>
+          <span>Generate</span>
+        </a>
+      </li>
+      <li>
+        <a href="/promotions.html" class="tb-bottom-nav__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="17 11 12 6 7 11"></polyline>
+            <polyline points="17 18 12 13 7 18"></polyline>
+          </svg>
+          <span class="tb-bottom-nav__badge">3</span>
+          <span>Promote</span>
+        </a>
+      </li>
+      <li>
+        <a href="/notifications.html" class="tb-bottom-nav__link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="tb-bottom-nav__badge">5</span>
+          <span>Alerts</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Vanilla JS for Drawer Toggle & Reduced Motion Helper -->
+  <script>
+    (function() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const sidebar = document.getElementById('sidebarNav');
+      const backdrop = document.getElementById('sidebarBackdrop');
+
+      if (menuBtn && sidebar && backdrop) {
+        function toggleSidebar() {
+          const isOpen = sidebar.classList.toggle('tb-sidebar--open');
+          backdrop.classList.toggle('tb-sidebar-backdrop--active');
+          menuBtn.setAttribute('aria-expanded', isOpen);
+        }
+
+        menuBtn.addEventListener('click', toggleSidebar);
+        backdrop.addEventListener('click', toggleSidebar);
+      }
+    })();
+  </script>
+</body>
+</html>

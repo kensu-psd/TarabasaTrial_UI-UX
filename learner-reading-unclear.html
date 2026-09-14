@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Unclear — TaraBasa AI Learner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/tarabasa-learner.css">
+  <link rel="stylesheet" href="/css/tarabasa-learner.css">
+</head>
+<body>
+
+  <!-- Screen Switcher Toolbar for Reviewers -->
+  <header class="tb-review-nav" aria-label="Learner Redesign Screen Switcher">
+    <div style="display:flex; align-items:center; gap:0.5rem;">
+      <span style="background:var(--teal); color:#ffffff; font-weight:700; padding:0.125rem 0.5rem; border-radius:4px; font-size:0.75rem;">Learner Role</span>
+      <span style="font-weight:600; color:#e2e8f0;">Screen 10 of 10: Reading Unclear</span>
+    </div>
+    <nav style="display:flex; align-items:center; gap:0.375rem; flex-wrap:wrap;">
+      <a href="/learner-login.html">1. Login</a>
+      <a href="/learner-dashboard.html">2. Dashboard</a>
+      <a href="/learner-activity-picker.html">3. Picker</a>
+      <a href="/learner-reading.html">4. Reading</a>
+      <a href="/learner-diagnostic-intro.html">5. Diag Intro</a>
+      <a href="/learner-diagnostic-passage.html">6. Diag Passage</a>
+      <a href="/learner-diagnostic-encourage.html">7. Encourage</a>
+      <a href="/learner-diagnostic-results.html">8. Diag Result</a>
+      <a href="/learner-reading-results.html">9. Read Result</a>
+      <a href="/learner-reading-unclear.html" class="tb-review-nav--active">10. Unclear</a>
+      <a href="/learner-recording-widget.html">Widget (6 States)</a>
+    </nav>
+  </header>
+
+  <main class="tb-stage" id="mainContent">
+    <!-- Claymorphism Ambient Blobs -->
+    <div class="tb-blob-wrap" aria-hidden="true">
+      <div class="tb-blob tb-blob--yellow"></div>
+      <div class="tb-blob tb-blob--blue"></div>
+      <div class="tb-blob tb-blob--teal"></div>
+    </div>
+
+    <!-- Reviewer State Switcher: Retry State vs Final State -->
+    <div style="margin-bottom:1rem; z-index:2; position:relative; display:flex; gap:0.5rem; justify-content:center;">
+      <button type="button" class="tb-btn-quiet" style="margin-top:0; background:rgba(255,255,255,0.9); border:1px solid var(--line); font-size:0.875rem; padding:0.375rem 0.75rem;" onclick="setUnclearState('retry')">
+        🔄 1. Retry State (First Miss)
+      </button>
+      <button type="button" class="tb-btn-quiet" style="margin-top:0; background:rgba(255,255,255,0.9); border:1px solid var(--line); font-size:0.875rem; padding:0.375rem 0.75rem;" onclick="setUnclearState('final')">
+        👨‍🏫 2. Final State (Repeated Misses)
+      </button>
+    </div>
+
+    <!-- STATE 1: RETRY STATE (Not final yet — warm retry prompt) -->
+    <section class="tb-card" id="unclearRetryCard" aria-labelledby="retryHeading">
+      
+      <!-- Mascot -->
+      <div class="tb-mascot tb-mascot--lg" role="img" aria-label="Tara the Owl listening carefully">
+        🦉
+      </div>
+
+      <!-- H1 & Sub -->
+      <h1 id="retryHeading" class="tb-h1">Didn't quite catch that &mdash; try again!</h1>
+      <p class="tb-sub" style="font-size:1.1875rem; line-height:1.6; margin-bottom:2rem;">
+        No worries! Tap the mic and give it another go.
+      </p>
+
+      <!-- Primary Action: "Try Again" (Returns to passage) -->
+      <a href="/learner-reading.html" class="tb-btn-big tb-btn-big--amber" id="retryBtn">
+        <span>Try Again 🎙️</span>
+      </a>
+
+      <!-- Quiet Secondary Action -->
+      <a href="/learner-dashboard.html" class="tb-btn-quiet">
+        &larr; Back to My Dashboard
+      </a>
+
+    </section>
+
+    <!-- STATE 2: FINAL STATE (Repeated misses — asks for adult help) -->
+    <section class="tb-card" id="unclearFinalCard" style="display:none;" aria-labelledby="finalHeading">
+      
+      <!-- Mascot -->
+      <div class="tb-mascot tb-mascot--lg" role="img" aria-label="Tara the Owl gently asking for a grown-up's help">
+        🦉
+      </div>
+
+      <!-- H1 & Sub -->
+      <h1 id="finalHeading" class="tb-h1">Please ask your Teacher or Parent for help</h1>
+      <p class="tb-sub" style="font-size:1.1875rem; line-height:1.6; margin-bottom:2rem;">
+        Tara couldn't quite hear that a few times in a row &mdash; a grown-up can help you try again later!
+      </p>
+
+      <!-- Primary Action: "Back to My Dashboard" -->
+      <a href="/learner-dashboard.html" class="tb-btn-big tb-btn-big--teal" id="finalBackBtn">
+        <span>Back to My Dashboard 🚀</span>
+      </a>
+
+    </section>
+
+  </main>
+
+  <script>
+    function setUnclearState(mode) {
+      const retryCard = document.getElementById('unclearRetryCard');
+      const finalCard = document.getElementById('unclearFinalCard');
+
+      if (mode === 'final') {
+        retryCard.style.display = 'none';
+        finalCard.style.display = 'flex';
+      } else {
+        retryCard.style.display = 'flex';
+        finalCard.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
